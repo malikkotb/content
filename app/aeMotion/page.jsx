@@ -25,43 +25,44 @@ const AeMotionPage = () => {
     
 
       .to(leftTextRef.current, { x: 455, duration: 0.4 })
-      .to(rightTextRef.current, { x: -220, duration: 0.4 }, "<")
+      .to(rightTextRef.current, { x: -200, duration: 0.4 }, "<")
       .to(imgRef.current, { x: 200, duration: 0.4 }, "<")
       .add(() => {
         if (imgRef.current) {
           imgRef.current.src = "/img3.png";
         }
       }, "-=0.35")
-    //   .add(() => {
-    //     if (leftTextRef.current) {
-    //       leftTextRef.current.textContent = "Por";
-    //     }
-    //   }, "<")
-    //   .add(() => {
-    //     if (rightTextRef.current) {
-    //       rightTextRef.current.textContent = "trait";
-    //     }
-    //   }, "<")
+      .add(() => {
+        if (leftTextRef.current) {
+          leftTextRef.current.textContent = "Por";
+        }
+        if (rightTextRef.current) {
+            rightTextRef.current.textContent = "trait";
+          }
+      }, "<")
+     
 
-    //   .to(imgRef.current, { scale: 0, duration: 0.2 })
-    //   .to(leftTextRef.current, { y: 265, duration: 0.4 }, "<")
-    //   .to(rightTextRef.current, { y: -265, duration: 0.4 }, "<")
+      .to(imgRef.current, { scale: 0, duration: 0.2 })
+      .to(leftTextRef.current, { y: 265, duration: 0.4 }, "<")
+      .to(rightTextRef.current, { y: -265, duration: 0.4 }, "<")
+
+    //   //
     //   .add(() => {
     //     if (leftTextRef.current) {
     //       leftTextRef.current.textContent = "Graphy";
     //     }
-    //   }, "-=0.3")
-    //   .add(() => {
     //     if (rightTextRef.current) {
-    //       rightTextRef.current.textContent = "Typo";
-    //     }
-    //   }, "<")
+    //         rightTextRef.current.textContent = "Typo";
+    //       }
+    //   }, "-=0.4")
+
+    //   //
     //   .add(() => {
     //     if (imgRef.current) {
     //       imgRef.current.src = "/img6.png";
     //     }
-    //   }, "-=0.2")
-    //   .to(imgRef.current, { scale: 1, duration: 0.3 });
+    //   }, "<")
+    //   .to(imgRef.current, { scale: 1, duration: 0.2 }, "-=0.2");
 
     //   .to(leftTextRef.current, { x: -60, y: -265, duration: 0.4 }, "<")
     //   .to(rightTextRef.current, { x: 75, y: 265, duration: 0.4 }, "<");
