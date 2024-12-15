@@ -25,17 +25,18 @@ const AeMotionPage = () => {
         if (imgRef.current) {
           imgRef.current.src = "/img2.png";
         }
-      }, "-=0.3")
+      })
       .add(() => {
         if (leftTextRef.current) {
-          leftTextRef.current.textContent = "New Text!";
+          leftTextRef.current.textContent = "Por";
         }
-      }, "-=0.3")
+      }, "<")
       .add(() => {
-        if (imgRef.current) {
-          imgRef.current.src = "/img2.png";
+        if (rightTextRef.current) {
+          rightTextRef.current.textContent = "trait";
         }
-      }, "-=0.3")
+      }, "<")
+
       .to(imgRef.current, { scale: 0, duration: 0.4 });
   }, []);
 
