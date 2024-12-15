@@ -1,7 +1,11 @@
 .heading {
   font-size: 150px;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 130px;
+  letter-spacing: -0.05em;
+  mix-blend-mode: difference;
+  color: white;
+  z-index: 100;
   width: fit-content;
   text-transform: uppercase;
 }

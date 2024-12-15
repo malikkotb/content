@@ -15,7 +15,7 @@ const AeMotionPage = () => {
   }, []);
 
   return (
-    <div className="h-screen grid place-content-center bg-[#ddd]">
+    <div className="h-screen grid place-content-center tracking-t bg-[#ddd]">
       <div className="flex">
         <h1 className={`${styles.heading}`}>Fa</h1>
         <h1 className={`${styles.heading}`}>shion</h1>
