@@ -19,13 +19,17 @@ const AeMotionPage = () => {
       .to(imgRef.current, { visibility: "visible" })
       .to(imgRef.current, { scale: 1, x: -125, duration: 0.4 }, "<")
 
-      .to(leftTextRef.current, { x: -60, y: -265, duration: 0.4 }, "<")
+      .to(leftTextRef.current, { x: -60, y: -255, duration: 0.4 }, "<")
       .to(rightTextRef.current, { x: 75, y: 265, duration: 0.4 }, "<")
+
+      .to(leftTextRef.current, { x: 420, duration: 0.4 })
+      .to(rightTextRef.current, { x: -260, duration: 0.4 }, "<")
+      .to(imgRef.current, { x: 150, duration: 0.4 }, "<")
       .add(() => {
         if (imgRef.current) {
           imgRef.current.src = "/img2.png";
         }
-      })
+      }, "-=0.3")
       .add(() => {
         if (leftTextRef.current) {
           leftTextRef.current.textContent = "Por";
@@ -35,19 +39,29 @@ const AeMotionPage = () => {
         if (rightTextRef.current) {
           rightTextRef.current.textContent = "trait";
         }
-      }, "<")
+      }, "<");
 
-      .to(imgRef.current, { scale: 0, duration: 0.4 });
+    //   .to(imgRef.current, { scale: 0, duration: 0.4 });
   }, []);
 
   return (
     <div className="h-screen grid place-content-center bg-[#ddd] overflow-hidden">
+      <div className="fixed top-0 flex w-full justify-between p-5 opacity-50 tracking-tighter">
+        <div>BECAUSE</div>
+        <div>BECAUSE</div>
+        <div>BECAUSE</div>
+      </div>
+      <div className="fixed bottom-0 flex w-full justify-between p-5 opacity-50 tracking-tighter">
+        <div>BECAUSE</div>
+        <div>BECAUSE</div>
+        <div>BECAUSE</div>
+      </div>
       <div className="h-screen w-full absolute grid place-content-center overflow-hidden">
         <img
           ref={imgRef}
           src="/img1.png"
           alt="img"
-          className="h-[40vh] invisible"
+          className="h-[400px] borderr invisible"
         />
       </div>
       <div className="flex">
