@@ -6,7 +6,9 @@ import styles from "./style.module.css";
 
 const AeMotionPage = () => {
   const leftTextRef = useRef(null);
+  const leftText = useRef(null);
   const rightTextRef = useRef(null);
+  const rightText = useRef(null);
   const imgRef = useRef(null);
 
   const masterTl = gsap.timeline();
@@ -85,10 +87,12 @@ const AeMotionPage = () => {
           className="h-[425px] object-cover borderr invisible"
         />
       </div>
-      <div className="flex borderr">
-        <h1 ref={leftTextRef} className={`${styles.heading}`}>
-          Fa
-        </h1>
+      <div className="flex">
+        <div ref={leftTextRef} className="text-left">
+          <h1 ref={leftText} className={`${styles.heading} borderr`}>
+            Fa
+          </h1>
+        </div>
         <h1 ref={rightTextRef} className={`${styles.heading}`}>
           shion
         </h1>
