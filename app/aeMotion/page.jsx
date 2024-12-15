@@ -9,7 +9,7 @@ const AeMotionPage = () => {
   const rightTextRef = useRef(null);
   const imgRef = useRef(null);
 
-  const masterTl = gsap.timeline(); //{ defaults: { ease: "power3.in" } }
+  const masterTl = gsap.timeline({ defaults: { ease: "power3.in" } }); //{ defaults: { ease: "power3.in" } }
   useGSAP(() => {
     gsap.set(imgRef.current, { scale: 0 });
 
@@ -17,19 +17,19 @@ const AeMotionPage = () => {
 
     masterTl
       .to(imgRef.current, { visibility: "visible" })
-      .to(imgRef.current, { scale: 1, x: -125, duration: 0.4 }, "<")
+      .to(imgRef.current, { scale: 1, x: -125, duration: 0.7 }, "<")
 
-      .to(leftTextRef.current, { x: -140, y: -265, duration: 0.4 }, "<")
-      .to(rightTextRef.current, { x: 75, y: 265, duration: 0.4 }, "<")
+      .to(leftTextRef.current, { x: -130, y: -265, duration: 0.7 }, "<")
+      .to(rightTextRef.current, { x: 70, y: 265, duration: 0.7 }, "<")
 
-      .to(leftTextRef.current, { x: 450, duration: 0.4 })
-      .to(rightTextRef.current, { x: -220, duration: 0.4 }, "<")
-      .to(imgRef.current, { x: 200, duration: 0.4 }, "<")
+      .to(leftTextRef.current, { x: 450, duration: 0.7 })
+      .to(rightTextRef.current, { x: -220, duration: 0.7 }, "<")
+      .to(imgRef.current, { x: 200, duration: 0.7 }, "<")
       .add(() => {
         if (imgRef.current) {
           imgRef.current.src = "/img3.png";
         }
-      }, "-=0.35")
+      }, "-=0.15")
       .add(() => {
         if (leftTextRef.current) {
           leftTextRef.current.textContent = "Por";
@@ -39,9 +39,9 @@ const AeMotionPage = () => {
         }
       }, "<")
 
-      .to(imgRef.current, { scale: 0, duration: 0.2 })
-      .to(leftTextRef.current, { y: 265, duration: 0.4 }, "<")
-      .to(rightTextRef.current, { y: -265, duration: 0.4 }, "<")
+      .to(imgRef.current, { scale: 0, duration: 0.35 })
+      .to(leftTextRef.current, { y: 265, duration: 0.7 }, "<")
+      .to(rightTextRef.current, { y: -265, duration: 0.7 }, "<")
 
       .add(() => {
         if (leftTextRef.current) {
@@ -50,49 +50,48 @@ const AeMotionPage = () => {
         if (rightTextRef.current) {
           rightTextRef.current.textContent = "Typo";
         }
-      }, "-=0.4")
+      }, "-=0.15")
 
-      //   //
+      .to(imgRef.current, { scale: 1, duration: 0.45 }, "-=0.15")
       .add(() => {
         if (imgRef.current) {
           imgRef.current.src = "/img6.png";
         }
       }, "<")
-      .to(imgRef.current, { scale: 1, duration: 0.2 }, "-=0.2")
 
-      ///////
+    //   ///////
 
-      .to(imgRef.current, { x: -155, duration: 0.4 })
-      .to(leftTextRef.current, { x: 30, duration: 0.4 }, "<")
-      .to(rightTextRef.current, { x: 170, duration: 0.4 }, "<")
+    //   .to(imgRef.current, { x: -155, duration: 0.7 })
+    //   .to(leftTextRef.current, { x: 30, duration: 0.7 }, "<")
+    //   .to(rightTextRef.current, { x: 170, duration: 0.7 }, "<")
 
-      .add(() => {
-        if (imgRef.current) {
-          imgRef.current.src = "/img10.png";
-        }
-      }, "-=0.35")
-      .add(() => {
-        if (leftTextRef.current) {
-          leftTextRef.current.textContent = "duct";
-        }
-        if (rightTextRef.current) {
-          rightTextRef.current.textContent = "pro";
-        }
-      }, "<")
+    //   .add(() => {
+    //     if (imgRef.current) {
+    //       imgRef.current.src = "/img10.png";
+    //     }
+    //   }, "-=0.35")
+    //   .add(() => {
+    //     if (leftTextRef.current) {
+    //       leftTextRef.current.textContent = "duct";
+    //     }
+    //     if (rightTextRef.current) {
+    //       rightTextRef.current.textContent = "pro";
+    //     }
+    //   }, "<")
 
-      .to(imgRef.current, { scale: 0, duration: 0.2 })
+    //   .to(imgRef.current, { scale: 0, duration: 0.35 })
 
-      .to(leftTextRef.current, { y: 0, x: 0, duration: 0.4 }, "<")
-      .to(rightTextRef.current, { y: 0, x: 0, duration: 0.4 }, "<")
+    //   .to(leftTextRef.current, { y: 0, x: 0, duration: 0.7 }, "<")
+    //   .to(rightTextRef.current, { y: 0, x: 0, duration: 0.7 }, "<")
 
-      .add(() => {
-        if (leftTextRef.current) {
-          leftTextRef.current.textContent = "fa";
-        }
-        if (rightTextRef.current) {
-          rightTextRef.current.textContent = "shion";
-        }
-      }, "-=0.4");
+    //   .add(() => {
+    //     if (leftTextRef.current) {
+    //       leftTextRef.current.textContent = "fa";
+    //     }
+    //     if (rightTextRef.current) {
+    //       rightTextRef.current.textContent = "shion";
+    //     }
+    //   }, "-=0.4");
   }, []);
 
   return (
