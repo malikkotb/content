@@ -22,10 +22,8 @@ const AeMotionPage = () => {
       .to(leftTextRef.current, { x: -140, y: -265, duration: 0.4 }, "<")
       .to(rightTextRef.current, { x: 75, y: 265, duration: 0.4 }, "<")
 
-    
-
-      .to(leftTextRef.current, { x: 455, duration: 0.4 })
-      .to(rightTextRef.current, { x: -200, duration: 0.4 }, "<")
+      .to(leftTextRef.current, { x: 450, duration: 0.4 })
+      .to(rightTextRef.current, { x: -220, duration: 0.4 }, "<")
       .to(imgRef.current, { x: 200, duration: 0.4 }, "<")
       .add(() => {
         if (imgRef.current) {
@@ -37,35 +35,48 @@ const AeMotionPage = () => {
           leftTextRef.current.textContent = "Por";
         }
         if (rightTextRef.current) {
-            rightTextRef.current.textContent = "trait";
-          }
+          rightTextRef.current.textContent = "trait";
+        }
       }, "<")
-     
 
       .to(imgRef.current, { scale: 0, duration: 0.2 })
       .to(leftTextRef.current, { y: 265, duration: 0.4 }, "<")
       .to(rightTextRef.current, { y: -265, duration: 0.4 }, "<")
 
-    //   //
-    //   .add(() => {
-    //     if (leftTextRef.current) {
-    //       leftTextRef.current.textContent = "Graphy";
-    //     }
-    //     if (rightTextRef.current) {
-    //         rightTextRef.current.textContent = "Typo";
-    //       }
-    //   }, "-=0.4")
+      .add(() => {
+        if (leftTextRef.current) {
+          leftTextRef.current.textContent = "Graphy";
+        }
+        if (rightTextRef.current) {
+          rightTextRef.current.textContent = "Typo";
+        }
+      }, "-=0.4")
 
-    //   //
-    //   .add(() => {
-    //     if (imgRef.current) {
-    //       imgRef.current.src = "/img6.png";
-    //     }
-    //   }, "<")
-    //   .to(imgRef.current, { scale: 1, duration: 0.2 }, "-=0.2");
+      //   //
+      .add(() => {
+        if (imgRef.current) {
+          imgRef.current.src = "/img6.png";
+        }
+      }, "<")
+      .to(imgRef.current, { scale: 1, duration: 0.2 }, "-=0.2")
 
-    //   .to(leftTextRef.current, { x: -60, y: -265, duration: 0.4 }, "<")
-    //   .to(rightTextRef.current, { x: 75, y: 265, duration: 0.4 }, "<");
+      ///////
+
+      .to(imgRef.current, { x: 200, duration: 0.4 }, "<")
+      .add(() => {
+        if (imgRef.current) {
+          imgRef.current.src = "/img3.png";
+        }
+      }, "-=0.35")
+      .add(() => {
+        if (leftTextRef.current) {
+          leftTextRef.current.textContent = "Por";
+        }
+        if (rightTextRef.current) {
+          rightTextRef.current.textContent = "trait";
+        }
+      }, "<");
+
   }, []);
 
   return (
