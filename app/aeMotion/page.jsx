@@ -62,21 +62,23 @@ const AeMotionPage = () => {
 
       ///////
 
-      .to(imgRef.current, { x: 200, duration: 0.4 }, "<")
+      .to(imgRef.current, { x: -200, duration: 0.4 })
+      .to(leftTextRef.current, { x: 30, duration: 0.4 }, "<")
+      .to(rightTextRef.current, { x: 150, duration: 0.4 }, "<")
+
       .add(() => {
         if (imgRef.current) {
-          imgRef.current.src = "/img3.png";
+          imgRef.current.src = "/img8.png";
         }
       }, "-=0.35")
       .add(() => {
         if (leftTextRef.current) {
-          leftTextRef.current.textContent = "Por";
+          leftTextRef.current.textContent = "duct";
         }
         if (rightTextRef.current) {
-          rightTextRef.current.textContent = "trait";
+          rightTextRef.current.textContent = "pro";
         }
       }, "<");
-
   }, []);
 
   return (
@@ -96,7 +98,7 @@ const AeMotionPage = () => {
           ref={imgRef}
           src="/img1.png"
           alt="img"
-          className="h-[425px] object-cover overflow-hidden invisible"
+          className="h-[425px] object-cover invisible"
         />
       </div>
       <div className="borderr flex mr-44">
