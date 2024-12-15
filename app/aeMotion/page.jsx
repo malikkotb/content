@@ -6,9 +6,7 @@ import styles from "./style.module.css";
 
 const AeMotionPage = () => {
   const leftTextRef = useRef(null);
-  const leftText = useRef(null);
   const rightTextRef = useRef(null);
-  const rightText = useRef(null);
   const imgRef = useRef(null);
 
   const masterTl = gsap.timeline();
@@ -33,13 +31,13 @@ const AeMotionPage = () => {
         }
       }, "-=0.35")
       .add(() => {
-        if (leftText.current) {
-            leftText.current.textContent = "Por";
+        if (leftTextRef.current) {
+          leftTextRef.current.textContent = "Por";
         }
       }, "<")
       .add(() => {
-        if (rightText.current) {
-          rightText.current.textContent = "trait";
+        if (rightTextRef.current) {
+          rightTextRef.current.textContent = "trait";
         }
       }, "<")
 
@@ -47,18 +45,18 @@ const AeMotionPage = () => {
       .to(leftTextRef.current, { y: 265, duration: 0.4 }, "<")
       .to(rightTextRef.current, { y: -265, duration: 0.4 }, "<")
       .add(() => {
-        if (leftText.current) {
-          leftText.current.textContent = "Graphy";
+        if (leftTextRef.current) {
+          leftTextRef.current.textContent = "Graphy";
         }
       }, "<")
       .add(() => {
-        if (rightText.current) {
-          rightText.current.textContent = "Typo";
+        if (rightTextRef.current) {
+          rightTextRef.current.textContent = "Typo";
         }
       }, "<")
       .add(() => {
         if (imgRef.current) {
-          imgRef.current.src = "/img4.png";
+          imgRef.current.src = "/img6.png";
         }
       }, "-=0.2")
       .to(imgRef.current, { scale: 1, duration: 0.2 }, "<");
@@ -68,7 +66,7 @@ const AeMotionPage = () => {
   }, []);
 
   return (
-    <div className="h-screen grid place-content-center bg-[#ddd] overflow-hidden">
+    <div className="h-screen relative grid place-content-center bg-[#ddd] overflow-hidden">
       <div className="fixed top-0 flex w-full justify-between p-5 opacity-50 tracking-tighter">
         <div>BECAUSE</div>
         <div>BECAUSE</div>
@@ -84,20 +82,16 @@ const AeMotionPage = () => {
           ref={imgRef}
           src="/img1.png"
           alt="img"
-          className="h-[425px] object-cover borderr invisible"
+          className="h-[425px] object-cover overflow-hidden invisible"
         />
       </div>
       <div className="flex">
-        <div ref={leftTextRef} className="text-left">
-          <h1 ref={leftText} className={`${styles.heading}`}>
-            Fa
-          </h1>
-        </div>
-        <div ref={rightTextRef} className="text-left">
-          <h1 ref={rightText} className={`${styles.heading}`}>
-            shion
-          </h1>
-        </div>
+        <h1 ref={leftTextRef} className={`${styles.heading}`}>
+          Fa
+        </h1>
+        <h1 ref={rightTextRef} className={`${styles.heading}`}>
+          shion
+        </h1>
       </div>
     </div>
   );
