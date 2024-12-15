@@ -1,8 +1,8 @@
 .heading {
-  font-size: 125px;
+  font-size: 110px;
   font-weight: 500;
   line-height: 130px;
-  width: 350px;
+  width: 100px;
   letter-spacing: -0.05em;
   border: 1px solid red;
   mix-blend-mode: difference;

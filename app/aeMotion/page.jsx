@@ -19,47 +19,49 @@ const AeMotionPage = () => {
       .to(imgRef.current, { visibility: "visible" })
       .to(imgRef.current, { scale: 1, x: -125, duration: 0.4 }, "<")
 
-      .to(leftTextRef.current, { x: -250, y: -265, duration: 0.4 }, "<")
+      .to(leftTextRef.current, { x: -140, y: -265, duration: 0.4 }, "<")
       .to(rightTextRef.current, { x: 75, y: 265, duration: 0.4 }, "<")
 
-      .to(leftTextRef.current, { x: 410, duration: 0.4 })
-      .to(rightTextRef.current, { x: -360, duration: 0.4 }, "<")
+    
+
+      .to(leftTextRef.current, { x: 455, duration: 0.4 })
+      .to(rightTextRef.current, { x: -220, duration: 0.4 }, "<")
       .to(imgRef.current, { x: 200, duration: 0.4 }, "<")
       .add(() => {
         if (imgRef.current) {
           imgRef.current.src = "/img3.png";
         }
       }, "-=0.35")
-      .add(() => {
-        if (leftTextRef.current) {
-          leftTextRef.current.textContent = "Por";
-        }
-      }, "<")
-      .add(() => {
-        if (rightTextRef.current) {
-          rightTextRef.current.textContent = "trait";
-        }
-      }, "<")
+    //   .add(() => {
+    //     if (leftTextRef.current) {
+    //       leftTextRef.current.textContent = "Por";
+    //     }
+    //   }, "<")
+    //   .add(() => {
+    //     if (rightTextRef.current) {
+    //       rightTextRef.current.textContent = "trait";
+    //     }
+    //   }, "<")
 
-      .to(imgRef.current, { scale: 0, duration: 0.2 })
-      .to(leftTextRef.current, { y: 265, duration: 0.4 }, "<")
-      .to(rightTextRef.current, { y: -265, duration: 0.4 }, "<")
-      .add(() => {
-        if (leftTextRef.current) {
-          leftTextRef.current.textContent = "Graphy";
-        }
-      }, "-=0.3")
-      .add(() => {
-        if (rightTextRef.current) {
-          rightTextRef.current.textContent = "Typo";
-        }
-      }, "<")
-      .add(() => {
-        if (imgRef.current) {
-          imgRef.current.src = "/img6.png";
-        }
-      }, "-=0.2")
-      .to(imgRef.current, { scale: 1, duration: 0.3 }, "<");
+    //   .to(imgRef.current, { scale: 0, duration: 0.2 })
+    //   .to(leftTextRef.current, { y: 265, duration: 0.4 }, "<")
+    //   .to(rightTextRef.current, { y: -265, duration: 0.4 }, "<")
+    //   .add(() => {
+    //     if (leftTextRef.current) {
+    //       leftTextRef.current.textContent = "Graphy";
+    //     }
+    //   }, "-=0.3")
+    //   .add(() => {
+    //     if (rightTextRef.current) {
+    //       rightTextRef.current.textContent = "Typo";
+    //     }
+    //   }, "<")
+    //   .add(() => {
+    //     if (imgRef.current) {
+    //       imgRef.current.src = "/img6.png";
+    //     }
+    //   }, "-=0.2")
+    //   .to(imgRef.current, { scale: 1, duration: 0.3 });
 
     //   .to(leftTextRef.current, { x: -60, y: -265, duration: 0.4 }, "<")
     //   .to(rightTextRef.current, { x: 75, y: 265, duration: 0.4 }, "<");
@@ -85,7 +87,7 @@ const AeMotionPage = () => {
           className="h-[425px] object-cover overflow-hidden invisible"
         />
       </div>
-      <div className="flex">
+      <div className="borderr flex mr-44">
         <h1 ref={leftTextRef} className={`${styles.heading} flex justify-end`}>
           Fa
         </h1>
