@@ -4,6 +4,7 @@
   line-height: 130px;
   letter-spacing: -0.05em;
   border: 1px solid red;
+  text-align: left;
   mix-blend-mode: difference;
   color: white;
   z-index: 100;

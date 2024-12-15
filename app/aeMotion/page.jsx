@@ -33,13 +33,13 @@ const AeMotionPage = () => {
         }
       }, "-=0.35")
       .add(() => {
-        if (leftTextRef.current) {
-          leftTextRef.current.textContent = "Por";
+        if (leftText.current) {
+            leftText.current.textContent = "Por";
         }
       }, "<")
       .add(() => {
-        if (rightTextRef.current) {
-          rightTextRef.current.textContent = "trait";
+        if (rightText.current) {
+          rightText.current.textContent = "trait";
         }
       }, "<")
 
@@ -47,13 +47,13 @@ const AeMotionPage = () => {
       .to(leftTextRef.current, { y: 265, duration: 0.4 }, "<")
       .to(rightTextRef.current, { y: -265, duration: 0.4 }, "<")
       .add(() => {
-        if (leftTextRef.current) {
-          leftTextRef.current.textContent = "Graphy";
+        if (leftText.current) {
+          leftText.current.textContent = "Graphy";
         }
       }, "<")
       .add(() => {
-        if (rightTextRef.current) {
-          rightTextRef.current.textContent = "Typo";
+        if (rightText.current) {
+          rightText.current.textContent = "Typo";
         }
       }, "<")
       .add(() => {
@@ -89,13 +89,15 @@ const AeMotionPage = () => {
       </div>
       <div className="flex">
         <div ref={leftTextRef} className="text-left">
-          <h1 ref={leftText} className={`${styles.heading} borderr`}>
+          <h1 ref={leftText} className={`${styles.heading}`}>
             Fa
           </h1>
         </div>
-        <h1 ref={rightTextRef} className={`${styles.heading}`}>
-          shion
-        </h1>
+        <div ref={rightTextRef} className="text-left">
+          <h1 ref={rightText} className={`${styles.heading}`}>
+            shion
+          </h1>
+        </div>
       </div>
     </div>
   );
