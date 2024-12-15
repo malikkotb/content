@@ -62,13 +62,13 @@ const AeMotionPage = () => {
 
       ///////
 
-      .to(imgRef.current, { x: -200, duration: 0.4 })
+      .to(imgRef.current, { x: -155, duration: 0.4 })
       .to(leftTextRef.current, { x: 30, duration: 0.4 }, "<")
-      .to(rightTextRef.current, { x: 150, duration: 0.4 }, "<")
+      .to(rightTextRef.current, { x: 170, duration: 0.4 }, "<")
 
       .add(() => {
         if (imgRef.current) {
-          imgRef.current.src = "/img8.png";
+          imgRef.current.src = "/img10.png";
         }
       }, "-=0.35")
       .add(() => {
@@ -78,7 +78,21 @@ const AeMotionPage = () => {
         if (rightTextRef.current) {
           rightTextRef.current.textContent = "pro";
         }
-      }, "<");
+      }, "<")
+
+      .to(imgRef.current, { scale: 0, duration: 0.2 })
+
+      .to(leftTextRef.current, { y: 0, x: 0, duration: 0.4 }, "<")
+      .to(rightTextRef.current, { y: 0, x: 0, duration: 0.4 }, "<")
+
+      .add(() => {
+        if (leftTextRef.current) {
+          leftTextRef.current.textContent = "fa";
+        }
+        if (rightTextRef.current) {
+          rightTextRef.current.textContent = "shion";
+        }
+      }, "-=0.4");
   }, []);
 
   return (
