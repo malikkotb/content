@@ -9,7 +9,7 @@ const AeMotionPage = () => {
   const rightTextRef = useRef(null);
   const imgRef = useRef(null);
 
-  const masterTl = gsap.timeline({ defaults: { ease: "power3.in" } }); //{ defaults: { ease: "power3.in" } }
+  const masterTl = gsap.timeline({ defaults: { ease: "power4.inOut" } }); //{ defaults: { ease: "power3.in" } }
   useGSAP(() => {
     gsap.set(imgRef.current, { scale: 0 });
 
@@ -23,13 +23,13 @@ const AeMotionPage = () => {
       .to(rightTextRef.current, { x: 70, y: 265, duration: 0.7 }, "<")
 
       .to(leftTextRef.current, { x: 450, duration: 0.7 })
-      .to(rightTextRef.current, { x: -220, duration: 0.7 }, "<")
+      .to(rightTextRef.current, { x: -250, duration: 0.7 }, "<")
       .to(imgRef.current, { x: 200, duration: 0.7 }, "<")
       .add(() => {
         if (imgRef.current) {
           imgRef.current.src = "/img3.png";
         }
-      }, "-=0.15")
+      }, "-=0.4")
       .add(() => {
         if (leftTextRef.current) {
           leftTextRef.current.textContent = "Por";
@@ -50,7 +50,7 @@ const AeMotionPage = () => {
         if (rightTextRef.current) {
           rightTextRef.current.textContent = "Typo";
         }
-      }, "-=0.15")
+      }, "-=0.4")
 
       .to(imgRef.current, { scale: 1, duration: 0.45 }, "-=0.15")
       .add(() => {

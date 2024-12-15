@@ -4,7 +4,7 @@
   line-height: 130px;
   width: 100px;
   letter-spacing: -0.05em;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   mix-blend-mode: difference;
   color: white;
   z-index: 100;
