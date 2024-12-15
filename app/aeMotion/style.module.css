@@ -1,8 +1,6 @@
 .heading {
   font-size: 125px;
   font-weight: 500;
-  width: 600px;
-  overflow: hidden;
   line-height: 130px;
   letter-spacing: -0.05em;
   border: 1px solid red;
@@ -14,3 +12,8 @@
   text-transform: uppercase;
 }
 
+.textDiv {
+  width: 400px;
+  border: 1px solid red;
+  /* overflow: hidden; */
+}

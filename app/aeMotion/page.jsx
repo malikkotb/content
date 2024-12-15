@@ -59,7 +59,7 @@ const AeMotionPage = () => {
           imgRef.current.src = "/img6.png";
         }
       }, "-=0.2")
-      .to(imgRef.current, { scale: 1, duration: 0.2 }, "<");
+      .to(imgRef.current, { scale: 1, duration: 1 }, "<");
 
     //   .to(leftTextRef.current, { x: -60, y: -265, duration: 0.4 }, "<")
     //   .to(rightTextRef.current, { x: 75, y: 265, duration: 0.4 }, "<");
@@ -86,12 +86,16 @@ const AeMotionPage = () => {
         />
       </div>
       <div className="flex">
+        {/* <div className={styles.textDiv}> */}
         <h1 ref={leftTextRef} className={`${styles.heading}`}>
           Fa
         </h1>
+        {/* </div>
+        <div className={styles.textDiv}> */}
         <h1 ref={rightTextRef} className={`${styles.heading}`}>
           shion
         </h1>
+        {/* </div> */}
       </div>
     </div>
   );
