@@ -1,0 +1,7 @@
+.heading {
+  font-size: 150px;
+  font-weight: 700;
+  line-height: 130px;
+  width: fit-content;
+  text-transform: uppercase;
+}
