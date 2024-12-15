@@ -2,3 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
+.borderr  {
+  border: 1px solid red;
+}

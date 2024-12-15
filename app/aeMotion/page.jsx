@@ -19,17 +19,17 @@ const AeMotionPage = () => {
       .to(imgRef.current, { visibility: "visible" })
       .to(imgRef.current, { scale: 1, x: -125, duration: 0.4 }, "<")
 
-      .to(leftTextRef.current, { x: -60, y: -255, duration: 0.4 }, "<")
+      .to(leftTextRef.current, { x: -60, y: -265, duration: 0.4 }, "<")
       .to(rightTextRef.current, { x: 75, y: 265, duration: 0.4 }, "<")
 
-      .to(leftTextRef.current, { x: 420, duration: 0.4 })
+      .to(leftTextRef.current, { x: 410, duration: 0.4 })
       .to(rightTextRef.current, { x: -260, duration: 0.4 }, "<")
-      .to(imgRef.current, { x: 150, duration: 0.4 }, "<")
+      .to(imgRef.current, { x: 200, duration: 0.4 }, "<")
       .add(() => {
         if (imgRef.current) {
-          imgRef.current.src = "/img2.png";
+          imgRef.current.src = "/img3.png";
         }
-      }, "-=0.3")
+      }, "-=0.35")
       .add(() => {
         if (leftTextRef.current) {
           leftTextRef.current.textContent = "Por";
@@ -39,9 +39,30 @@ const AeMotionPage = () => {
         if (rightTextRef.current) {
           rightTextRef.current.textContent = "trait";
         }
-      }, "<");
+      }, "<")
 
-    //   .to(imgRef.current, { scale: 0, duration: 0.4 });
+      .to(imgRef.current, { scale: 0, duration: 0.2 })
+      .to(leftTextRef.current, { y: 265, duration: 0.4 }, "<")
+      .to(rightTextRef.current, { y: -265, duration: 0.4 }, "<")
+      .add(() => {
+        if (leftTextRef.current) {
+          leftTextRef.current.textContent = "Graphy";
+        }
+      }, "<")
+      .add(() => {
+        if (rightTextRef.current) {
+          rightTextRef.current.textContent = "Typo";
+        }
+      }, "<")
+      .add(() => {
+        if (imgRef.current) {
+          imgRef.current.src = "/img4.png";
+        }
+      }, "-=0.2")
+      .to(imgRef.current, { scale: 1, duration: 0.2 }, "<");
+
+    //   .to(leftTextRef.current, { x: -60, y: -265, duration: 0.4 }, "<")
+    //   .to(rightTextRef.current, { x: 75, y: 265, duration: 0.4 }, "<");
   }, []);
 
   return (
@@ -61,10 +82,10 @@ const AeMotionPage = () => {
           ref={imgRef}
           src="/img1.png"
           alt="img"
-          className="h-[400px] borderr invisible"
+          className="h-[425px] object-cover borderr invisible"
         />
       </div>
-      <div className="flex">
+      <div className="flex borderr">
         <h1 ref={leftTextRef} className={`${styles.heading}`}>
           Fa
         </h1>
