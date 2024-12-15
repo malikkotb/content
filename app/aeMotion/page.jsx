@@ -9,7 +9,7 @@ const AeMotionPage = () => {
   const rightTextRef = useRef(null);
   const imgRef = useRef(null);
 
-  const masterTl = gsap.timeline();
+  const masterTl = gsap.timeline(); //{ defaults: { ease: "power3.in" } }
   useGSAP(() => {
     gsap.set(imgRef.current, { scale: 0 });
 
@@ -23,7 +23,7 @@ const AeMotionPage = () => {
       .to(rightTextRef.current, { x: 75, y: 265, duration: 0.4 }, "<")
 
       .to(leftTextRef.current, { x: 410, duration: 0.4 })
-      .to(rightTextRef.current, { x: -260, duration: 0.4 }, "<")
+      .to(rightTextRef.current, { x: -360, duration: 0.4 }, "<")
       .to(imgRef.current, { x: 200, duration: 0.4 }, "<")
       .add(() => {
         if (imgRef.current) {
@@ -48,7 +48,7 @@ const AeMotionPage = () => {
         if (leftTextRef.current) {
           leftTextRef.current.textContent = "Graphy";
         }
-      }, "<")
+      }, "-=0.3")
       .add(() => {
         if (rightTextRef.current) {
           rightTextRef.current.textContent = "Typo";
@@ -59,7 +59,7 @@ const AeMotionPage = () => {
           imgRef.current.src = "/img6.png";
         }
       }, "-=0.2")
-      .to(imgRef.current, { scale: 1, duration: 1 }, "<");
+      .to(imgRef.current, { scale: 1, duration: 0.3 }, "<");
 
     //   .to(leftTextRef.current, { x: -60, y: -265, duration: 0.4 }, "<")
     //   .to(rightTextRef.current, { x: 75, y: 265, duration: 0.4 }, "<");
@@ -86,16 +86,12 @@ const AeMotionPage = () => {
         />
       </div>
       <div className="flex">
-        {/* <div className={styles.textDiv}> */}
         <h1 ref={leftTextRef} className={`${styles.heading}`}>
           Fa
         </h1>
-        {/* </div>
-        <div className={styles.textDiv}> */}
         <h1 ref={rightTextRef} className={`${styles.heading}`}>
           shion
         </h1>
-        {/* </div> */}
       </div>
     </div>
   );
