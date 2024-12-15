@@ -19,7 +19,7 @@ const AeMotionPage = () => {
       .to(imgRef.current, { visibility: "visible" })
       .to(imgRef.current, { scale: 1, x: -125, duration: 0.4 }, "<")
 
-      .to(leftTextRef.current, { x: -60, y: -265, duration: 0.4 }, "<")
+      .to(leftTextRef.current, { x: -250, y: -265, duration: 0.4 }, "<")
       .to(rightTextRef.current, { x: 75, y: 265, duration: 0.4 }, "<")
 
       .to(leftTextRef.current, { x: 410, duration: 0.4 })
@@ -86,7 +86,7 @@ const AeMotionPage = () => {
         />
       </div>
       <div className="flex">
-        <h1 ref={leftTextRef} className={`${styles.heading}`}>
+        <h1 ref={leftTextRef} className={`${styles.heading} flex justify-end`}>
           Fa
         </h1>
         <h1 ref={rightTextRef} className={`${styles.heading}`}>
