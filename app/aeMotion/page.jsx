@@ -11,11 +11,16 @@ const AeMotionPage = () => {
 
   const masterTl = gsap.timeline();
   useGSAP(() => {
-    masterTl.to(divRef1.current, { x: 100, duration: 2 });
+    gsap.set(imgRef.current, { scale: 0.05 });
+
+    masterTl.to(imgRef.current, { scale: 1, duration: 2 });
   }, []);
 
   return (
-    <div className="h-screen grid place-content-center tracking-t bg-[#ddd]">
+    <div className="h-screen grid place-content-center bg-[#ddd]">
+      <div className="h-screen w-full absolute grid place-content-center">
+        <img ref={imgRef} src="/img1.png" alt="img" className="" />
+      </div>
       <div className="flex">
         <h1 className={`${styles.heading}`}>Fa</h1>
         <h1 className={`${styles.heading}`}>shion</h1>
