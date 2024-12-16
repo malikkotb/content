@@ -1,7 +1,8 @@
+"use client";
 import { useRef } from "react";
 import { gsap } from "gsap";
 
-function FontWeightAnimation() {
+export default function FontWeightAnimation() {
   const textRef = useRef(null);
 
   const handleMouseEnter = () => {
@@ -13,15 +14,16 @@ function FontWeightAnimation() {
   };
 
   return (
-    <h1
-      ref={textRef}
-      style={{ fontWeight: 400 }}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      Hover Over Me!
-    </h1>
+    <div className="">
+      <h1
+        ref={textRef}
+        style={{ fontWeight: 400 }}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        className="text-4xl font-bold text-center mt-20"
+      >
+        Hover Over Me!
+      </h1>
+    </div>
   );
 }
-
-export default FontWeightAnimation;
