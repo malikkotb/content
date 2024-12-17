@@ -11,6 +11,7 @@
 }
 
 .number {
-  font-size: 2rem;
+  width: 25%;
+    font-size: 120px;
   color: white;
 }
