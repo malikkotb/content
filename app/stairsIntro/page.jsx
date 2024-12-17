@@ -31,7 +31,7 @@ export default function FontWeightAnimation() {
       if (index === 0) {
         setTimeout(() => {
           numberRef.textContent = 1;
-        }, 2000);
+        }, 2500);
       }
       if (index === 1) {
         let count = 0;
@@ -49,7 +49,7 @@ export default function FontWeightAnimation() {
           }
 
           count++;
-        }, 150 * (count + 1));
+        }, 200 * (count + 1));
 
         return () => clearInterval(interval); // Ensure cleanup in case of component unmount
       }
@@ -64,7 +64,7 @@ export default function FontWeightAnimation() {
         stagger: 0.1,
         duration: 1,
         ease: "power2.inOut",
-        delay: 2.3,
+        delay: 2.7,
       })
 
       .to(

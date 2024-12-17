@@ -14,13 +14,12 @@ export default function FontWeightAnimation() {
   };
 
   return (
-    <div className="">
+    <div className={`bg-[#ddd] h-screen`}>
       <h1
         ref={textRef}
-        style={{ fontWeight: 400 }}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className="text-4xl font-bold text-center mt-20"
+        className="text-4xl font-bold text-center borderr"
       >
         Hover Over Me!
       </h1>
