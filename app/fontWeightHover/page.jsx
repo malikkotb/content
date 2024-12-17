@@ -14,12 +14,46 @@ export default function FontWeightAnimation() {
   };
 
   return (
-    <div className={`bg-[#ddd] h-screen`}>
+    <div className={`bg-[#ddd] h-screen flex flex-col justify-between`}>
+      {/* <div className="flex-1 flex flex-col justify-center"></div> */}
+
       <h1
         ref={textRef}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className="text-4xl font-bold text-center borderr"
+        className="text-4xl font-bold text-center borderr flex-1"
+      >
+        Hover Over Me!
+      </h1>
+      <h1
+        ref={textRef}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        className="text-4xl font-bold text-center borderr flex-1"
+      >
+        Hover Over Me!
+      </h1>
+      <h1
+        ref={textRef}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        className="text-4xl font-bold text-center borderr flex-1"
+      >
+        Hover Over Me!
+      </h1>
+      <h1
+        ref={textRef}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        className="text-4xl font-bold text-center borderr flex-1"
+      >
+        Hover Over Me!
+      </h1>
+      <h1
+        ref={textRef}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        className="text-4xl font-bold text-center borderr flex-1 flex w-full h-full justify-center"
       >
         Hover Over Me!
       </h1>
