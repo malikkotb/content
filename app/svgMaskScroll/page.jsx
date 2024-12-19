@@ -1,7 +1,7 @@
 "use client";
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
-import styles from "./page.module.css";
+import styles from "./style.module.css";
 
 export default function Home() {
   const container = useRef(null);
@@ -41,7 +41,7 @@ export default function Home() {
             ref={(el) => (images.current[i] = el)}
             className={styles.imageWrapper}
           >
-            <img src={`/medias/img${i + 1}.png`} alt={`Image ${i + 1}`} />
+            <img src={`/maskReveal/img${i + 1}.png`} alt={`Image ${i + 1}`} />
           </div>
         ))}
       </div>
