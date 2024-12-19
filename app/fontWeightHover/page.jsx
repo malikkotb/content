@@ -24,8 +24,8 @@ export default function FontWeightAnimation() {
 
     const handleMouseMove = (e) => {
       gsap.to(hoverArea, {
-        x: e.clientX - hoverRadius / 2,
-        y: e.clientY - hoverRadius / 2,
+        x: e.clientX - hoverArea.offsetWidth / 2,
+        y: e.clientY - hoverArea.offsetHeight / 2,
         duration: 0.1,
         ease: "power2.out",
       });
@@ -75,10 +75,10 @@ export default function FontWeightAnimation() {
         ref={containerRef}
         className={`flex ${neueRegrade.className} cursor-default uppercase h-screen text-[260px] bg-[#FF8400] text-[#1e1e1e] flex-col`}
       >
-        {/* <div
+        <div
           ref={hoverAreaRef}
-          className="absolute bg-white top-0 left-0 w-[50px] h-[50px] pointer-events-none border mix-blend-difference rounded-full"
-        ></div> */}
+          className="absolute bg-white top-0 left-0 w-[30px] h-[30px] pointer-events-none border mix-blend-difference rounded-full"
+        ></div>
         <div className="flex mt-10 leading-[230px]">
           <span>S</span>
           <span>E</span>
