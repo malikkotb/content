@@ -29,9 +29,17 @@ export default function FontWeightAnimation() {
   useEffect(() => {
     const container = containerRef.current;
     const spans = container.querySelectorAll("span");
-    const hoverRadius = 200; // Define the hover radius
+    const hoverRadius = 300; // Define the hover radius
+    const hoverArea = hoverAreaRef.current;
 
     const handleMouseMove = (e) => {
+      gsap.to(hoverArea, {
+        x: e.clientX - hoverRadius / 2,
+        y: e.clientY - hoverRadius / 2,
+        duration: 0.1,
+        ease: "power2.out",
+      });
+
       spans.forEach((span) => {
         const rect = span.getBoundingClientRect();
         const spanCenterX = rect.left + rect.width / 2;
@@ -46,19 +54,19 @@ export default function FontWeightAnimation() {
         if (distance < hoverRadius) {
           // Proximity-based font-weight animation
           const proximity = 1 - distance / hoverRadius;
-          const fontWeight = 100 + proximity * 800; // Font weight ranges from 100 to 900
+          const fontWeight = 300 + proximity * 300; // Font weight ranges from 300 to 700
 
           gsap.to(span, {
             fontVariationSettings: `'wght' ${fontWeight}`,
-            duration: 0.3,
-            ease: "power2.out",
+            duration: 0.5,
+            ease: "power4.out",
           });
         } else {
           // Reset font weight when outside the hover area
           gsap.to(span, {
-            fontVariationSettings: `'wght' 200`,
+            fontVariationSettings: `'wght' 300`,
             duration: 0.5,
-            ease: "power2.out",
+            ease: "power4.out",
           });
         }
       });
@@ -79,7 +87,7 @@ export default function FontWeightAnimation() {
       >
         <div
           ref={hoverAreaRef}
-          className="absolute top-0 left-0 w-[200px] h-[200px] pointer-events-none border border-dashed border-[#1e1e1e] rounded-full opacity-50"
+          className="absolute top-0 left-0 w-[300px] h-[300px] pointer-events-none border border-[#49ff1c] rounded-full opacity-70"
         ></div>
         <div className="flex font-extralight leading-[210px]">
           <span>S</span>
@@ -98,7 +106,7 @@ export default function FontWeightAnimation() {
         </div>
         <div className="flex justify-center leading-[210px]">
           <span>2</span>
-          <span>0</span>
+          <span className=" italic">0</span>
           <span>2</span>
           <span>1</span>
           <span>©</span>
