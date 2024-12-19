@@ -19,7 +19,7 @@ export default function FontWeightAnimation() {
   useEffect(() => {
     const container = containerRef.current;
     const spans = container.querySelectorAll("span");
-    const hoverRadius = 300; // Define the hover radius
+    const hoverRadius = 350; // Define the hover radius
     const hoverArea = hoverAreaRef.current;
 
     const handleMouseMove = (e) => {
@@ -44,7 +44,7 @@ export default function FontWeightAnimation() {
         if (distance < hoverRadius) {
           // Proximity-based font-weight animation
           const proximity = 1 - distance / hoverRadius;
-          const fontWeight = 400 + proximity * 200; // Font weight ranges from 300 to 700
+          const fontWeight = 400 + proximity * 300; // Font weight ranges from 300 to 700
 
           gsap.to(span, {
             fontVariationSettings: `'wght' ${fontWeight}`,
@@ -73,7 +73,7 @@ export default function FontWeightAnimation() {
     <>
       <div
         ref={containerRef}
-        className={`flex ${neueRegrade.className} uppercase h-screen text-[260px] bg-[#FF8400] text-[#1e1e1e] flex-col`}
+        className={`flex ${neueRegrade.className} cursor-default uppercase h-screen text-[260px] bg-[#FF8400] text-[#1e1e1e] flex-col`}
       >
         {/* <div
           ref={hoverAreaRef}
