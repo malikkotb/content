@@ -24,35 +24,42 @@ export default function FontWeightAnimation() {
   };
 
   const containerRef = useRef(null);
+  const hoverAreaRef = useRef(null);
 
   useEffect(() => {
     const container = containerRef.current;
-    const items = container.querySelectorAll(`.${styles.item}`);
+    const spans = container.querySelectorAll("span");
+    const hoverRadius = 200; // Define the hover radius
 
     const handleMouseMove = (e) => {
-      const hoverRadius = 150; // Define the hover radius
+      spans.forEach((span) => {
+        const rect = span.getBoundingClientRect();
+        const spanCenterX = rect.left + rect.width / 2;
+        const spanCenterY = rect.top + rect.height / 2;
 
-      items.forEach((item) => {
-        const rect = item.getBoundingClientRect();
-        const itemCenterX = rect.left + rect.width / 2;
-        const itemCenterY = rect.top + rect.height / 2;
-
-        // Calculate distance from cursor to item's center
+        // Calculate the distance between cursor and span center
         const distance = Math.sqrt(
-          Math.pow(e.clientX - itemCenterX, 2) +
-            Math.pow(e.clientY - itemCenterY, 2)
+          Math.pow(e.clientX - spanCenterX, 2) +
+            Math.pow(e.clientY - spanCenterY, 2)
         );
 
-        // Apply hover effect based on proximity to the cursor
         if (distance < hoverRadius) {
-          const proximity = 1 - distance / hoverRadius; // Closer = higher proximity (0 to 1)
-          item.style.transform = `scale(${1 + proximity * 0.2})`; // Scale based on proximity
-          item.style.opacity = `${0.5 + proximity * 0.5}`; // Adjust opacity
-          item.style.zIndex = `${Math.floor(proximity * 10)}`; // Adjust z-index
+          // Proximity-based font-weight animation
+          const proximity = 1 - distance / hoverRadius;
+          const fontWeight = 100 + proximity * 800; // Font weight ranges from 100 to 900
+
+          gsap.to(span, {
+            fontVariationSettings: `'wght' ${fontWeight}`,
+            duration: 0.3,
+            ease: "power2.out",
+          });
         } else {
-          item.style.transform = "scale(1)";
-          item.style.opacity = "1";
-          item.style.zIndex = "0";
+          // Reset font weight when outside the hover area
+          gsap.to(span, {
+            fontVariationSettings: `'wght' 200`,
+            duration: 0.5,
+            ease: "power2.out",
+          });
         }
       });
     };
@@ -66,34 +73,36 @@ export default function FontWeightAnimation() {
 
   return (
     <>
-      <div className="flex uppercase h-screen text-[270px] bg-[#FF8400] text-[#1e1e1e] flex-col">
-        <div className="flex borderr font-thin leading-[230px]">
+      <div
+        ref={containerRef}
+        className="flex uppercase h-screen text-[260px] bg-[#FF8400] text-[#1e1e1e] flex-col"
+      >
+        <div
+          ref={hoverAreaRef}
+          className="absolute top-0 left-0 w-[200px] h-[200px] pointer-events-none border border-dashed border-[#1e1e1e] rounded-full opacity-50"
+        ></div>
+        <div className="flex font-extralight leading-[210px]">
           <span>S</span>
           <span>E</span>
           <span>P</span>
         </div>
-        <div className="flex borderr justify-end leading-[230px]">
+        <div className="flex justify-end leading-[210px]">
           <span>T</span>
           <span>E</span>
           <span>M</span>
         </div>
-        <div className="flex borderr font-bold justify-center leading-[230px]">
+        <div className="flex font-bold justify-center leading-[210px]">
           <span>B</span>
           <span>E</span>
           <span>R</span>
         </div>
-        <div className="flex borderr justify-center leading-[230px]">
+        <div className="flex justify-center leading-[210px]">
           <span>2</span>
           <span>0</span>
           <span>2</span>
           <span>1</span>
           <span>©</span>
         </div>
-      </div>
-      <div ref={containerRef} className={styles.container}>
-        <div className={styles.item}>Item 1</div>
-        <div className={styles.item}>Item 2</div>
-        <div className={styles.item}>Item 3</div>
       </div>
       <div
         className={`bg-[#ddd] h-screen ${neueRegrade.className} flex flex-col justify-between`}
