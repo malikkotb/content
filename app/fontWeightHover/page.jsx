@@ -66,9 +66,30 @@ export default function FontWeightAnimation() {
 
   return (
     <>
-    <div>
-      
-    </div>
+      <div className="flex uppercase h-screen text-[270px] bg-[#FF8400] text-[#1e1e1e] flex-col">
+        <div className="flex borderr font-thin leading-[230px]">
+          <span>S</span>
+          <span>E</span>
+          <span>P</span>
+        </div>
+        <div className="flex borderr justify-end leading-[230px]">
+          <span>T</span>
+          <span>E</span>
+          <span>M</span>
+        </div>
+        <div className="flex borderr font-bold justify-center leading-[230px]">
+          <span>B</span>
+          <span>E</span>
+          <span>R</span>
+        </div>
+        <div className="flex borderr justify-center leading-[230px]">
+          <span>2</span>
+          <span>0</span>
+          <span>2</span>
+          <span>1</span>
+          <span>©</span>
+        </div>
+      </div>
       <div ref={containerRef} className={styles.container}>
         <div className={styles.item}>Item 1</div>
         <div className={styles.item}>Item 2</div>
