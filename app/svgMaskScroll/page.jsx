@@ -3,6 +3,8 @@ import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import styles from "./style.module.css";
+import Lenis from "lenis";
+import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,16 +13,28 @@ export default function Home() {
   const images = useRef([]);
 
   useEffect(() => {
+    const lenis = new Lenis();
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+  }, []);
+
+  useGSAP(() => {
     images.current.forEach((image, index) => {
       gsap.to(image, {
         scrollTrigger: {
           trigger: container.current,
-          start: `${150 * index}vh top`,
-          end: `${150 * (index + 1)}vh top`,
+          start: `${550 * index}vh top`,
+          // start: "top 30%",
+          end: "+=400",
+          // end: `${350 * (index + 1)}vh top`,
           scrub: true,
+          markers: true,
         },
-        maskSize: "400%",
-        webkitMaskSize: "400%",
+        maskSize: "300%",
+        webkitMaskSize: "300%",
         ease: "none",
       });
     });
@@ -42,47 +56,3 @@ export default function Home() {
     </main>
   );
 }
-
-// "use client";
-// import { useRef, useEffect } from "react";
-// import styles from "./page.module.css";
-
-// export default function Home() {
-//   const container = useRef(null);
-//   const stickyMask = useRef(null);
-
-//   const initialMaskSize = 0;
-//   const targetMaskSize = 30;
-//   const easing = 0.15;
-//   let easedScrollProgress = 0;
-
-//   useEffect(() => {
-//     requestAnimationFrame(animate);
-//   }, []);
-
-//   const animate = () => {
-//     const maskSizeProgress = targetMaskSize * getScrollProgress();
-//     stickyMask.current.style.webkitMaskSize =
-//       (initialMaskSize + maskSizeProgress) * 100 + "%";
-//     requestAnimationFrame(animate);
-//   };
-
-//   const getScrollProgress = () => {
-//     const scrollProgress =
-//       stickyMask.current.offsetTop /
-//       (container.current.getBoundingClientRect().height - window.innerHeight);
-//     const delta = scrollProgress - easedScrollProgress;
-//     easedScrollProgress += delta * easing;
-//     return easedScrollProgress;
-//   };
-
-//   return (
-//     <main className={styles.main}>
-//       <div ref={container} className={styles.container}>
-//         <div ref={stickyMask} className={styles.stickyMask}>
-//           <img src="/medias/img1.png" alt="landscape img" />
-//         </div>
-//       </div>
-//     </main>
-//   );
-// }
