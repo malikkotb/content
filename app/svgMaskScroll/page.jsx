@@ -33,8 +33,8 @@ export default function Home() {
           scrub: true,
           markers: true,
         },
-        maskSize: "300%",
-        webkitMaskSize: "300%",
+        maskSize: "200%",
+        webkitMaskSize: "200%",
         ease: "none",
       });
     });
