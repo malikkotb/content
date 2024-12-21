@@ -82,7 +82,7 @@
 
 .container {
   position: relative;
-  height: calc(200vh); /* Adjust based on number of images */
+  height: calc(250vh); /* Adjust based on number of images */
   margin-bottom: 50vh;
 }
 

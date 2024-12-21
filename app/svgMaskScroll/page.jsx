@@ -26,9 +26,9 @@ export default function Home() {
       gsap.to(image, {
         scrollTrigger: {
           trigger: container.current,
-          start: `${550 * index}vh top`,
+          start: `${950 * index}vh top`,
           // start: "top 30%",
-          end: "+=400",
+          end: "+=850",
           // end: `${350 * (index + 1)}vh top`,
           scrub: true,
           markers: true,
