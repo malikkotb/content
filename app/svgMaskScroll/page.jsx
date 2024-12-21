@@ -26,12 +26,11 @@ export default function Home() {
       gsap.to(image, {
         scrollTrigger: {
           trigger: container.current,
-          start: `${950 * index}vh top`,
+          start: `${1000 * index}vh top`,
           // start: "top 30%",
-          end: "+=850",
+          end: "+=900",
           // end: `${350 * (index + 1)}vh top`,
           scrub: true,
-          markers: true,
         },
         maskSize: "200%",
         webkitMaskSize: "200%",
