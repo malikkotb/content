@@ -76,13 +76,12 @@
 } */
 
 .main {
-  margin-top: 20vh;
-  margin-bottom: 20vh;
+  margin-top: 5vh;
 }
 
 .container {
   position: relative;
-  height: calc(250vh); /* Adjust based on number of images */
+  height: calc(350vh); /* Adjust based on number of images */
   margin-bottom: 50vh;
 }
 
@@ -101,7 +100,6 @@
   webkit-mask-position: center;
   webkit-mask-repeat: no-repeat;
   webkit-mask-size: 0%;
-  transition: mask-size 0.1s; /* Small transition for smoothness */
 }
 
 .imageWrapper img {
