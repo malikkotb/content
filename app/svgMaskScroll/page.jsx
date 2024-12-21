@@ -31,7 +31,6 @@ export default function Home() {
           end: "+=850",
           // end: `${350 * (index + 1)}vh top`,
           scrub: true,
-          markers: true,
         },
         maskSize: "200%",
         webkitMaskSize: "200%",
