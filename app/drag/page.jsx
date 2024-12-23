@@ -11,9 +11,6 @@ gsap.registerPlugin(Draggable);
 
 export default function Home() {
   const containerRef = useRef(null);
-  const img1Ref = useRef(null);
-  const img2Ref = useRef(null);
-
   const imageRefs = useRef([]);
 
   const addToRefs = (refArray) => (el) => {
@@ -24,9 +21,7 @@ export default function Home() {
   const addToImageRefs = addToRefs(imageRefs);
 
   useGSAP(() => {
-    Draggable.create(img1Ref.current, {
-      bounds: containerRef.current,
-    });
+   
 
     Draggable.create(imageRefs.current, {
       bounds: containerRef.current,
@@ -43,11 +38,11 @@ export default function Home() {
       </header>
       <section ref={containerRef} className="h-screen w-full">
         <div
-          ref={img1Ref}
+          ref={addToImageRefs}
           className="w-52 h-60 top-52 left-52 relative rounded-xl"
         >
           <Image
-            src="/img1.png"
+            src="/drag/img1.png"
             fill
             className="object-cover rounded-xl"
             alt="1"
@@ -58,7 +53,7 @@ export default function Home() {
           className="w-52 h-64 absolute top-10 left-10 rounded-xl"
         >
           <Image
-            src="/img6.png"
+            src="/drag/img2.png"
             fill
             className="object-cover rounded-xl"
             alt="1"
@@ -69,7 +64,7 @@ export default function Home() {
           className="w-60 h-72 absolute top-20 left-64 rounded-xl"
         >
           <Image
-            src="/img3.png"
+            src="/drag/img3.png"
             fill
             className="object-cover rounded-xl"
             alt="1"
@@ -80,7 +75,7 @@ export default function Home() {
           className="w-64 h-80 absolute top-36 left-32 rounded-xl"
         >
           <Image
-            src="/img4.png"
+            src="/drag/img4.png"
             fill
             className="object-cover rounded-xl"
             alt="1"
@@ -91,7 +86,7 @@ export default function Home() {
           className="w-52 h-64 absolute top-48 left-80 rounded-xl"
         >
           <Image
-            src="/img5.png"
+            src="/drag/img5.png"
             fill
             className="object-cover rounded-xl"
             alt="1"
@@ -102,7 +97,7 @@ export default function Home() {
           className="w-56 h-72 absolute top-64 left-20 rounded-xl"
         >
           <Image
-            src="/img7.png"
+            src="/drag/img6.png"
             fill
             className="object-cover rounded-xl"
             alt="1"
@@ -113,7 +108,7 @@ export default function Home() {
           className="w-60 h-68 absolute top-80 left-64 rounded-xl"
         >
           <Image
-            src="/img8.png"
+            src="/drag/img7.png"
             fill
             className="object-cover rounded-xl"
             alt="1"
