@@ -41,6 +41,7 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
+      <div className="absolute items-center flex justify-center w-full">Scroll</div>
       <div ref={container} className={styles.container}>
         {[...Array(3)].map((_, i) => (
           <div
