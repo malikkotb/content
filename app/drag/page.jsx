@@ -32,11 +32,16 @@ export default function Home() {
       <FuzzyOverlay />
       <header
         style={{ zIndex: 100 }}
-        className="fixed top-0 p-3 w-full borderr"
+        className="absolute flex flex-col top-0 p-3 w-full borderr"
       >
-        hi
+        <span>Fabrice Brass</span>
+        <span>Creative design & Art-direction</span>
       </header>
-      <section ref={containerRef} className="h-screen overflow-hidden w-full">
+      <section
+        ref={containerRef}
+        style={{ zIndex: -1 }}
+        className="h-screen overflow-hidden w-full"
+      >
         <div
           ref={addToImageRefs}
           className="w-[25vw] h-[25vw] top-32 left-32 relative rounded-xl"
@@ -61,7 +66,7 @@ export default function Home() {
         </div>
         <div
           ref={addToImageRefs}
-          className="w-80 h-80 absolute top-[50vh] left-[80vw] rounded-xl"
+          className="w-80 h-80 absolute top-[60vh] left-[80vw] rounded-xl"
         >
           <Image
             src="/drag/img3.png"
@@ -83,7 +88,7 @@ export default function Home() {
         </div>
         <div
           ref={addToImageRefs}
-          className="w-80 h-96 absolute top-[60vh] left-[45vw] rounded-xl"
+          className="w-80 h-96 absolute top-[60vh] left-[40vw] rounded-xl"
         >
           <Image
             src="/drag/img5.png"
