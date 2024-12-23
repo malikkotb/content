@@ -32,7 +32,7 @@ export default function Home() {
       <FuzzyOverlay />
       <header
         style={{ zIndex: 100 }}
-        className="absolute flex flex-col top-0 p-3 w-full borderr"
+        className="absolute tracking-tight flex flex-col top-0 p-3 w-full"
       >
         <span>Fabrice Brass</span>
         <span>Creative design & Art-direction</span>
@@ -108,9 +108,22 @@ export default function Home() {
             alt="1"
           />
         </div>
+
         <div
           ref={addToImageRefs}
-          className="w-72 h-96 absolute top-[20vh] left-[70vw] rounded-xl"
+          className="w-56 h-72 absolute top-[7vh] left-[75vw] rounded-xl"
+        >
+          <Image
+            src="/drag/img8.png"
+            fill
+            className="object-cover rounded-xl"
+            alt="1"
+          />
+        </div>
+
+        <div
+          ref={addToImageRefs}
+          className="w-72 h-96 absolute top-[25vh] left-[60vw] rounded-xl"
         >
           <Image
             src="/drag/img6.png"
