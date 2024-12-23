@@ -13,18 +13,23 @@ export default function Home() {
   const containerRef = useRef(null);
   const img1Ref = useRef(null);
   const img2Ref = useRef(null);
-  const img3Ref = useRef(null);
-  const img4Ref = useRef(null);
-  const img5Ref = useRef(null);
-  const img6Ref = useRef(null);
-  const img7Ref = useRef(null);
+
+  const imageRefs = useRef([]);
+
+  const addToRefs = (refArray) => (el) => {
+    if (el && !refArray.current.includes(el)) {
+      refArray.current.push(el);
+    }
+  };
+  const addToImageRefs = addToRefs(imageRefs);
+
   useGSAP(() => {
     Draggable.create(img1Ref.current, {
       bounds: containerRef.current,
     });
 
-    Draggable.create(img2Ref.current, {
-      type: "rotation",
+    Draggable.create(imageRefs.current, {
+      bounds: containerRef.current,
     });
   }, []);
 
@@ -49,8 +54,8 @@ export default function Home() {
           />
         </div>
         <div
-          ref={img2Ref}
-          className="w-40 h-64 top-20 left-20 relative rounded-xl"
+          ref={addToImageRefs}
+          className="w-52 h-64 absolute top-10 left-10 rounded-xl"
         >
           <Image
             src="/img6.png"
@@ -60,8 +65,8 @@ export default function Home() {
           />
         </div>
         <div
-          ref={img3Ref}
-          className="w-36 h-72 top-40 left-72 relative rounded-xl"
+          ref={addToImageRefs}
+          className="w-60 h-72 absolute top-20 left-64 rounded-xl"
         >
           <Image
             src="/img3.png"
@@ -71,8 +76,8 @@ export default function Home() {
           />
         </div>
         <div
-          ref={img4Ref}
-          className="w-48 h-80 top-80 left-36 relative rounded-xl"
+          ref={addToImageRefs}
+          className="w-64 h-80 absolute top-36 left-32 rounded-xl"
         >
           <Image
             src="/img4.png"
@@ -82,8 +87,8 @@ export default function Home() {
           />
         </div>
         <div
-          ref={img5Ref}
-          className="w-32 h-60 top-[25vh] left-[55vw] relative rounded-xl"
+          ref={addToImageRefs}
+          className="w-52 h-64 absolute top-48 left-80 rounded-xl"
         >
           <Image
             src="/img5.png"
@@ -93,8 +98,8 @@ export default function Home() {
           />
         </div>
         <div
-          ref={img6Ref}
-          className="w-40 h-72 top-[50vh] left-28 relative rounded-xl"
+          ref={addToImageRefs}
+          className="w-56 h-72 absolute top-64 left-20 rounded-xl"
         >
           <Image
             src="/img7.png"
@@ -104,8 +109,8 @@ export default function Home() {
           />
         </div>
         <div
-          ref={img7Ref}
-          className="w-36 h-68 top-[65vh] left-[65vw] relative rounded-xl"
+          ref={addToImageRefs}
+          className="w-60 h-68 absolute top-80 left-64 rounded-xl"
         >
           <Image
             src="/img8.png"
