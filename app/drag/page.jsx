@@ -1,4 +1,5 @@
 "use client";
+import { motion } from "framer-motion";
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -21,25 +22,24 @@ export default function Home() {
   const addToImageRefs = addToRefs(imageRefs);
 
   useGSAP(() => {
-   
-
     Draggable.create(imageRefs.current, {
       bounds: containerRef.current,
     });
   }, []);
 
   return (
-    <main className="h-screen">
+    <main className="h-screen overflow-hidden text-3xl font-semibold">
+      <FuzzyOverlay />
       <header
         style={{ zIndex: 100 }}
         className="fixed top-0 p-3 w-full borderr"
       >
         hi
       </header>
-      <section ref={containerRef} className="h-screen w-full">
+      <section ref={containerRef} className="h-screen overflow-hidden w-full">
         <div
           ref={addToImageRefs}
-          className="w-52 h-60 top-52 left-52 relative rounded-xl"
+          className="w-[25vw] h-[25vw] top-32 left-32 relative rounded-xl"
         >
           <Image
             src="/drag/img1.png"
@@ -50,7 +50,7 @@ export default function Home() {
         </div>
         <div
           ref={addToImageRefs}
-          className="w-52 h-64 absolute top-10 left-10 rounded-xl"
+          className="w-64 h-80 absolute top-10 left-[50vw] rounded-xl"
         >
           <Image
             src="/drag/img2.png"
@@ -61,7 +61,7 @@ export default function Home() {
         </div>
         <div
           ref={addToImageRefs}
-          className="w-60 h-72 absolute top-20 left-64 rounded-xl"
+          className="w-80 h-80 absolute top-[50vh] left-[80vw] rounded-xl"
         >
           <Image
             src="/drag/img3.png"
@@ -72,7 +72,7 @@ export default function Home() {
         </div>
         <div
           ref={addToImageRefs}
-          className="w-64 h-80 absolute top-36 left-32 rounded-xl"
+          className="w-64 h-80 absolute top-[60vh] left-[5vw] rounded-xl"
         >
           <Image
             src="/drag/img4.png"
@@ -83,7 +83,7 @@ export default function Home() {
         </div>
         <div
           ref={addToImageRefs}
-          className="w-52 h-64 absolute top-48 left-80 rounded-xl"
+          className="w-80 h-96 absolute top-[60vh] left-[45vw] rounded-xl"
         >
           <Image
             src="/drag/img5.png"
@@ -94,10 +94,10 @@ export default function Home() {
         </div>
         <div
           ref={addToImageRefs}
-          className="w-56 h-72 absolute top-64 left-20 rounded-xl"
+          className="w-52 h-64 absolute top-[35vh] left-[30vw] rounded-xl"
         >
           <Image
-            src="/drag/img6.png"
+            src="/drag/img7.png"
             fill
             className="object-cover rounded-xl"
             alt="1"
@@ -105,10 +105,10 @@ export default function Home() {
         </div>
         <div
           ref={addToImageRefs}
-          className="w-60 h-68 absolute top-80 left-64 rounded-xl"
+          className="w-72 h-96 absolute top-[20vh] left-[70vw] rounded-xl"
         >
           <Image
-            src="/drag/img7.png"
+            src="/drag/img6.png"
             fill
             className="object-cover rounded-xl"
             alt="1"
@@ -121,3 +121,24 @@ export default function Home() {
     </main>
   );
 }
+
+const FuzzyOverlay = () => {
+  return (
+    <motion.div
+      initial={{ transform: "translateX(-10%) translateY(-10%)" }}
+      animate={{
+        transform: "translateX(10%) translateY(10%)",
+      }}
+      transition={{
+        repeat: Infinity,
+        duration: 0.2,
+        ease: "linear",
+        repeatType: "mirror",
+      }}
+      style={{
+        backgroundImage: 'url("/drag/noise.png")',
+      }}
+      className="pointer-events-none absolute -inset-[100%] opacity-[15%]"
+    />
+  );
+};
