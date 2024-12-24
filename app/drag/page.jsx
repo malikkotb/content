@@ -31,7 +31,7 @@ export default function Home() {
     <main className="h-screen overflow-hidden text-3xl font-semibold">
       <FuzzyOverlay />
       <header
-        style={{ zIndex: 100 }}
+        style={{ zIndex: 10000 }}
         className="absolute tracking-tight flex flex-col top-0 p-3 w-full"
       >
         <span>Fabrice Brass</span>
@@ -39,12 +39,12 @@ export default function Home() {
       </header>
       <section
         ref={containerRef}
-        style={{ zIndex: -1 }}
+        style={{ zIndex: 1 }}
         className="h-screen overflow-hidden w-full"
       >
         <div
           ref={addToImageRefs}
-          className="w-[25vw] h-[25vw] top-32 left-32 relative rounded-xl"
+          className="w-[25vw] h-[25vw] top-4 left-44 relative rounded-xl"
         >
           <Image
             src="/drag/img1.png"
@@ -133,7 +133,7 @@ export default function Home() {
           />
         </div>
       </section>
-      <footer style={{ zIndex: 100 }} className="fixed bottom-0 p-3 w-full">
+      <footer style={{ zIndex: 10000 }} className="fixed bottom-0 p-3 w-full">
         hello@mail.com
       </footer>
     </main>
