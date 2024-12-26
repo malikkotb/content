@@ -2,9 +2,7 @@
 import { motion } from "framer-motion";
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
 import Draggable from "gsap/Draggable";
-// import styles from "./style.module.css";
 import { useGSAP } from "@gsap/react";
 import Image from "next/image";
 
