@@ -27,6 +27,47 @@ export default function Home() {
 
   return (
     <main className="h-screen overflow-hidden text-3xl font-semibold">
+        <script>
+
+        window.addEventListener("DOMContentLoaded", (event) => {
+  let typeSplit = new SplitType("[text-split]", {
+    types: "words, chars",
+    tagName: "span",
+  });
+
+  document.querySelectorAll("[text-split]").forEach((element) => {
+    element.style.whiteSpace = "normal"; // Ensure proper word spacing in parent element
+  });
+
+  gsap.from(".headingSpan", { scale: 0, stagger: { each: 0.5 }, duration: 1 });
+  gsap.from(".bigZero", {
+    opacity: 0,
+    yPercent: 100,
+    stagger: { each: 0.2 },
+    duration: 1,
+  });
+
+  $("[letters-slide-up]").each(function (index) {
+    let tl = gsap.timeline();
+    tl.from($(this).find(".char"), {
+      yPercent: 100,
+      duration: 0.5,
+      ease: "power2.out",
+      stagger: { each: 0.1 },
+    }).from(
+      ".circle",
+      {
+        scale: 0,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power2.out",
+      },
+      "<"
+    );
+  });
+});
+
+        </script>
       <FuzzyOverlay />
       <header
         style={{ zIndex: 10000 }}
