@@ -1,10 +1,10 @@
 "use client";
 import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import Link from "next/link";
+import Lenis from "lenis";
 export default function Sketchbook() {
   const selected = [
     "/drag/img1.png",
@@ -25,6 +25,16 @@ export default function Sketchbook() {
     "/img10.png",
     "/img11.png",
   ];
+
+  useEffect(() => {
+    const lenis = new Lenis();
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+  }, []);
+
   const containerRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -67,7 +77,6 @@ export default function Sketchbook() {
   return (
     <div className="flex flex-col">
       <div className="flex w-full">
-
         <Image
           src={selected[currentIndex]}
           fill
