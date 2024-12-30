@@ -12,9 +12,6 @@ export default function FlipThroughImages() {
   useEffect(() => {
     const totalImages = 8;
 
-    // Debugging: Check if GSAP and ScrollTrigger are working
-    console.log("GSAP and ScrollTrigger loaded");
-
     ScrollTrigger.create({
       trigger: ".scroll-container", // The container div
       start: "top top",
@@ -42,6 +39,18 @@ export default function FlipThroughImages() {
 
   return (
     <div className="scroll-container h-[200vh] w-full relative bg-gray-100">
+      <div className="absolute flex z-10 flex-col gap-1">
+        {Array.from({ length: 8 }, (_, index) => (
+          <div key={index} className="relative h-20 w-16">
+            <Image
+              src={`/drag/img${index + 1}.png`}
+              alt={`img ${index + 1}`}
+              fill
+              className="object-cover"
+            />
+          </div>
+        ))}
+      </div>
       <div className="sticky top-0 h-screen w-full flex justify-center items-center">
         <Image
           src={`/drag/img${currentImage}.png`}
