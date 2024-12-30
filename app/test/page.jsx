@@ -2,12 +2,22 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import gsap from "gsap";
+import Lenis from "lenis";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function FlipThroughImages() {
   const [currentImage, setCurrentImage] = useState(1);
+
+  useEffect(() => {
+    const lenis = new Lenis();
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+  }, []);
 
   useEffect(() => {
     const totalImages = 8;
@@ -24,7 +34,6 @@ export default function FlipThroughImages() {
         ); // Ensure index stays within bounds
         setCurrentImage(imageIndex);
 
-        // Debugging: Log the progress and current image
         console.log(
           "Scroll Progress:",
           self.progress,
@@ -38,8 +47,8 @@ export default function FlipThroughImages() {
   }, []);
 
   return (
-    <div className="scroll-container h-[200vh] w-full relative bg-gray-100">
-      <div className="absolute flex z-10 flex-col gap-1">
+    <div className="scroll-container h-[200vh] w-full relative">
+      <div className="flex z-10 flex-col gap-1 fixed h-screen top-1/4 left-1/2 translate-x-1/2">
         {Array.from({ length: 8 }, (_, index) => (
           <div key={index} className="relative h-20 w-16">
             <Image

@@ -15,8 +15,6 @@ export default function FlipThroughImages() {
     }
     requestAnimationFrame(raf);
   }, []);
-
-  // TODO: use interscetion observer to trigger the animation
   
 
   useGSAP(() => {
