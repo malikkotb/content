@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import gsap from "gsap";
@@ -43,13 +43,11 @@ export default function FlipThroughImages() {
   return (
     <div className="scroll-container h-[200vh] w-full relative bg-gray-100">
       <div className="sticky top-0 h-screen w-full flex justify-center items-center">
-        {/* Dynamic image */}
         <Image
           src={`/drag/img${currentImage}.png`}
           alt={`Image ${currentImage}`}
-          width={500}
-          height={500}
-          className="object-contain"
+          fill
+          className="object-cover"
         />
       </div>
     </div>
