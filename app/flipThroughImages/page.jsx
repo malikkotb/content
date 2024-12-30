@@ -16,6 +16,16 @@ export default function FlipThroughImages() {
     requestAnimationFrame(raf);
   }, []);
 
+  // TODO: use interscetion observer to trigger the animation
+  
+
+  useGSAP(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+
+
+  }, []);
+
   return (
     <div className="h-screen w-full relative overflow-hidden bg-red-200 flex justify-center items-center">
       <div className="flex z-10 flex-col gap-1">
