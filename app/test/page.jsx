@@ -48,17 +48,19 @@ export default function FlipThroughImages() {
 
   return (
     <div className="scroll-container h-[200vh] w-full relative">
-      <div className="flex z-10 flex-col gap-1 fixed h-screen top-1/4 left-1/2 translate-x-1/2">
-        {Array.from({ length: 8 }, (_, index) => (
-          <div key={index} className="relative h-20 w-16">
-            <Image
-              src={`/drag/img${index + 1}.png`}
-              alt={`img ${index + 1}`}
-              fill
-              className="object-cover"
-            />
-          </div>
-        ))}
+      <div className="flex z-10 flex-col gap-1 fixed h-screen top-[20%] left-1/2 -translate-x-1/2">
+        <div className="h-72 borderr overflow-hidden flex flex-col gap-1">
+          {Array.from({ length: 8 }, (_, index) => (
+            <div key={index} className="relative flex-shrink-0 h-20 w-16">
+              <Image
+                src={`/drag/img${index + 1}.png`}
+                alt={`img ${index + 1}`}
+                fill
+                className="object-cover"
+              />
+            </div>
+          ))}
+        </div>
       </div>
       <div className="sticky top-0 h-screen w-full flex justify-center items-center">
         <Image
