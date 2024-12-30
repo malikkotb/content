@@ -64,10 +64,6 @@ export default function Sketchbook() {
     };
   }, [selected]);
 
-  const imageRefs = useRef([]);
-  const bottomImageRef = useRef(null);
-  const revealRefs = useRef([]);
-
   const addToRefs = (refsArray) => (el) => {
     if (el && !refsArray.current.includes(el)) {
       refsArray.current.push(el);
@@ -78,6 +74,7 @@ export default function Sketchbook() {
     <div className="flex flex-col">
       <div className="flex w-full">
         <Image
+          // TODO: make slide up on image change using simple "y" gsap animation
           src={selected[currentIndex]}
           fill
           className="object-cover"
@@ -87,7 +84,7 @@ export default function Sketchbook() {
 
       <div
         ref={containerRef}
-        className="noScrollBar w-full fixed h-[100vh] top-0 bottom-0 pt-[calc(100vh-80px)] pl-4 flex gap-2 overflow-x-auto overflow-y-hidden z-50 pr-[calc(100vw-48px)]"
+        className="noScrollBar w-full fixed h-[100vh] justify-center borderr pl-4 flex gap-1 overflow-x-auto z-50"
       >
         {[...selected].map((image, index) => (
           <div
