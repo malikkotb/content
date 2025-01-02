@@ -74,7 +74,6 @@ export default function Sketchbook() {
     <div className="flex flex-col">
       <div className="flex w-full">
         <Image
-          // TODO: make slide up on image change using simple "y" gsap animation
           src={selected[currentIndex]}
           fill
           className="object-cover"
@@ -90,7 +89,6 @@ export default function Sketchbook() {
           <div
             key={index}
             data-index={index}
-            // ref={addToImageRefs}
             className="relative max-h-16 min-w-12 image-slide"
           >
             <Image
