@@ -1,10 +1,26 @@
+"use client";
 import gsap from "gsap";
 import { motion } from "framer-motion";
-
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap";
 
 export default function TextScrolly() {
+  gsap.registerPlugin(ScrollTrigger);
+
+  useGSAP((gsap) => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".scroll-container", // Element to trigger the timeline
+        start: "top top", // Start when `.scroll-container` reaches the top of the viewport
+        end: "bottom bottom", // End when `.scroll-container` leaves the viewport
+        scrub: true, // Smooth animation tied to scroll
+        pin: true, // Optional: Pins the container during the animation
+      },
+    });
+  }, []);
+
   return (
-    <div>
+    <div className="h-screen flex justify-center items-center">
       <svg
         className="w-[70%] md:w-[50%] xl:max-h-[calc(100vh-15rem)]"
         overflow="visible"
@@ -12,6 +28,7 @@ export default function TextScrolly() {
         xmlnsXlink="http://www.w3.org/1999/xlink"
         viewBox="0 0 2167 2197"
         style={{
+          // TODO: maybe change this or not
           transform: "rotate(-2.5545deg)",
         }}
       >
@@ -47,9 +64,6 @@ export default function TextScrolly() {
           }}
         ></path> */}
       </svg>
-
-      <h1>Text Scrolly Component</h1>
-      <p>This is a simple React functional component.</p>
     </div>
   );
 }
