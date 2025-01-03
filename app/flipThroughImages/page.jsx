@@ -83,7 +83,9 @@ export default function Sketchbook() {
 
       <div
         ref={containerRef}
-        className="noScrollBar w-full fixed h-[100vh] justify-center borderr pl-4 flex gap-1 overflow-x-auto z-50"
+        className="noScrollBar w-full fixed h-[100vh] top-0 bottom-0 pt-[calc(100vh-80px)] pl-4 flex gap-2 overflow-x-auto overflow-y-hidden z-50 pr-[calc(100vw-48px)]"
+
+        // className="noScrollBar w-full fixed h-[100vh] justify-center borderr pl-4 flex gap-1 overflow-x-auto z-50 pr-[calc(100vw-48px)]"
       >
         {[...selected].map((image, index) => (
           <div
@@ -104,3 +106,4 @@ export default function Sketchbook() {
     </div>
   );
 }
+
