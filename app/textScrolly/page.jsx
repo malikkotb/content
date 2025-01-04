@@ -3,17 +3,21 @@ import gsap from "gsap";
 import { motion } from "framer-motion";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap";
-
+import { useRef } from "react";
 export default function TextScrolly() {
   gsap.registerPlugin(ScrollTrigger);
+  const svgRef = useRef(null);
+
+  
 
   useGSAP((gsap) => {
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: ".scroll-container", // Element to trigger the timeline
+        trigger: ".scroll-container",
         start: "top top", // Start when `.scroll-container` reaches the top of the viewport
         end: "bottom bottom", // End when `.scroll-container` leaves the viewport
         scrub: true, // Smooth animation tied to scroll
+        markers: true, // Useful for debugging
         pin: true, // Optional: Pins the container during the animation
       },
     });
