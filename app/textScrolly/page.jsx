@@ -2,37 +2,47 @@
 import gsap from "gsap";
 import { motion } from "framer-motion";
 import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
 export default function TextScrolly() {
   gsap.registerPlugin(ScrollTrigger);
   const svgRef = useRef(null);
 
-  
-
-  useGSAP((gsap) => {
-    const tl = gsap.timeline({
+  useGSAP(() => {
+   
+    gsap.to(svgRef.current, {
+      rotation: -45, // Rotate in the opposite direction
+      
       scrollTrigger: {
-        trigger: ".scroll-container",
-        start: "top top", // Start when `.scroll-container` reaches the top of the viewport
-        end: "bottom bottom", // End when `.scroll-container` leaves the viewport
-        scrub: true, // Smooth animation tied to scroll
-        markers: true, // Useful for debugging
-        pin: true, // Optional: Pins the container during the animation
+        trigger: ".container", // The SVG element itself
+        start: "top top", // Start when the top of SVG reaches the bottom of the viewport
+        end: "bottom top", // End when the bottom of SVG leaves the top of the viewport
+        scrub: true, // Smoothly animate based on scroll position
+        markers: true, // Optional: Add markers for debugging
       },
     });
+    gsap.to(svgRef.current, {
+        scale: 2.5,
+        scrollTrigger: {
+            trigger: ".container",
+            start: "top bottom", // Start when the top of the container reaches the bottom of the viewport
+            end: "bottom bottom", // End when the bottom of the container reaches the bottom of the viewport
+            scrub: true,
+            markers: true,
+        }
+    })
   }, []);
 
   return (
-    <div className="h-screen flex justify-center items-center">
+    <div className="container h-[1000vh] fixed flex justify-center items-start mt-40">
       <svg
+        ref={svgRef}
         className="w-[70%] md:w-[50%] xl:max-h-[calc(100vh-15rem)]"
         overflow="visible"
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
         viewBox="0 0 2167 2197"
         style={{
-          // TODO: maybe change this or not
           transform: "rotate(-2.5545deg)",
         }}
       >
