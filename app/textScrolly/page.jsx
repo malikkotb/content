@@ -26,8 +26,20 @@ export default function TextScrolly() {
   }, []);
 
   useGSAP(() => {
-    gsap.from(pathRef.current, {
-      strokeDashoffset: 0,
+    gsap.fromTo(pathRef.current, { strokeDashoffset: "24000px"}, { strokeDashoffset: "14000px" });
+    // gsap.from(pathRef.current, {
+    //   strokeDashoffset: "14000px",
+
+    //   scrollTrigger: {
+    //     trigger: ".container",
+    //     start: "top top", // Start when the top of SVG reaches the bottom of the viewport
+    //     end: "bottom top", // End when the bottom of SVG leaves the top of the viewport
+    //     scrub: true, // Smoothly animate based on scroll position
+    //     markers: true, // Optional: Add markers for debugging
+    //   },
+    // });
+    gsap.to(svgRef.current, {
+      rotation: -75, // Rotate in the opposite direction
 
       scrollTrigger: {
         trigger: ".container",
@@ -38,19 +50,8 @@ export default function TextScrolly() {
       },
     });
     gsap.to(svgRef.current, {
-      rotation: -60, // Rotate in the opposite direction
-
-      scrollTrigger: {
-        trigger: ".container",
-        start: "top top", // Start when the top of SVG reaches the bottom of the viewport
-        end: "bottom top", // End when the bottom of SVG leaves the top of the viewport
-        scrub: true, // Smoothly animate based on scroll position
-        markers: true, // Optional: Add markers for debugging
-      },
-    });
-    gsap.to(svgRef.current, {
-      scale: 10,
-      opacity: 0,
+      scale: 3,
+      opacity: 0.3,
       scrollTrigger: {
         trigger: ".scaleContainer",
         start: "top bottom", // Start when the top of the container reaches the bottom of the viewport
@@ -62,7 +63,7 @@ export default function TextScrolly() {
   }, []);
 
   return (
-    <div className={`${gambarino.className} flex flex-col`}>
+    <div className={`${gambarino.className} flex flex-col `}>
       <div className="container h-[800vh] flex justify-center items-start mt-40">
         <svg
           ref={svgRef}
@@ -99,11 +100,12 @@ export default function TextScrolly() {
           <path
             ref={pathRef.current}
             d="M-.3 331c561.7-488.8 1413.2-429.7 1902 132 391 449.3 343.7 1130.6-105.6 1521.6a862.8 862.8 0 0 1-1217.3-84.5 690.2 690.2 0 0 1 67.6-973.8 552.2 552.2 0 0 1 779.1 54.1 441.6 441.6 0 0 1-43.3 623.2 353.5 353.5 0 0 1-498.6-34.6 282.7 282.7 0 0 1 27.7-398.9 226.2 226.2 0 0 1 319.1 22.1 181 181 0 0 1-17.7 255.3"
-            stroke="white"
+            stroke="red"
             strokeWidth="350px"
             fill="none"
             style={{
-              strokeDashoffset: "22200px",
+              strokeDashoffset: "23800px",
+            //   strokeDashoffset: "14000px",
               //   strokeDashoffset: "10px",
               strokeDasharray: "12000",
             }}
