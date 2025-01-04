@@ -2,11 +2,19 @@
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import Lenis from "lenis";
+import { Instrument_Serif } from "next/font/google";
+
+const gambarino = Instrument_Serif({
+  subsets: ["latin"],
+  weight: ["400"],
+});
+
 export default function TextScrolly() {
   gsap.registerPlugin(ScrollTrigger);
   const svgRef = useRef(null);
+  const pathRef = useRef(null);
 
   useEffect(() => {
     const lenis = new Lenis();
@@ -18,11 +26,11 @@ export default function TextScrolly() {
   }, []);
 
   useGSAP(() => {
-    gsap.to(svgRef.current, {
-      rotation: -45, // Rotate in the opposite direction
+    gsap.from(pathRef.current, {
+      strokeDashoffset: 0,
 
       scrollTrigger: {
-        trigger: ".container", // The SVG element itself
+        trigger: ".container",
         start: "top top", // Start when the top of SVG reaches the bottom of the viewport
         end: "bottom top", // End when the bottom of SVG leaves the top of the viewport
         scrub: true, // Smoothly animate based on scroll position
@@ -30,7 +38,19 @@ export default function TextScrolly() {
       },
     });
     gsap.to(svgRef.current, {
-      scale: 3.5,
+      rotation: -60, // Rotate in the opposite direction
+
+      scrollTrigger: {
+        trigger: ".container",
+        start: "top top", // Start when the top of SVG reaches the bottom of the viewport
+        end: "bottom top", // End when the bottom of SVG leaves the top of the viewport
+        scrub: true, // Smoothly animate based on scroll position
+        markers: true, // Optional: Add markers for debugging
+      },
+    });
+    gsap.to(svgRef.current, {
+      scale: 10,
+      opacity: 0,
       scrollTrigger: {
         trigger: ".scaleContainer",
         start: "top bottom", // Start when the top of the container reaches the bottom of the viewport
@@ -42,11 +62,11 @@ export default function TextScrolly() {
   }, []);
 
   return (
-    <div className="flex flex-col">
-      <div className="container h-[1000vh] flex justify-center items-start mt-40">
+    <div className={`${gambarino.className} flex flex-col`}>
+      <div className="container h-[800vh] flex justify-center items-start mt-40">
         <svg
           ref={svgRef}
-          className="w-[70%] fixed borderr top-32 left-64 md:w-[50%] xl:max-h-[calc(100vh-15rem)]"
+          className="w-[70%] fixed top-32 left-64 md:w-[50%] xl:max-h-[calc(100vh-15rem)]"
           overflow="visible"
           xmlns="http://www.w3.org/2000/svg"
           xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -59,14 +79,14 @@ export default function TextScrolly() {
             id="a"
             d="M-.3 331c561.7-488.8 1413.2-429.7 1902 132 391 449.3 343.7 1130.6-105.6 1521.6a862.8 862.8 0 0 1-1217.3-84.5 690.2 690.2 0 0 1 67.6-973.8 552.2 552.2 0 0 1 779.1 54.1 441.6 441.6 0 0 1-43.3 623.2 353.5 353.5 0 0 1-498.6-34.6 282.7 282.7 0 0 1 27.7-398.9 226.2 226.2 0 0 1 319.1 22.1 181 181 0 0 1-17.7 255.3"
             fill="transparent"
-            stroke="black"
+            // stroke="black"
           ></path>
           <text>
             <textPath
               xlinkHref="#a"
               startOffset="0%"
               alignmentBaseline="middle"
-              className="font-caslon text-[209px] tracking-[-0.07em]"
+              className="text-[212px] tracking-wider"
             >
               A turn around in the{" "}
               <tspan alignmentBaseline="middle" className="italic">
@@ -76,20 +96,22 @@ export default function TextScrolly() {
               joie de vivre.
             </textPath>
           </text>
-          {/* <path
-          d="M-.3 331c561.7-488.8 1413.2-429.7 1902 132 391 449.3 343.7 1130.6-105.6 1521.6a862.8 862.8 0 0 1-1217.3-84.5 690.2 690.2 0 0 1 67.6-973.8 552.2 552.2 0 0 1 779.1 54.1 441.6 441.6 0 0 1-43.3 623.2 353.5 353.5 0 0 1-498.6-34.6 282.7 282.7 0 0 1 27.7-398.9 226.2 226.2 0 0 1 319.1 22.1 181 181 0 0 1-17.7 255.3"
-          stroke="white"
-          strokeWidth="350px"
-          fill="none"
-          style={{
-            strokeDashoffset: "23345px",
-            strokeDasharray: "12000",
-          }}
-        ></path> */}
+          <path
+            ref={pathRef.current}
+            d="M-.3 331c561.7-488.8 1413.2-429.7 1902 132 391 449.3 343.7 1130.6-105.6 1521.6a862.8 862.8 0 0 1-1217.3-84.5 690.2 690.2 0 0 1 67.6-973.8 552.2 552.2 0 0 1 779.1 54.1 441.6 441.6 0 0 1-43.3 623.2 353.5 353.5 0 0 1-498.6-34.6 282.7 282.7 0 0 1 27.7-398.9 226.2 226.2 0 0 1 319.1 22.1 181 181 0 0 1-17.7 255.3"
+            stroke="white"
+            strokeWidth="350px"
+            fill="none"
+            style={{
+              strokeDashoffset: "22200px",
+              //   strokeDashoffset: "10px",
+              strokeDasharray: "12000",
+            }}
+          ></path>
         </svg>
       </div>
 
-      <div className="scaleContainer h-[200vh] w-full bg-red-200"></div>
+      <div className="scaleContainer h-[300vh] w-full"></div>
     </div>
   );
 }
