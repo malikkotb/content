@@ -1,12 +1,21 @@
 "use client";
 import gsap from "gsap";
-import { motion } from "framer-motion";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
+import Lenis from "lenis";
 export default function TextScrolly() {
   gsap.registerPlugin(ScrollTrigger);
   const svgRef = useRef(null);
+
+  useEffect(() => {
+    const lenis = new Lenis();
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+  }, []);
 
   useGSAP(() => {
     gsap.to(svgRef.current, {

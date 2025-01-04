@@ -1,9 +1,6 @@
 "use client";
 import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import Link from "next/link";
 import Lenis from "lenis";
 export default function Sketchbook() {
   const selected = [
