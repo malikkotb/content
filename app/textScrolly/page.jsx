@@ -26,7 +26,25 @@ export default function TextScrolly() {
   }, []);
 
   useGSAP(() => {
-    gsap.fromTo(pathRef.current, { strokeDashoffset: "24000px"}, { strokeDashoffset: "14000px" });
+    // Set the initial values for strokeDasharray and strokeDashoffset
+    const initialDashOffset = 23800; // Starting offset
+    const targetDashOffset = 14000; // Ending offset
+
+    // Set the strokeDasharray to the total length of the path
+    const pathLength = pathRef.current.getTotalLength(); // Get the path's total length
+
+    gsap.set(pathRef.current, {
+      strokeDasharray: pathLength, // Set the dash array to the path's length
+      strokeDashoffset: pathLength, // Start with the path fully hidden (strokeDashoffset = pathLength)
+    });
+
+    // Animate strokeDashoffset from 23800px to 14000px
+    gsap.to(pathRef.current, {
+      strokeDashoffset: targetDashOffset, // Animate to 14000px
+      duration: 2, // Duration of the animation
+      ease: "power2.inOut", // Easing for smooth animation
+    });
+    // gsap.fromTo(pathRef.current, { strokeDashoffset: "24000px"}, { strokeDashoffset: "14000px" });
     // gsap.from(pathRef.current, {
     //   strokeDashoffset: "14000px",
 
@@ -104,8 +122,8 @@ export default function TextScrolly() {
             strokeWidth="350px"
             fill="none"
             style={{
-              strokeDashoffset: "23800px",
-            //   strokeDashoffset: "14000px",
+              //   strokeDashoffset: "23800px",
+              //   strokeDashoffset: "14000px",
               //   strokeDashoffset: "10px",
               strokeDasharray: "12000",
             }}
