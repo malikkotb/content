@@ -1,4 +1,5 @@
 "use client";
+import { motion } from "framer-motion";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -26,36 +27,17 @@ export default function TextScrolly() {
   }, []);
 
   useGSAP(() => {
-    // Set the initial values for strokeDasharray and strokeDashoffset
-    const initialDashOffset = 23800; // Starting offset
-    const targetDashOffset = 14000; // Ending offset
+    gsap.from(pathRef.current, {
+      pathLength: 0,
 
-    // Set the strokeDasharray to the total length of the path
-    const pathLength = pathRef.current.getTotalLength(); // Get the path's total length
-
-    gsap.set(pathRef.current, {
-      strokeDasharray: pathLength, // Set the dash array to the path's length
-      strokeDashoffset: pathLength, // Start with the path fully hidden (strokeDashoffset = pathLength)
+      scrollTrigger: {
+        trigger: ".container",
+        start: "top top", // Start when the top of SVG reaches the bottom of the viewport
+        end: "bottom top", // End when the bottom of SVG leaves the top of the viewport
+        scrub: true, // Smoothly animate based on scroll position
+        markers: true, // Optional: Add markers for debugging
+      },
     });
-
-    // Animate strokeDashoffset from 23800px to 14000px
-    gsap.to(pathRef.current, {
-      strokeDashoffset: targetDashOffset, // Animate to 14000px
-      duration: 2, // Duration of the animation
-      ease: "power2.inOut", // Easing for smooth animation
-    });
-    // gsap.fromTo(pathRef.current, { strokeDashoffset: "24000px"}, { strokeDashoffset: "14000px" });
-    // gsap.from(pathRef.current, {
-    //   strokeDashoffset: "14000px",
-
-    //   scrollTrigger: {
-    //     trigger: ".container",
-    //     start: "top top", // Start when the top of SVG reaches the bottom of the viewport
-    //     end: "bottom top", // End when the bottom of SVG leaves the top of the viewport
-    //     scrub: true, // Smoothly animate based on scroll position
-    //     markers: true, // Optional: Add markers for debugging
-    //   },
-    // });
     gsap.to(svgRef.current, {
       rotation: -75, // Rotate in the opposite direction
 
@@ -81,7 +63,7 @@ export default function TextScrolly() {
   }, []);
 
   return (
-    <div className={`${gambarino.className} flex flex-col `}>
+    <div className={`${gambarino.className} flex flex-col`}>
       <div className="container h-[800vh] flex justify-center items-start mt-40">
         <svg
           ref={svgRef}
@@ -115,19 +97,23 @@ export default function TextScrolly() {
               joie de vivre.
             </textPath>
           </text>
-          <path
+          <motion.path
+            initial={{ pathLength: 0 }}
+            aniamte={{ pathLength: 1 }}
+            // initial={{ strokeDashoffset: "23800px" }}
+            // animate={{ strokeDashoffset: "12000px" }}
             ref={pathRef.current}
             d="M-.3 331c561.7-488.8 1413.2-429.7 1902 132 391 449.3 343.7 1130.6-105.6 1521.6a862.8 862.8 0 0 1-1217.3-84.5 690.2 690.2 0 0 1 67.6-973.8 552.2 552.2 0 0 1 779.1 54.1 441.6 441.6 0 0 1-43.3 623.2 353.5 353.5 0 0 1-498.6-34.6 282.7 282.7 0 0 1 27.7-398.9 226.2 226.2 0 0 1 319.1 22.1 181 181 0 0 1-17.7 255.3"
             stroke="red"
             strokeWidth="350px"
             fill="none"
             style={{
-              //   strokeDashoffset: "23800px",
-              //   strokeDashoffset: "14000px",
+            //   strokeDashoffset: "23800px",
+              // strokeDashoffset: "14000px",
               //   strokeDashoffset: "10px",
               strokeDasharray: "12000",
             }}
-          ></path>
+          ></motion.path>
         </svg>
       </div>
 
