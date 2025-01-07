@@ -1,5 +1,4 @@
 "use client";
-import { motion } from "framer-motion";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -26,13 +25,9 @@ export default function TextScrolly() {
     requestAnimationFrame(raf);
   }, []);
 
-
   useGSAP(() => {
-    // gsap.set(pathRef.current, {
-    //   strokeDashoffset: 25000,
-    // });
     gsap.to(pathRef.current, {
-      strokeDashoffset: 12000,
+      strokeDashoffset: 14000,
 
       scrollTrigger: {
         trigger: ".container",
@@ -52,11 +47,12 @@ export default function TextScrolly() {
       },
     });
     gsap.to(svgRef.current, {
-      scale: 8,
+      scale: 25,
+    //   opacity: 0,
       scrollTrigger: {
         trigger: ".scaleContainer",
         start: "top bottom", // Start when the top of the container reaches the bottom of the viewport
-        end: "bottom bottom", // End when the bottom of the container reaches the bottom of the viewport
+        end: "bottom top", // End when the bottom of the container reaches the bottom of the viewport
         scrub: true,
       },
     });
@@ -64,10 +60,10 @@ export default function TextScrolly() {
 
   return (
     <div className={`${gambarino.className} flex flex-col`}>
-      <div className="container h-[800vh] flex justify-center items-start mt-40">
+      <div className="container h-[900vh] flex justify-center items-start mt-40">
         <svg
           ref={svgRef}
-          className="w-[70%] fixed top-32 left-52 md:w-[50%] xl:max-h-[calc(100vh-15rem)]"
+          className="w-[70%] fixed top-32 left-60 md:w-[50%] xl:max-h-[calc(100vh-15rem)]"
           overflow="visible"
           xmlns="http://www.w3.org/2000/svg"
           xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -95,6 +91,12 @@ export default function TextScrolly() {
               </tspan>{" "}
               is imminent, stripped of dead-end irony, in favour of a newfound
               joie de vivre.
+              {/* I hope choices on the{" "}
+              <tspan alignmentBaseline="middle" className="italic">
+                forest paths
+              </tspan>{" "}
+              are leading, crafted by short-term doubts, in search of a lasting
+              sense of wonder. */}
             </textPath>
           </text>
           <path
@@ -111,7 +113,7 @@ export default function TextScrolly() {
         </svg>
       </div>
 
-      <div className="scaleContainer h-[300vh] w-full"></div>
+      <div className="scaleContainer h-[700vh] w-full"></div>
     </div>
   );
 }
