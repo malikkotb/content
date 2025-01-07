@@ -80,7 +80,7 @@ export default function FlipThroughImages() {
 
       <div
         style={{ zIndex: 100 }}
-        className="fixed top-1/4 flex flex-col overflow-auto gap-1 left-1/2 -translate-x-1/2 h-[50vh] w-16 borderr"
+        className="fixed top-1/4 flex flex-col overflow-y-scroll gap-1 left-1/2 -translate-x-1/2 h-[50vh] w-16 borderr"
       >
         {selected.map((image, index) => (
           <div
