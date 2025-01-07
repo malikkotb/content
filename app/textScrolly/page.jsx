@@ -59,7 +59,7 @@ export default function TextScrolly() {
   }, []);
 
   return (
-    <div className={`${gambarino.className} flex flex-col text-white bg-black`}>
+    <div className={`${gambarino.className} flex flex-col`}>
       <div className="container h-[900vh] flex justify-center items-start mt-40">
         <svg
           ref={svgRef}
@@ -83,9 +83,7 @@ export default function TextScrolly() {
               xlinkHref="#a"
               startOffset="0.5%"
               alignmentBaseline="middle"
-              stroke="white"
-              fill="white"
-              className="text-[212px] tracking-wider "
+              className="text-[212px] tracking-wider"
             >
               A turn around in the{" "}
               <tspan alignmentBaseline="middle" className="italic">
@@ -104,7 +102,7 @@ export default function TextScrolly() {
           <path
             ref={pathRef}
             d="M-.3 331c561.7-488.8 1413.2-429.7 1902 132 391 449.3 343.7 1130.6-105.6 1521.6a862.8 862.8 0 0 1-1217.3-84.5 690.2 690.2 0 0 1 67.6-973.8 552.2 552.2 0 0 1 779.1 54.1 441.6 441.6 0 0 1-43.3 623.2 353.5 353.5 0 0 1-498.6-34.6 282.7 282.7 0 0 1 27.7-398.9 226.2 226.2 0 0 1 319.1 22.1 181 181 0 0 1-17.7 255.3"
-            stroke="black"
+            stroke="white"
             // strokeOpacity={0.8}
             strokeWidth="350px"
             fill="none"
