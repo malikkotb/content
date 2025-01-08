@@ -90,6 +90,7 @@ export default function FlipThroughImages() {
       </div>
 
       <div
+        ref={containerRef}
         style={{ zIndex: 100 }}
         className="fixed top-1/4 flex flex-col pointer-events-auto overflow-y-auto gap-1 left-1/2 -translate-x-1/2 h-[50vh] w-16 borderr"
       >
@@ -109,29 +110,6 @@ export default function FlipThroughImages() {
           </div>
         ))}
       </div>
-
-      {/* <div
-        ref={containerRef}
-        className="noScrollBar w-full fixed h-[100vh] top-0 bottom-0 pt-[calc(100vh-80px)] pl-4 flex gap-2 overflow-x-auto overflow-y-hidden z-50 pr-[calc(100vw-48px)]"
-
-        // className="noScrollBar w-full fixed h-[100vh] justify-center borderr pl-4 flex gap-1 overflow-x-auto z-50 pr-[calc(100vw-48px)]"
-      >
-        {[...selected].map((image, index) => (
-          <div
-            key={index}
-            data-index={index}
-            className="relative max-h-16 min-w-12 image-slide"
-          >
-            <Image
-              src={image}
-              fill
-              sizes="10vw"
-              className="object-cover object-top block"
-              alt={image}
-            />
-          </div>
-        ))}
-      </div> */}
     </div>
   );
 }
