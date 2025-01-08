@@ -92,7 +92,7 @@ export default function FlipThroughImages() {
       <div
         ref={containerRef}
         style={{ zIndex: 100 }}
-        className="fixed top-1/4 flex flex-col pointer-events-auto overflow-y-auto gap-1 left-1/2 -translate-x-1/2 h-[50vh] w-16 borderr"
+        className="fixed top-1/4 flex flex-col overflow-y-scroll gap-1 left-1/2 -translate-x-1/2 h-[50vh] w-16 borderr"
       >
         {selected.map((image, index) => (
           <div
@@ -104,7 +104,7 @@ export default function FlipThroughImages() {
               src={image}
               fill
               sizes="10vw"
-              className="object-cover"
+              className="object-cover fixed"
               alt={image}
             />
           </div>
