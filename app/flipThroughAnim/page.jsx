@@ -67,6 +67,17 @@ export default function FlipThroughImages() {
     }
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      console.log("Scrolling!");
+    };
+
+    const container = containerRef.current;
+    container.addEventListener("scroll", handleScroll);
+
+    return () => container.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div className="flex flex-col">
       <div className="flex w-full">
@@ -80,7 +91,7 @@ export default function FlipThroughImages() {
 
       <div
         style={{ zIndex: 100 }}
-        className="fixed top-1/4 flex flex-col overflow-y-scroll gap-1 left-1/2 -translate-x-1/2 h-[50vh] w-16 borderr"
+        className="fixed top-1/4 flex flex-col pointer-events-auto overflow-y-auto gap-1 left-1/2 -translate-x-1/2 h-[50vh] w-16 borderr"
       >
         {selected.map((image, index) => (
           <div
