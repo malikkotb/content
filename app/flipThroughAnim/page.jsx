@@ -61,11 +61,11 @@ export default function FlipThroughImages() {
     };
   }, [selected]);
 
-  const addToRefs = (refsArray) => (el) => {
-    if (el && !refsArray.current.includes(el)) {
-      refsArray.current.push(el);
-    }
-  };
+  // const addToRefs = (refsArray) => (el) => {
+  //   if (el && !refsArray.current.includes(el)) {
+  //     refsArray.current.push(el);
+  //   }
+  // };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -85,7 +85,6 @@ export default function FlipThroughImages() {
           src={selected[currentIndex]}
           fill
           className="object-cover"
-          alt=""
         />
       </div>
 
