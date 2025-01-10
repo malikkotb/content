@@ -85,18 +85,20 @@ export default function TextScrolly() {
               alignmentBaseline="middle"
               className="text-[212px] tracking-wider"
             >
-              A turn around in the{" "}
+              {/* <div>
+                A turn around in the{" "}
+                <tspan alignmentBaseline="middle" className="italic">
+                  fashion canon
+                </tspan>{" "}
+                is imminent, stripped of dead-end irony, in favour of a newfound
+                joie de vivre.
+              </div> */}
+              The quick brown fox{" "}
               <tspan alignmentBaseline="middle" className="italic">
-                fashion canon
+                jumps over a lazy dog
               </tspan>{" "}
-              is imminent, stripped of dead-end irony, in favour of a newfound
-              joie de vivre.
-              {/* I hope choices on the{" "}
-              <tspan alignmentBaseline="middle" className="italic">
-                forest paths
-              </tspan>{" "}
-              are leading, crafted by short-term doubts, in search of a lasting
-              sense of wonder. */}
+              landing gracefully on the other side, its tail swishing as it
+              sprints away.
             </textPath>
           </text>
           <path
