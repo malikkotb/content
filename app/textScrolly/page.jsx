@@ -85,14 +85,6 @@ export default function TextScrolly() {
               alignmentBaseline="middle"
               className="text-[212px] tracking-wider"
             >
-              {/* <div>
-                A turn around in the{" "}
-                <tspan alignmentBaseline="middle" className="italic">
-                  fashion canon
-                </tspan>{" "}
-                is imminent, stripped of dead-end irony, in favour of a newfound
-                joie de vivre.
-              </div> */}
               The quick brown fox{" "}
               <tspan alignmentBaseline="middle" className="italic">
                 jumps over a lazy dog
@@ -106,7 +98,7 @@ export default function TextScrolly() {
             d="M-.3 331c561.7-488.8 1413.2-429.7 1902 132 391 449.3 343.7 1130.6-105.6 1521.6a862.8 862.8 0 0 1-1217.3-84.5 690.2 690.2 0 0 1 67.6-973.8 552.2 552.2 0 0 1 779.1 54.1 441.6 441.6 0 0 1-43.3 623.2 353.5 353.5 0 0 1-498.6-34.6 282.7 282.7 0 0 1 27.7-398.9 226.2 226.2 0 0 1 319.1 22.1 181 181 0 0 1-17.7 255.3"
             stroke="white"
             // strokeOpacity={0.8}
-            strokeWidth="350px"
+            strokeWidth="260px"
             fill="none"
             style={{
               strokeDasharray: "12000",
