@@ -5,11 +5,6 @@ import { useState } from "react";
 
 export default function Page() {
   const images = ["/maskReveal/img1.png", "/maskReveal/img5.png"];
-  const getNextImage = (currentSrc) => {
-    const currentIndex = images.indexOf(currentSrc);
-    const nextIndex = (currentIndex + 1) % images.length;
-    return images[nextIndex];
-  };
 
   const [src, setSrc] = useState(images[1]);
 
@@ -20,7 +15,7 @@ export default function Page() {
       { clipPath: "inset(50% 50% 50% 50%)" },
       {
         clipPath: "inset(-1% -1% -1% -1%)",
-        ease: "power1.out",
+        ease: "power1.inOut",
         stagger: { each: 0.008, from: "random" },
         onComplete: () => {
           setSrc(src);
@@ -41,19 +36,13 @@ export default function Page() {
         className="relative cursor-pointer h-[40vh] w-[40vh] grid grid-cols-6 grid-rows-6"
       >
         <div className="absolute h-full w-full">
-          <Image
-            // src={"/maskReveal/img1.png"}
-            src={src}
-            fill
-            className="object-cover"
-            alt=""
-          />
+          <Image src={src} fill className="object-cover" alt="image" />
         </div>
         {Array.from({ length: 36 }).map((_, index) => (
           <div
             key={index}
             style={{ clipPath: "inset(50% 50% 50% 50%)" }}
-            className=" bg-red-700 pixel z-10 origin-center" // rounded-full
+            className="bg-[rgb(231,57,45)] pixel z-10 origin-center" // rounded-full
           ></div>
         ))}
       </div>
