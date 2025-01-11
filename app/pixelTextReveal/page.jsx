@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 import { useState } from "react";
 
 export default function Page() {
@@ -14,60 +13,32 @@ export default function Page() {
 
   const [src, setSrc] = useState(images[1]);
 
-  const [isHovered, setIsHovered] = useState(false);
-
-  
-
-  useGSAP(() => {
+  const handleMouseEnter = (src) => {
     const tl = gsap.timeline();
-
-    if (isHovered) {
-      tl.fromTo(
-        ".pixel",
-        { clipPath: "inset(50% 50% 50% 50%)" },
-        {
-          clipPath: "inset(-1% -1% -1% -1%)",
-          ease: "power1.out",
-          duration: 0.5,
-          stagger: { each: 0.008, from: "random" },
-          onComplete: () => {
-            setSrc(images[0]);
-          },
-        }
-      ).to(".pixel", {
-        clipPath: "inset(50% 50% 50% 50%)",
-        ease: "power1.in",
+    tl.fromTo(
+      ".pixel",
+      { clipPath: "inset(50% 50% 50% 50%)" },
+      {
+        clipPath: "inset(-1% -1% -1% -1%)",
+        ease: "power1.out",
         stagger: { each: 0.008, from: "random" },
-      });
-    }
-    // else {
-    //   tl.fromTo(
-    //     ".pixel",
-    //     { clipPath: "inset(50% 50% 50% 50%)" },
-    //     {
-    //       clipPath: "inset(-1% -1% -1% -1%)",
-    //       //   duration: 0.5,
-    //       ease: "power1.out",
-    //       stagger: { amount: 0.1, from: "random" },
-    //       onComplete: () => {
-    //         setSrc(images[1]);
-    //       },
-    //     }
-    //   ).to(".pixel", {
-    //     clipPath: "inset(50% 50% 50% 50%)",
-    //     // duration: 0.5,
-    //     ease: "power1.in",
-    //     stagger: { amount: 0.1, from: "random" },
-    //   });
-    // }
-  }, [isHovered]);
+        onComplete: () => {
+          setSrc(src);
+        },
+      }
+    ).to(".pixel", {
+      clipPath: "inset(50% 50% 50% 50%)",
+      ease: "power1.inOut",
+      stagger: { each: 0.008, from: "random" },
+    });
+  };
 
   return (
     <div className="bg-black h-screen flex items-center justify-center">
       <div
-        onMouseEnter={() => setIsHovered(!isHovered)}
-        onMouseLeave={() => setIsHovered(!isHovered)}
-        className="relative h-[40vh] w-[40vh] grid grid-cols-6 grid-rows-6"
+        onMouseEnter={() => handleMouseEnter(images[0])}
+        onMouseLeave={() => handleMouseEnter(images[1])}
+        className="relative cursor-pointer h-[40vh] w-[40vh] grid grid-cols-6 grid-rows-6"
       >
         <div className="absolute h-full w-full">
           <Image
@@ -82,7 +53,7 @@ export default function Page() {
           <div
             key={index}
             style={{ clipPath: "inset(50% 50% 50% 50%)" }}
-            className=" bg-purple-500 pixel z-10 origin-center" // rounded-full
+            className=" bg-red-700 pixel z-10 origin-center" // rounded-full
           ></div>
         ))}
       </div>
