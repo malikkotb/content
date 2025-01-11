@@ -2,6 +2,7 @@
 import Image from "next/image";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { useState } from "react";
 
 export default function Page() {
   const [src, setSrc] = useState("/maskReveal/img5.png");
@@ -9,10 +10,11 @@ export default function Page() {
   const [isHovered, setIsHovered] = useState(false);
 
   useGSAP(() => {
-    gsap.from(".pixel", {
-      opacity: 0,
+    gsap.to(".pixel", {
+    //   scale: 0,
+      borderRadius: "0%",
       ease: "none",
-      stagger: { amount: 0.5, from: "random" },
+      stagger: { each: 0.01, from: "random" },
       // onComplete: () => { setSrc("/maskReveal/img1.png"); }
     });
   }, []);
