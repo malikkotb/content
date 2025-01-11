@@ -16,6 +16,8 @@ export default function Page() {
 
   const [isHovered, setIsHovered] = useState(false);
 
+  
+
   useGSAP(() => {
     const tl = gsap.timeline();
 
@@ -25,46 +27,46 @@ export default function Page() {
         { clipPath: "inset(50% 50% 50% 50%)" },
         {
           clipPath: "inset(-1% -1% -1% -1%)",
-          //   duration: 0.5,
           ease: "power1.out",
-          stagger: { amount: 0.1, from: "random" },
+          duration: 0.5,
+          stagger: { each: 0.008, from: "random" },
           onComplete: () => {
             setSrc(images[0]);
           },
         }
       ).to(".pixel", {
         clipPath: "inset(50% 50% 50% 50%)",
-        // duration: 0.5,
         ease: "power1.in",
-        stagger: { amount: 0.2, from: "random" },
-      });
-    } else {
-      tl.fromTo(
-        ".pixel",
-        { clipPath: "inset(50% 50% 50% 50%)" },
-        {
-          clipPath: "inset(-1% -1% -1% -1%)",
-          //   duration: 0.5,
-          ease: "power1.out",
-          stagger: { amount: 0.1, from: "random" },
-          onComplete: () => {
-            setSrc(images[1]);
-          },
-        }
-      ).to(".pixel", {
-        clipPath: "inset(50% 50% 50% 50%)",
-        // duration: 0.5,
-        ease: "power1.in",
-        stagger: { amount: 0.2, from: "random" },
+        stagger: { each: 0.008, from: "random" },
       });
     }
+    // else {
+    //   tl.fromTo(
+    //     ".pixel",
+    //     { clipPath: "inset(50% 50% 50% 50%)" },
+    //     {
+    //       clipPath: "inset(-1% -1% -1% -1%)",
+    //       //   duration: 0.5,
+    //       ease: "power1.out",
+    //       stagger: { amount: 0.1, from: "random" },
+    //       onComplete: () => {
+    //         setSrc(images[1]);
+    //       },
+    //     }
+    //   ).to(".pixel", {
+    //     clipPath: "inset(50% 50% 50% 50%)",
+    //     // duration: 0.5,
+    //     ease: "power1.in",
+    //     stagger: { amount: 0.1, from: "random" },
+    //   });
+    // }
   }, [isHovered]);
 
   return (
     <div className="bg-black h-screen flex items-center justify-center">
       <div
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+        onMouseEnter={() => setIsHovered(!isHovered)}
+        onMouseLeave={() => setIsHovered(!isHovered)}
         className="relative h-[40vh] w-[40vh] grid grid-cols-6 grid-rows-6"
       >
         <div className="absolute h-full w-full">
