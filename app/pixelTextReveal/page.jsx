@@ -26,40 +26,18 @@ export default function Page() {
       }
     );
 
-    if (isHovered) {
-      tl.to(".pixel", {
-        clipPath: "inset(50% 50% 50% 50%)",
-        duration: 0.5,
-        ease: "power1.out",
-        stagger: { each: 0.005, from: "random" },
-        onComplete: () => {
-          setSrc("/maskReveal/img5.png");
-        },
-      });
-    }
-
-    // tl.to(".pixel", {
-    //   clipPath: "inset(-1% -1% -1% -1%)",
-    //   duration: 0.5,
-    //   ease: "power1.out",
-    //   stagger: { each: 0.005, from: "random" }, // onComplete: () => { setSrc("/maskReveal/img1.png"); }
-    // });
-
-    // tl.from(".pixel", {
-    //   scale: 0,
-    //   ease: "none",
-    //   stagger: { each: 0.01, from: "random" },
-    //   // onComplete: () => { setSrc("/maskReveal/img1.png"); }
-    // });
-    // .to(
-    //   ".pixel",
-    //   {
-    //     borderRadius: "0%",
+    // if (isHovered) {
+    //   tl.to(".pixel", {
+    //     clipPath: "inset(50% 50% 50% 50%)",
     //     duration: 0.5,
-    //   },
-    //   "-=0.9"
-    // );
-  }, []);
+    //     ease: "power1.out",
+    //     stagger: { each: 0.005, from: "random" },
+    //     onComplete: () => {
+    //       setSrc("/maskReveal/img5.png");
+    //     },
+    //   });
+    // }
+  }, [isHovered]);
 
   return (
     <div className="bg-black h-screen flex items-center justify-center">
