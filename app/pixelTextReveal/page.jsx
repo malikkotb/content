@@ -11,12 +11,20 @@ export default function Page() {
 
   useGSAP(() => {
     const tl = gsap.timeline();
-    tl.from(".pixel", {
-      scale: 0,
-      ease: "none",
-      stagger: { each: 0.01, from: "random" },
-      // onComplete: () => { setSrc("/maskReveal/img1.png"); }
+
+    tl.to(".pixel", {
+      clipPath: "inset(-1% -1% -1% -1%)",
+      duration: 0.5,
+      ease: "power1.out",
+      stagger: { each: 0.01, from: "random" }, // onComplete: () => { setSrc("/maskReveal/img1.png"); }
     });
+
+    // tl.from(".pixel", {
+    //   scale: 0,
+    //   ease: "none",
+    //   stagger: { each: 0.01, from: "random" },
+    //   // onComplete: () => { setSrc("/maskReveal/img1.png"); }
+    // });
     // .to(
     //   ".pixel",
     //   {
@@ -46,7 +54,8 @@ export default function Page() {
         {Array.from({ length: 49 }).map((_, index) => (
           <div
             key={index}
-            className="bg-orange-400  pixel z-10" // rounded-full
+            style={{ clipPath: "inset(0% 100% 0% 0%)" }}
+            className="bg-orange-400 pixel z-10" // rounded-full
           ></div>
         ))}
       </div>
