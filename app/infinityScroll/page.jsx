@@ -6,6 +6,7 @@ import { useEffect, useRef } from "react";
 
 export default function InfinityScroll() {
   // TODO: use only gsap for transitions (mixing them up with css, might fuck things up)
+  // https://www.youtube.com/watch?v=2IbRtjez6ag
 
   const cardRefs = useRef([]);
   const addToRefs = (refArray) => (el) => {
@@ -16,7 +17,8 @@ export default function InfinityScroll() {
   const addToCardRefs = addToRefs(cardRefs);
 
   const observerRef = useRef(null);
-  const lastCardObserver = useRef(null); // infinity scroll observer
+  const cardContainerRef = useRef(null);
+  const lastCardObserverRef = useRef(null); // infinity scroll observer
 
   const handleIntersection = (entries) => {
     console.log(entries);
@@ -31,6 +33,10 @@ export default function InfinityScroll() {
     const lastCard = entries[0];
     if (!lastCard.isIntersecting) return;
     loadNewCards(); // this function will only be called if our last card is visible
+    lastCardObserverRef.current.unobserve(lastCard.target);
+    lastCardObserverRef.current.observe(
+      cardRefs.current[cardRefs.current.length - 1]
+    ); // only observe the very last card again
   };
 
   useEffect(() => {
@@ -49,14 +55,14 @@ export default function InfinityScroll() {
       if (card) observerRef.current.observe(card);
     });
 
-    lastCardObserver.current = new IntersectionObserver(
+    lastCardObserverRef.current = new IntersectionObserver(
       handleLastCardObserverCallback,
       {
-        threshold: 1,
+        rootMargin: "100px",
       }
     );
 
-    lastCardObserver.current.observe(
+    lastCardObserverRef.current.observe(
       cardRefs.current[cardRefs.current.length - 1]
     ); // only observe the very last card
 
@@ -75,7 +81,7 @@ export default function InfinityScroll() {
 
   return (
     <div className="my-12 ml-8">
-      <div className={styles.cardContainer}>
+      <div ref={cardContainerRef} className={styles.cardContainer}>
         <div ref={addToCardRefs} className={`${styles.card}`}>
           This is the first card.
         </div>
