@@ -16,7 +16,7 @@
   transition: 200ms;
 }
 
-.card .show {
+.show {
   transform: translateX(0);
   opacity: 1;
 }
