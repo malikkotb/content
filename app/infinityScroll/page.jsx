@@ -3,6 +3,7 @@ import gsap from "gsap";
 import styles from "./style.module.css";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
+
 export default function InfinityScroll() {
   // TODO: use only gsap for transitions (mixing them up with css, might fuck things up)
 
@@ -15,6 +16,7 @@ export default function InfinityScroll() {
   const addToCardRefs = addToRefs(cardRefs);
 
   const observerRef = useRef(null);
+  const lastCardObserver = useRef(null); // infinity scroll observer
 
   const handleIntersection = (entries) => {
     console.log(entries);
@@ -23,6 +25,12 @@ export default function InfinityScroll() {
       // to stop the element from animating again once it has already animated in (i.e. if you scroll back up):
       //   if (entry.isIntersecting) observerRef.current.unobserve(entry.target);
     });
+  };
+
+  const handleLastCardObserverCallback = (entries) => {
+    const lastCard = entries[0];
+    if (!lastCard.isIntersecting) return;
+    loadNewCards(); // this function will only be called if our last card is visible
   };
 
   useEffect(() => {
@@ -41,8 +49,29 @@ export default function InfinityScroll() {
       if (card) observerRef.current.observe(card);
     });
 
+    lastCardObserver.current = new IntersectionObserver(
+      handleLastCardObserverCallback,
+      {
+        threshold: 1,
+      }
+    );
+
+    lastCardObserver.current.observe(
+      cardRefs.current[cardRefs.current.length - 1]
+    ); // only observe the very last card
+
     return () => observerRef.current.disconnect();
   }, []);
+
+  function loadNewCards() {
+    for (let i = 0; i < 10; i++) {
+      const card = document.createElement("div");
+      card.textContent = "This is a new card.";
+      card.classList.add(styles.card);
+      observerRef.current.observe(card);
+      cardContainerRef.current.appendChild(card);
+    }
+  }
 
   return (
     <div className="my-12 ml-8">
