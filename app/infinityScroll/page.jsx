@@ -14,13 +14,22 @@ export default function InfinityScroll() {
   };
   const addToCardRefs = addToRefs(cardRefs);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      console.log(entries);
-      entries.forEach((entry) => {
-        entry.target.classList.toggle(styles.show, entry.isIntersecting)
-      })
+  const handleIntersection = (entries) => {
+    console.log(entries);
+    entries.forEach((entry) => {
+      entry.target.classList.toggle(styles.show, entry.isIntersecting);
     });
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        console.log(`Element ${entry.target} is in view.`);
+      } else {
+        console.log(`Element ${entry.target} is out of view.`);
+      }
+    });
+  };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(handleIntersection, { threshold: 1, });
 
     cardRefs.current.forEach((card) => {
       if (card) observer.observe(card);
@@ -30,7 +39,7 @@ export default function InfinityScroll() {
   }, []);
 
   return (
-    <div className="mt-20 pl-8">
+    <div className="my-12 ml-8">
       <div className={styles.cardContainer}>
         <div ref={addToCardRefs} className={`${styles.card} ${styles.show}`}>
           This is the first card.
@@ -40,7 +49,9 @@ export default function InfinityScroll() {
             This is a card.
           </div>
         ))}
-        <div ref={addToCardRefs} className={styles.card}>This is the last card.</div>
+        <div ref={addToCardRefs} className={styles.card}>
+          This is the last card.
+        </div>
       </div>
     </div>
   );
