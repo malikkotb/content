@@ -14,34 +14,33 @@ export default function InfinityScroll() {
   };
   const addToCardRefs = addToRefs(cardRefs);
 
+  const observerRef = useRef(null);
+
   const handleIntersection = (entries) => {
     console.log(entries);
     entries.forEach((entry) => {
       entry.target.classList.toggle(styles.show, entry.isIntersecting);
-    });
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        console.log(`Element ${entry.target} is in view.`);
-      } else {
-        console.log(`Element ${entry.target} is out of view.`);
-      }
+      // to stop the element from animating again once it has already animated in (i.e. if you scroll back up)
+      if (entry.isIntersecting) observerRef.current.unobserve(entry.target);
     });
   };
 
   useEffect(() => {
-    const observer = new IntersectionObserver(handleIntersection, { threshold: 1, });
-
-    cardRefs.current.forEach((card) => {
-      if (card) observer.observe(card);
+    observerRef.current = new IntersectionObserver(handleIntersection, {
+      threshold: 1,
     });
 
-    return () => observer.disconnect();
+    cardRefs.current.forEach((card) => {
+      if (card) observerRef.current.observe(card);
+    });
+
+    return () => observerRef.current.disconnect();
   }, []);
 
   return (
     <div className="my-12 ml-8">
       <div className={styles.cardContainer}>
-        <div ref={addToCardRefs} className={`${styles.card} ${styles.show}`}>
+        <div ref={addToCardRefs} className={`${styles.card}`}>
           This is the first card.
         </div>
         {[...Array(12)].map((_, index) => (
