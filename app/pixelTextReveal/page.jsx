@@ -12,9 +12,10 @@ export default function Page() {
     const tl = gsap.timeline();
     tl.fromTo(
       ".pixel",
-      { clipPath: "inset(50% 50% 50% 50%)" },
+      { clipPath: "inset(50% 50% 50% 50%)", opacity: 0 },
       {
         clipPath: "inset(-1% -1% -1% -1%)",
+        opacity: 1,
         ease: "power1.inOut",
         stagger: { each: 0.008, from: "random" },
         onComplete: () => {
@@ -23,6 +24,7 @@ export default function Page() {
       }
     ).to(".pixel", {
       clipPath: "inset(50% 50% 50% 50%)",
+      opacity: 0,
       ease: "power1.inOut",
       stagger: { each: 0.008, from: "random" },
     });
@@ -42,7 +44,7 @@ export default function Page() {
           <div
             key={index}
             style={{ clipPath: "inset(50% 50% 50% 50%)" }}
-            className="bg-[rgb(231,57,45)] pixel z-10 origin-center" // rounded-full
+            className="pixel z-10 origin-center bg-[rgb(-0,1,212)]" // -0 1 212
           ></div>
         ))}
       </div>
