@@ -31,7 +31,7 @@ export default function Page() {
   };
 
   return (
-    <div className="bg-black h-screen flex items-center justify-center">
+    <div className="bg-white h-screen flex items-center justify-center">
       <div
         onMouseEnter={() => handleMouseEnter(images[0])}
         onMouseLeave={() => handleMouseEnter(images[1])}
