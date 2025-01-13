@@ -19,7 +19,7 @@ export default function Page() {
   }, []);
 
   const imageRefs = useRef([]);
-
+  const containerRef = useRef(null);
   const addToRefs = (refArray) => (el) => {
     if (el && !refArray.current.includes(el)) {
       refArray.current.push(el);
@@ -35,7 +35,8 @@ export default function Page() {
       y: 50,
       top: 0,
       left: 0,
-      offset: "top 80%",
+      start: "100px",
+      end: "500px",
     },
     {
       src: "/drag/img2.png",
@@ -44,7 +45,8 @@ export default function Page() {
       y: 100,
       top: 100,
       left: 50,
-      offset: "top 70%",
+      start: "100px",
+      end: "500px",
     },
     {
       src: "/drag/img3.png",
@@ -53,7 +55,8 @@ export default function Page() {
       y: -150,
       top: 200,
       left: 100,
-      offset: "top 60%",
+      start: "100px",
+      end: "500px",
     },
     {
       src: "/drag/img4.png",
@@ -62,7 +65,8 @@ export default function Page() {
       y: 0,
       top: 300,
       left: 150,
-      offset: "top 50%",
+      start: "100px",
+      end: "500px",
     },
     {
       src: "/drag/img5.png",
@@ -71,23 +75,23 @@ export default function Page() {
       y: -50,
       top: 400,
       left: 200,
-      offset: "top 40%",
+      start: "100px",
+      end: "500px",
     },
   ];
 
   useGSAP(() => {
     animationValues.forEach((values, index) => {
       const image = imageRefs.current[index];
-      if (!image) return; // Safety check in case refs are missing
 
       gsap.to(image, {
         scale: values.scale,
         x: values.x,
         y: values.y,
         scrollTrigger: {
-          trigger: image, // Each image acts as its own trigger
-          start: values.offset, // Custom start position
-          end: "bottom top", // When the animation ends
+          trigger: containerRef.current,
+          start: values.start, // ...px down from the start of the scroll
+          end: values.end, // ...px down from the start of the scroll
           scrub: true,
           markers: true,
         },
@@ -96,11 +100,17 @@ export default function Page() {
   }, []);
 
   return (
-    <div className='bg-black mainContainer h-[300vh]'>
+    <div ref={containerRef} className='bg-black h-[300vh]'>
       {animationValues.map((values, index) => (
         <div
           key={index}
-          className={`h-52 w-36 borderr fixed top-[${values.top}px] left-[${values.left}px]`}
+          ref={addToImageRefs}
+          style={{
+            top: `${values.top}px`,
+            left: `${values.left}px`,
+            scale: 0,
+          }}
+          className={`h-52 w-36 borderr fixed`}
         >
           <Image src={values.src} fill alt='image' className='object-contain' />
         </div>
