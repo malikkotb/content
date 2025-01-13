@@ -80,29 +80,14 @@ export default function Page() {
       const image = imageRefs.current[index];
       if (!image) return; // Safety check in case refs are missing
 
-      // // Apply GSAP animation using the custom values
-      // gsap.to(image, {
-      //   scale: values.scale,
-      //   x: values.x,
-      //   y: values.y,
-      //   scrollTrigger: {
-      //     // trigger: "image", // Each image acts as its own trigger
-      //     trigger: ".mainContainer", // The element triggering the scroll animation
-      //     start: "top top",
-      //     end: "bottom top",
-      //     scrub: true,
-      //     markers: true,
-      //   },
-      // });
-
       gsap.to(image, {
         scale: values.scale,
         x: values.x,
         y: values.y,
         scrollTrigger: {
-          trigger: ".mainContainer", // Each image acts as its own trigger
+          trigger: image, // Each image acts as its own trigger
           start: values.offset, // Custom start position
-          end: "bottom bottom", // When the animation ends
+          end: "bottom top", // When the animation ends
           scrub: true,
           markers: true,
         },
@@ -113,70 +98,13 @@ export default function Page() {
   return (
     <div className='bg-black mainContainer h-[300vh]'>
       {animationValues.map((values, index) => (
-        <div key={index} className='h-52 w-36 borderr fixed top-1/2 left-1/2'>
-          <Image
-            src='/drag/img1.png'
-            fill
-            alt='image'
-            className='object-contain'
-          />
+        <div
+          key={index}
+          className={`h-52 w-36 borderr fixed top-[${values.top}px] left-[${values.left}px]`}
+        >
+          <Image src={values.src} fill alt='image' className='object-contain' />
         </div>
       ))}
-      <div
-        ref={addToImageRefs}
-        className='h-52 w-36 borderr fixed top-1/3 left-1/3'
-      >
-        <Image
-          src='/drag/img3.png'
-          fill
-          alt='image'
-          className='object-contain'
-        />
-      </div>
-      <div
-        ref={addToImageRefs}
-        className='h-52 w-36 borderr fixed top-1/4 left-1/2'
-      >
-        <Image
-          src='/drag/img4.png'
-          fill
-          alt='image'
-          className='object-contain'
-        />
-      </div>
-      <div
-        ref={addToImageRefs}
-        className='h-52 w-36 borderr fixed top-[15%] left-[25%]'
-      >
-        <Image
-          src='/drag/img1.png'
-          fill
-          alt='image'
-          className='object-contain'
-        />
-      </div>
-      <div
-        ref={addToImageRefs}
-        className='h-52 w-36 borderr fixed top-[35%] left-[20%]'
-      >
-        <Image
-          src='/drag/img4.png'
-          fill
-          alt='image'
-          className='object-contain'
-        />
-      </div>
-      <div
-        ref={addToImageRefs}
-        className='h-52 w-36 borderr fixed top-[30%] left-[45%]'
-      >
-        <Image
-          src='/drag/img2.png'
-          fill
-          alt='image'
-          className='object-contain'
-        />
-      </div>
     </div>
   );
 }
