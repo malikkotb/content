@@ -28,49 +28,64 @@ export default function Page() {
   };
   const addToImageRefs = addToRefs(imageRefs);
 
-  useGSAP(() => {
-    animationValues.forEach((values, index) => {
-      const image = imageRefs.current[index];
+  // useGSAP(() => {
+  //   animationValues.forEach((values, index) => {
+  //     const image = imageRefs.current[index];
 
-      gsap.to(image, {
-        scale: values.scale,
-        x: values.x,
-        y: values.y,
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: values.start, // ...px down from the start of the scroll
-          end: values.end, // ...px down from the start of the scroll
-          scrub: true,
-          markers: true,
-        },
-      });
-    });
-  }, []);
+  //     gsap.to(image, {
+  //       scale: values.scale,
+  //       // x: values.x,
+  //       // y: values.y,
+  //       scrollTrigger: {
+  //         trigger: containerRef.current,
+  //         start: values.start, // ...px down from the start of the scroll
+  //         end: values.end, // ...px down from the start of the scroll
+  //         scrub: true,
+  //         markers: true,
+  //       },
+  //     });
+  //   });
+  // }, []);
 
   return (
-    <div ref={containerRef} className='bg-black h-[500vh]'>
-      {animationValues.map((values, index) => (
-        <div
-          key={index}
-          ref={addToImageRefs}
-          style={{
-            zIndex: 1000 - index * 10,
-            top: `${values.top}%`,
-            left: `${values.left}%`,
-            // transform: `translate(-50%, -50%)`,
-            scale: 0,
-          }}
-          className={`h-52 w-36 borderr fixed`}
-        >
-          <div
-            style={{ zIndex: 10000 }}
-            className='abolute -mt-4 font-bold text-white'
-          >
-            {index + 1}
-          </div>
-          <Image src={values.src} fill alt='image' className='object-contain' />
+    <>
+      {/* <div className="h-screen bg-slate-800">
+        <div >
+
         </div>
-      ))}
-    </div>
+      </div> */}
+      <div ref={containerRef} className='bg-black h-[500vh]'>
+        <div className="absolute top-[30vh] left-[5vw] h-[30vh] w-[30vw] bg-red-500"></div>
+        <div className="absolute top-[15vh] left-[37vw] h-[30vh] w-[30vw] bg-red-500"></div>
+        <div className="absolute top-[47vh] left-[37vw] h-[20vh] w-[30vw] bg-red-500"></div>
+        {/* {animationValues.map((values, index) => (
+          <div
+            key={index}
+            ref={addToImageRefs}
+            style={{
+              zIndex: 1000 - index * 10,
+              top: `${values.top}%`,
+              left: `${values.left}%`,
+              // transform: `translate(-50%, -50%)`,
+              scale: 1,
+            }}
+            className={`h-52 w-36 borderr fixed`}
+          >
+            <div
+              style={{ zIndex: 10000 }}
+              className='abolute -mt-4 font-bold text-white'
+            >
+              {index + 1}
+            </div>
+            <Image
+              src={values.src}
+              fill
+              alt='image'
+              className='object-contain'
+            />
+          </div>
+        ))} */}
+      </div>
+    </>
   );
 }
