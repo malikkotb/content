@@ -1,7 +1,15 @@
+//                  x      y
+// Straight Left	-665	0
+// Top Left	-665px	-445
+// Bottom Left	-665	445
+// Straight Right	665px	0px
+// Top Right	665 -445
+// Bottom Right	665	445
+
 export const animationValues = [
   {
     src: "/drag/img1.png",
-    scale: 2,
+    scale: 2.5,
     x: 300,
     y: 400,
     top: 40,
@@ -11,7 +19,7 @@ export const animationValues = [
   },
   {
     src: "/drag/img2.png",
-    scale: 1.5,
+    scale: 2.5,
     x: -500,
     y: 600,
     top: 40,
@@ -21,22 +29,22 @@ export const animationValues = [
   },
   {
     src: "/drag/img3.png",
-    scale: 3,
+    scale: 2.5,
     x: 0,
     y: -150,
     top: 40,
     left: 50,
-    start: "700px",
+    start: "500px",
     end: "900px",
   },
   {
     src: "/drag/img4.png",
-    scale: 1.8,
+    scale: 2.5,
     x: -700,
     y: -600,
     top: 35,
     left: 50,
-    start: "600px",
+    start: "700px",
     end: "1000px",
   },
   {
