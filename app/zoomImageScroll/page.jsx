@@ -54,7 +54,7 @@ export default function Page() {
           key={index}
           ref={addToImageRefs}
           style={{
-            top: `${values.top}px`,
+            top: `${values.top}vh`,
             left: `${values.left}px`,
             scale: 0,
           }}
