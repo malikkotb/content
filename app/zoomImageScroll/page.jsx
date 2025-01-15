@@ -48,14 +48,18 @@ export default function Page() {
   }, []);
 
   return (
-    <div ref={containerRef} className='bg-black h-[300vh]'>
+    <div ref={containerRef} className='bg-black h-[500vh]'>
       {animationValues.map((values, index) => (
         <div
           key={index}
           ref={addToImageRefs}
           style={{
-            top: `${values.top}vh`,
-            left: `${values.left}px`,
+            zIndex: index + 10,
+            // top: `${values.top}vh`,
+            // left: `${values.left}vw`,
+            top: `40%`,
+            left: `40%`,
+            // transform: `translate(-50%, -50%)`,
             scale: 0,
           }}
           className={`h-52 w-36 borderr fixed`}
