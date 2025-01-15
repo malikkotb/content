@@ -54,16 +54,20 @@ export default function Page() {
           key={index}
           ref={addToImageRefs}
           style={{
-            zIndex: index + 10,
-            // top: `${values.top}vh`,
-            // left: `${values.left}vw`,
-            top: `40%`,
-            left: `40%`,
+            zIndex: 1000 - index * 10,
+            top: `${values.top}%`,
+            left: `${values.left}%`,
             // transform: `translate(-50%, -50%)`,
             scale: 0,
           }}
           className={`h-52 w-36 borderr fixed`}
         >
+          <div
+            style={{ zIndex: 10000 }}
+            className='abolute -mt-4 font-bold text-white'
+          >
+            {index + 1}
+          </div>
           <Image src={values.src} fill alt='image' className='object-contain' />
         </div>
       ))}
