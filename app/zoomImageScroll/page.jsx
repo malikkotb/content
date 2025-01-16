@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useRef, useEffect } from "react";
 import Lenis from "lenis";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { animationValues } from "./values.js";
@@ -47,46 +48,40 @@ export default function Page() {
   //   });
   // }, []);
 
+  const container = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: container,
+
+    offset: ["start start", "end end"],
+  });
+
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 4]);
+
   return (
     <>
-      {/* <div className="h-screen bg-slate-800">
-        <div >
-
-        </div>
-      </div> */}
-      <div ref={containerRef} className='bg-black h-[500vh]'>
-        <div className='relative w-[25vw] h-[25vh] borderr'>
-          <img className='object-cover' />
-        </div>
-
-        <div className='relative w-[35vw] h-[30vh] -top-[30vh] left-[5vw] borderr'>
-          <img className='object-cover' />
-        </div>
-
-        <div className='relative w-[20vw] h-[45vh] -top-[10vh] -left-[25vw] borderr'>
-          <img className='object-cover' />
-        </div>
-
-        <div className='relative w-[25vw] h-[25vh] left-[27.5vw] borderr'>
-          <img className='object-cover' />
-        </div>
-
-        <div className='relative w-[20vw] h-[25vh] top-[27.5vh] left-[5vw] borderr'>
-          <img className='object-cover' />
+      <div ref={containerRef} className='bg-black relative h-[300vh]'>
+        <div className='sticky overflow-hidden top-0 h-[100vh]'>
+          {animationValues.map((src, index) => {
+            return (
+              <motion.div
+                key={index}
+                style={{ scale }}
+                className={
+                  "absolute top-0 w-full h-full flex borderr items-center justify-center"
+                }
+              >
+                <div
+                  style={{ width: `${src.width}vw`, height: `${src.height}vh` }}
+                  className={`relative`}
+                >
+                  <Image src={src} fill alt='image' className='object-cover' />
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
 
-        <div className='relative w-[30vw] h-[25vh] top-[27.5vh] -left-[22.5vw] borderr'>
-          <img className='object-cover' />
-        </div>
-
-        <div className='relative w-[15vw] h-[15vh] top-[22.5vh] left-[25vw] borderr'>
-          <img className='object-cover' />
-        </div>
-
-        <div className='fixed top-[30vh] left-[5vw] h-[30vh] w-[30vw] bg-red-500'></div>
-        <div className='fixed top-[15vh] left-[36vw] h-[35vh] w-[35vw] bg-blue-500'></div>
-        <div className='fixed top-[52vh] left-[36vw] h-[25vh] w-[25vw] bg-purple-500'></div>
-        <div className='fixed top-[61vh] left-[8vw] h-[20vh] w-[25vw] bg-green-500'></div>
         {/* {animationValues.map((values, index) => (
           <div
             key={index}
