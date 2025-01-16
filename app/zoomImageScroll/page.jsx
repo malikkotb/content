@@ -55,9 +55,38 @@ export default function Page() {
         </div>
       </div> */}
       <div ref={containerRef} className='bg-black h-[500vh]'>
-        <div className="absolute top-[30vh] left-[5vw] h-[30vh] w-[30vw] bg-red-500"></div>
-        <div className="absolute top-[15vh] left-[37vw] h-[30vh] w-[30vw] bg-red-500"></div>
-        <div className="absolute top-[47vh] left-[37vw] h-[20vh] w-[30vw] bg-red-500"></div>
+        <div className='relative w-[25vw] h-[25vh] borderr'>
+          <img className='object-cover' />
+        </div>
+
+        <div className='relative w-[35vw] h-[30vh] -top-[30vh] left-[5vw] borderr'>
+          <img className='object-cover' />
+        </div>
+
+        <div className='relative w-[20vw] h-[45vh] -top-[10vh] -left-[25vw] borderr'>
+          <img className='object-cover' />
+        </div>
+
+        <div className='relative w-[25vw] h-[25vh] left-[27.5vw] borderr'>
+          <img className='object-cover' />
+        </div>
+
+        <div className='relative w-[20vw] h-[25vh] top-[27.5vh] left-[5vw] borderr'>
+          <img className='object-cover' />
+        </div>
+
+        <div className='relative w-[30vw] h-[25vh] top-[27.5vh] -left-[22.5vw] borderr'>
+          <img className='object-cover' />
+        </div>
+
+        <div className='relative w-[15vw] h-[15vh] top-[22.5vh] left-[25vw] borderr'>
+          <img className='object-cover' />
+        </div>
+
+        <div className='fixed top-[30vh] left-[5vw] h-[30vh] w-[30vw] bg-red-500'></div>
+        <div className='fixed top-[15vh] left-[36vw] h-[35vh] w-[35vw] bg-blue-500'></div>
+        <div className='fixed top-[52vh] left-[36vw] h-[25vh] w-[25vw] bg-purple-500'></div>
+        <div className='fixed top-[61vh] left-[8vw] h-[20vh] w-[25vw] bg-green-500'></div>
         {/* {animationValues.map((values, index) => (
           <div
             key={index}
