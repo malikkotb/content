@@ -72,7 +72,12 @@ export default function Page() {
                 }
               >
                 <div
-                  style={{ width: `${src.width}vw`, height: `${src.height}vh` }}
+                  style={{
+                    width: `${src.width}vw`,
+                    height: `${src.height}vh`,
+                    top: `${src.top}vh`,
+                    left: `${src.left}vw`,
+                  }}
                   className={`relative`}
                 >
                   <Image src={src} fill alt='image' className='object-cover' />
