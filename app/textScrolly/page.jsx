@@ -25,17 +25,6 @@ export default function TextScrolly() {
     requestAnimationFrame(raf);
   }, []);
 
-  gsap.to(svgRef.current, {
-    rotation: -75, // Rotate the element (svgRef.current) to -75 degrees
-    scrollTrigger: {
-      // Configuration for the scroll-triggered animation
-      trigger: ".container", // The element (.container) that triggers the animation
-      start: "top top", // Start the animation when the top of .container reaches the top of the viewport
-      end: "bottom top", // End the animation when the bottom of .container reaches the top of the viewport
-      scrub: true, // Smoothly tie the animation progress to the scroll position
-    },
-  });
-
   useGSAP(() => {
     gsap.to(pathRef.current, {
       strokeDashoffset: 14000,
