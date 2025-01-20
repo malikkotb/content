@@ -58,10 +58,7 @@ export default function TextScrolly() {
 
   return (
     <div className={`${instrumentSerif.className} flex flex-col`}>
-      <div className='text-5xl tracking-wider m-40'>
-        A turn around in the fashion canon is imminent.
-      </div>
-      {/* <div className='container h-[900vh] flex justify-center items-start mt-40'>
+      <div className='container h-[900vh] flex justify-center items-start mt-40'>
         <svg
           ref={svgRef}
           className='w-[70%] fixed top-32 left-72 md:w-[50%] xl:max-h-[calc(100vh-15rem)]'
@@ -107,7 +104,7 @@ export default function TextScrolly() {
             }}
           ></path>
         </svg>
-      </div> */}
+      </div>
       <div className='scaleContainer h-[500vh] w-full'></div>
       <section className='h-screen'></section>
     </div>
