@@ -143,6 +143,31 @@ function FancyButton({ label, onClick }) {
     });
   });
 
+  const links = document.querySelectorAll(".link-hover");
+  const images = document.querySelectorAll(".hover-image");
+
+  links.forEach((link) => {
+    link.addEventListener("mouseenter", () => {
+      // Get the index of the image to show from the data attribute
+      const imageIndex = link.dataset.imageIndex;
+
+      // Hide all images
+      images.forEach((img) => img.classList.remove("visible"));
+
+      // Show the specific image linked to the hovered link
+      const imageToShow = images[imageIndex - 1]; // Convert to 0-based index
+      if (imageToShow) {
+        imageToShow.classList.add("visible");
+      }
+    });
+
+    link.addEventListener("mouseleave", () => {
+      // Optional: Reset to the default image (index 0)
+      images.forEach((img) => img.classList.remove("visible"));
+      images[0].classList.add("visible"); // Show the first image
+    });
+  });
+
   return (
     <button
       style={{
