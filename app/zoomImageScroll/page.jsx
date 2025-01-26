@@ -52,21 +52,25 @@ export default function Page() {
 
   const { scrollYProgress } = useScroll({
     target: container,
-
     offset: ["start start", "end end"],
   });
 
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 4]);
+  const scale1 = useTransform(scrollYProgress, [0, 1], [1, 2]);
+  const scale2 = useTransform(scrollYProgress, [0, 1], [1, 1.5]);
+  const scale3 = useTransform(scrollYProgress, [0, 1], [1, 3]);
+  const scale4 = useTransform(scrollYProgress, [0, 1], [1, 2.5]);
+
+  const scales = [scale1, scale2, scale3, scale4];
 
   return (
     <>
-      <div ref={containerRef} className='bg-black relative h-[300vh]'>
+      <div ref={containerRef} className='bg-black relative h-[500vh]'>
         <div className='sticky overflow-hidden top-0 h-[100vh]'>
           {animationValues.map((src, index) => {
             return (
               <motion.div
                 key={index}
-                style={{ scale }}
+                style={{ scale: scales[index] }}
                 className={
                   "absolute top-0 w-full h-full flex borderr items-center justify-center"
                 }
