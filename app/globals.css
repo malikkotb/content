@@ -14,3 +14,108 @@
 .noScrollBar::-webkit-scrollbar {
   display: none; /* Safari and Chrome */
 }
+
+.parent {
+  position: relative; /* Parent is relatively positioned */
+  width: 100%;
+  height: 100vh;
+}
+
+.div3 {
+  position: absolute;
+  top: calc((100% / 9) * 3); /* 4th row (index 3) */
+  left: calc((100% / 12) * 4); /* 5th column (index 4) */
+  width: calc((100% / 12) * 1); /* Spans 1 column */
+  height: calc((100% / 9) * 2); /* Spans 2 rows */
+  border: 1px solid red;
+}
+
+.div4 {
+  position: absolute;
+  top: calc((100% / 9) * 3); /* 4th row (index 3) */
+  left: calc((100% / 12) * 2); /* 3rd column (index 2) */
+  width: calc((100% / 12) * 1); /* Spans 1 column */
+  height: calc((100% / 9) * 2); /* Spans 2 rows */
+  border: 1px solid red;
+}
+
+.div12 {
+  position: absolute;
+  top: calc((100% / 9) * 1); /* 2nd row (index 1) */
+  left: calc((100% / 12) * 3); /* 4th column (index 3) */
+  width: calc((100% / 12) * 1); /* Spans 1 column */
+  height: calc((100% / 9) * 2); /* Spans 2 rows */
+  border: 1px solid red;
+}
+
+.div13 {
+  position: absolute;
+  top: calc((100% / 9) * 1); /* 2nd row (index 1) */
+  left: calc((100% / 12) * 6); /* 7th column (index 6) */
+  width: calc((100% / 12) * 1); /* Spans 1 column */
+  height: calc((100% / 9) * 2); /* Spans 2 rows */
+  border: 1px solid red;
+}
+
+.div16 {
+  position: absolute;
+  top: calc((100% / 9) * 2); /* 3rd row (index 2) */
+  left: calc((100% / 12) * 5); /* 6th column (index 5) */
+  width: calc((100% / 12) * 1); /* Spans 1 column */
+  height: calc((100% / 9) * 2); /* Spans 2 rows */
+  border: 1px solid red;
+}
+
+.div17 {
+  position: absolute;
+  top: calc((100% / 9) * 5); /* 6th row (index 5) */
+  left: calc((100% / 12) * 3); /* 4th column (index 3) */
+  width: calc((100% / 12) * 1); /* Spans 1 column */
+  height: calc((100% / 9) * 2); /* Spans 2 rows */
+  border: 1px solid red;
+}
+
+.div18 {
+  position: absolute;
+  top: calc((100% / 9) * 3); /* 4th row (index 3) */
+  left: calc((100% / 12) * 7); /* 8th column (index 7) */
+  width: calc((100% / 12) * 1); /* Spans 1 column */
+  height: calc((100% / 9) * 2); /* Spans 2 rows */
+  border: 1px solid red;
+}
+
+.div19 {
+  position: absolute;
+  top: calc((100% / 9) * 0); /* 1st row (index 0) */
+  left: calc((100% / 12) * 4); /* 5th column (index 4) */
+  width: calc((100% / 12) * 1); /* Spans 1 column */
+  height: calc((100% / 9) * 2); /* Spans 2 rows */
+  border: 1px solid red;
+}
+
+.div20 {
+  position: absolute;
+  top: calc((100% / 9) * 5); /* 6th row (index 5) */
+  left: calc((100% / 12) * 8); /* 9th column (index 8) */
+  width: calc((100% / 12) * 1); /* Spans 1 column */
+  height: calc((100% / 9) * 2); /* Spans 2 rows */
+  border: 1px solid red;
+}
+
+.div21 {
+  position: absolute;
+  top: calc((100% / 9) * 1); /* 2nd row (index 1) */
+  left: calc((100% / 12) * 8); /* 9th column (index 8) */
+  width: calc((100% / 12) * 1); /* Spans 1 column */
+  height: calc((100% / 9) * 2); /* Spans 2 rows */
+  border: 1px solid red;
+}
+
+.div22 {
+  position: absolute;
+  top: calc((100% / 9) * 5); /* 6th row (index 5) */
+  left: calc((100% / 12) * 5); /* 6th column (index 5) */
+  width: calc((100% / 12) * 1); /* Spans 1 column */
+  height: calc((100% / 9) * 2); /* Spans 2 rows */
+  border: 1px solid red;
+}
