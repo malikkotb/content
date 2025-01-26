@@ -2,26 +2,15 @@
 import Image from "next/image";
 import { useRef, useEffect } from "react";
 import Lenis from "lenis";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { animationValues } from "./values.js";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { animationValues } from "./values.js";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Page() {
-  useEffect(() => {
-    const lenis = new Lenis();
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-  }, []);
-
-  const imageRefs = useRef([]);
   const containerRef = useRef(null);
+  const imageRefs = useRef([]);
   const addToRefs = (refArray) => (el) => {
     if (el && !refArray.current.includes(el)) {
       refArray.current.push(el);
@@ -29,68 +18,54 @@ export default function Page() {
   };
   const addToImageRefs = addToRefs(imageRefs);
 
-  // useGSAP(() => {
-  //   animationValues.forEach((values, index) => {
-  //     const image = imageRefs.current[index];
+  useEffect(() => {
+    // Initialize Lenis for smooth scrolling
+    const lenis = new Lenis();
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
 
-  //     gsap.to(image, {
-  //       scale: values.scale,
-  //       // x: values.x,
-  //       // y: values.y,
-  //       scrollTrigger: {
-  //         trigger: containerRef.current,
-  //         start: values.start, // ...px down from the start of the scroll
-  //         end: values.end, // ...px down from the start of the scroll
-  //         scrub: true,
-  //         markers: true,
-  //       },
-  //     });
-  //   });
-  // }, []);
-
-  const container = useRef(null);
-
-  const { scrollYProgress } = useScroll({
-    target: container,
-    offset: ["start start", "end end"],
-  });
-
-  const scale1 = useTransform(scrollYProgress, [0, 1], [1, 2]);
-  const scale2 = useTransform(scrollYProgress, [0, 1], [1, 1.5]);
-  const scale3 = useTransform(scrollYProgress, [0, 1], [1, 3]);
-  const scale4 = useTransform(scrollYProgress, [0, 1], [1, 2.5]);
-
-  const scales = [scale1, scale2, scale3, scale4];
+    // GSAP ScrollTrigger for scaling effect
+    imageRefs.current.forEach((image, index) => {
+      gsap.to(image, {
+        scale: 2, // Final scale value (2x zoom)
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top", // Start when container top aligns with viewport top
+          end: "bottom bottom", // End when container bottom aligns with viewport bottom
+          scrub: true, // Smoothly tie animation to scroll position
+        },
+      });
+    });
+  }, []);
 
   return (
-    <>
-      <div ref={containerRef} className='bg-black relative h-[500vh]'>
-        <div className='sticky overflow-hidden top-0 h-[100vh]'>
-          {animationValues.map((src, index) => {
-            return (
-              <motion.div
-                key={index}
-                style={{ scale: scales[index] }}
-                className={
-                  "absolute top-0 w-full h-full flex borderr items-center justify-center"
-                }
+    <div ref={containerRef} className='bg-black relative h-[500vh]'>
+      <div className='sticky overflow-hidden top-0 h-[100vh]'>
+        {animationValues.map((src, index) => {
+          return (
+            <div
+              key={index}
+              ref={addToImageRefs}
+              className='absolute top-0 w-full h-full flex items-center justify-center'
+            >
+              <div
+                style={{
+                  width: `${src.width}vw`,
+                  height: `${src.height}vh`,
+                  top: `${src.top}vh`,
+                  left: `${src.left}vw`,
+                }}
+                className='relative'
               >
-                <div
-                  style={{
-                    width: `${src.width}vw`,
-                    height: `${src.height}vh`,
-                    top: `${src.top}vh`,
-                    left: `${src.left}vw`,
-                  }}
-                  className={`relative`}
-                >
-                  <Image src={src} fill alt='image' className='object-cover' />
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
+                <Image src={src} fill alt='image' className='object-cover' />
+              </div>
+            </div>
+          );
+        })}
       </div>
-    </>
+    </div>
   );
 }
