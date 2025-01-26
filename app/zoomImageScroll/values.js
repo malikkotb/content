@@ -1,3 +1,13 @@
+// {
+//   src: "/drag/img1.png",
+//   scale: 2.5,
+//   width: 25,
+//   height: 25,
+//   top: 0,
+//   left: 0,
+//   start: "0px",
+//   end: "500px",
+// },
 export const animationValues = [
   {
     src: "/drag/img1.png",
@@ -6,8 +16,105 @@ export const animationValues = [
     height: 25,
     top: 0,
     left: 0,
-    start: "0px",
-    end: "500px",
+  },
+  {
+    src: "/drag/img2.png",
+    scale: 1.5,
+    width: 8, // Corresponds to `width: 8vw`
+    height: 22, // Corresponds to `height: 22vh`
+    top: 33, // Corresponds to `top: 33vh`
+    left: 33, // Corresponds to `left: 33vw`
+  },
+  {
+    src: "/drag/img3.png",
+    scale: 1.5,
+    width: 8,
+    height: 22,
+    top: 33,
+    left: 17,
+  },
+  {
+    src: "/drag/img4.png",
+    scale: 1.5,
+    width: 8,
+    height: 22,
+    top: 11,
+    left: 25,
+  },
+  {
+    src: "/drag/img5.png",
+    scale: 1.5,
+    width: 8,
+    height: 22,
+    top: 11,
+    left: 58,
+  },
+  {
+    src: "/drag/img6.png",
+    scale: 1.5,
+    width: 8,
+    height: 22,
+    top: 22,
+    left: 42,
+  },
+  {
+    src: "/drag/img7.png",
+    scale: 1.5,
+    width: 8,
+    height: 22,
+    top: 56,
+    left: 25,
+  },
+  {
+    src: "/drag/img8.png",
+    scale: 1.5,
+    width: 8,
+    height: 22,
+    top: 33,
+    left: 58,
+  },
+  {
+    src: "/drag/img9.png",
+    scale: 1.5,
+    width: 8,
+    height: 22,
+    top: 0,
+    left: 33,
+  },
+  {
+    src: "/drag/img10.png",
+    scale: 1.5,
+    width: 8,
+    height: 22,
+    top: 56,
+    left: 75,
+  },
+  {
+    src: "/drag/img11.png",
+    scale: 1.5,
+    width: 8,
+    height: 22,
+    top: 11,
+    left: 75,
+  },
+  {
+    src: "/drag/img12.png",
+    scale: 1.5,
+    width: 8,
+    height: 22,
+    top: 56,
+    left: 42,
+  },
+];
+
+export const animationValues1 = [
+  {
+    src: "/drag/img1.png",
+    scale: 2.5,
+    width: 25,
+    height: 25,
+    top: 0,
+    left: 0,
   },
   {
     src: "/drag/img2.png",
