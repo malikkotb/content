@@ -41,7 +41,7 @@ export default function Page() {
     });
   }, []);
 
-  // TODO: explai and show that I used: https://cssgridgenerator.io/ to generate a layout and then used chatgpt
+  // TODO: explain and show that I used: https://cssgridgenerator.io/ to generate a layout and then used chatgpt
   // to convert that into the values array that I am looping over.
 
   return (
@@ -52,7 +52,9 @@ export default function Page() {
             <div
               key={index}
               ref={addToImageRefs}
-              className='absolute top-0 w-full h-full flex items-center justify-center'
+              // className='absolute'
+              className='absolute borderr top-0 w-full h-full flex items-center justify-center' // TODO: I think it should be used like this
+              // to zoom on the corretct aspect ratio and not just scale the image
             >
               <div
                 style={{
