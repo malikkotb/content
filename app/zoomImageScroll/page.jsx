@@ -5,6 +5,7 @@ import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { animationValues } from "./values.js";
+import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -19,14 +20,15 @@ export default function Page() {
   const addToImageRefs = addToRefs(imageRefs);
 
   useEffect(() => {
-    // Initialize Lenis for smooth scrolling
     const lenis = new Lenis();
     function raf(time) {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
+  }, []);
 
+  useGSAP(() => {
     // GSAP ScrollTrigger for scaling effect
     imageRefs.current.forEach((image, index) => {
       gsap.to(image, {
@@ -41,7 +43,7 @@ export default function Page() {
     });
   }, []);
 
-  // TODO: explain and show that I used: https://cssgridgenerator.io/ to generate a layout and then used chatgpt
+  // TODO: in tutorial explain and show that I used: https://cssgridgenerator.io/ to generate a layout and then used chatgpt
   // to convert that into the values array that I am looping over.
 
   return (
@@ -52,8 +54,8 @@ export default function Page() {
             <div
               key={index}
               ref={addToImageRefs}
-              // className='absolute'
-              className='absolute borderr top-0 w-full h-full flex items-center justify-center' // TODO: I think it should be used like this
+              className='absolute borderr top-0 w-full h-full flex items-center justify-center'
+              // TODO: I think it should be used like this
               // to zoom on the corretct aspect ratio and not just scale the image
             >
               <div
