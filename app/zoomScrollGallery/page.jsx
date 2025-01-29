@@ -4,7 +4,6 @@ import { useRef, useEffect } from "react";
 import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { animationValues } from "./values.js";
 import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -51,11 +50,7 @@ export default function Page() {
     });
   }, []);
 
-  // TODO: in tutorial explain and show that I used: https://cssgridgenerator.io/ to generate a layout and then used chatgpt
-  // to convert that into the values array that I am looping over.
-  // or just say take some time to place the images in a way that is fitting
-  // -> you want the images to not be centered, in the screen, so they actually
-  // dissappear on scroll
+
 
   return (
     <>

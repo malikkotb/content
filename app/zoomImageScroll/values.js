@@ -10,6 +10,15 @@
 // },
 export const animationValues = [
   {
+    src: "/img7.png",
+    scaleFrom: 0.7,
+    scaleTo: 5,
+    width: 12,
+    height: 20,
+    top: -20,
+    left: 33,
+  },
+  {
     src: "/drag/img1.png",
     scaleFrom: 0.7,
     scaleTo: 4,
