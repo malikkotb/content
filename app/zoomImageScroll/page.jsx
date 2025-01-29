@@ -34,7 +34,7 @@ export default function Page() {
     // GSAP ScrollTrigger for scaling effect
     imageRefs.current.forEach((image, index) => {
       console.log("index: ", index, animationValues[index].scaleTo);
-      if (index >= 4) gsap.set(image, { visibility: "hidden" });
+      // if (index >= 4) gsap.set(image, { visibility: "hidden" });
 
       gsap.to(image, {
         scale: animationValues[index].scaleTo, // Final scale value (2x or 4x zoom)
@@ -67,6 +67,7 @@ export default function Page() {
                 ref={addToImageRefs}
                 style={{
                   scale: `${src.scaleFrom}`,
+                  visibility: index >= 4 ? "hidden" : "", // Set visibility inline
                 }}
                 className='absolute top-0 w-full h-full flex items-center justify-center'
                 // TODO: I think it should be used like this
