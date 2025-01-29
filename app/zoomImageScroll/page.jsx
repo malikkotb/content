@@ -32,7 +32,7 @@ export default function Page() {
     // GSAP ScrollTrigger for scaling effect
     imageRefs.current.forEach((image, index) => {
       gsap.to(image, {
-        scale: 4, // Final scale value (2x zoom)
+        scale: 4, // Final scale value (2x or 4x zoom)
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top", // Start when container top aligns with viewport top
@@ -56,7 +56,7 @@ export default function Page() {
               ref={addToImageRefs}
               className='absolute borderr top-0 w-full h-full flex items-center justify-center'
               // TODO: I think it should be used like this
-              // to zoom on the corretct aspect ratio and not just scale the image
+              // to zoom in the correct aspect ratio and not just scale the image
             >
               <div
                 style={{
@@ -67,39 +67,15 @@ export default function Page() {
                 }}
                 className='relative'
               >
-                {/* <div className="absolute w-full h-full z-50 -top-5">{src.src}</div> */}
+                <div className='absolute w-full h-full z-50 -top-5'>
+                  {src.src}
+                </div>
                 <Image src={src} fill alt='image' className='object-cover' />
               </div>
             </div>
           );
         })}
       </div>
-
-      {/* <div ref={containerRef} className='bg-black relative h-[500vh]'>
-        <div className='sticky overflow-hidden top-0 h-[100vh]'>
-          {animationValues.map((src, index) => {
-            return (
-              <div
-                key={index}
-                ref={addToImageRefs}
-                className='absolute top-0 w-full h-full flex items-center justify-center'
-              >
-                <div
-                  style={{
-                    width: `${src.width}vw`,
-                    height: `${src.height}vh`,
-                    top: `${src.top}vh`,
-                    left: `${src.left}vw`,
-                  }}
-                  className='relative'
-                >
-                  <Image src={src} fill alt='image' className='object-cover' />
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div> */}
     </>
   );
 }
