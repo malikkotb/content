@@ -32,13 +32,12 @@ export default function Page() {
     // GSAP ScrollTrigger for scaling effect
     imageRefs.current.forEach((image, index) => {
       gsap.to(image, {
-        scale: 0.3, // Final scale value (2x or 4x zoom)
+        scale: 0.7, // Final scale value (2x or 4x zoom)
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top", // Start when container top aligns with viewport top
           end: "bottom bottom", // End when container bottom aligns with viewport bottom
           scrub: true, // Smoothly tie animation to scroll position
-          markers: true,
         },
       });
     });
@@ -56,7 +55,10 @@ export default function Page() {
               <div
                 key={index}
                 ref={addToImageRefs}
-                className='absolute top-0 w-full h-full flex items-center justify-center'
+                style={{
+                  scale: `${src.scaleFrom}`,
+                }}
+                className='absolute borderr top-0 w-full h-full flex items-center justify-center'
                 // TODO: I think it should be used like this
                 // to zoom in the correct aspect ratio and not just scale the image
               >

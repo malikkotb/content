@@ -1,6 +1,6 @@
 // {
 //   src: "/drag/img1.png",
-//   scale: 2.5,
+//   scaleFrom: 0.7, scaleTo:  2.5,
 //   width: 25,
 //   height: 25,
 //   top: 0,
@@ -11,23 +11,26 @@
 export const animationValues = [
   {
     src: "/drag/img1.png",
-    scale: 2.5,
-    width: 25,
-    height: 25,
-    top: 0,
-    left: 0,
+    scaleFrom: 0.7,
+    scaleTo: 2.5,
+    width: 10,
+    height: 18,
+    top: -10,
+    left: -5,
   },
   {
     src: "/drag/img2.png",
-    scale: 2,
-    width: 8, // Corresponds to `width: 8vw`
-    height: 22, // Corresponds to `height: 22vh`
+    scaleFrom: 0.7,
+    scaleTo: 2,
+    width: 12, // Corresponds to `width: 8vw`
+    height: 20, // Corresponds to `height: 22vh`
     top: -33, // Corresponds to `top: 33vh`
     left: -33, // Corresponds to `left: 33vw`
   },
   {
     src: "/drag/img3.png",
-    scale: 3,
+    scaleFrom: 0.7,
+    scaleTo: 3,
     width: 10,
     height: 20,
     top: 33,
@@ -35,7 +38,8 @@ export const animationValues = [
   },
   {
     src: "/drag/img4.png",
-    scale: 3,
+    scaleFrom: 0.7,
+    scaleTo: 3,
     width: 12,
     height: 20,
     top: 5,
@@ -43,7 +47,8 @@ export const animationValues = [
   },
   {
     src: "/drag/img5.png",
-    scale: 4,
+    scaleFrom: 0.7,
+    scaleTo: 4,
     width: 12,
     height: 20,
     top: 4,
@@ -51,7 +56,8 @@ export const animationValues = [
   },
   {
     src: "/drag/img6.png",
-    scale: 2,
+    scaleFrom: 0.7,
+    scaleTo: 2,
     width: 12,
     height: 20,
     top: 22,
@@ -59,7 +65,8 @@ export const animationValues = [
   },
   {
     src: "/drag/img7.png",
-    scale: 4,
+    scaleFrom: 0.7,
+    scaleTo: 4,
     width: 12,
     height: 20,
     top: 30,
@@ -67,7 +74,7 @@ export const animationValues = [
   },
   // {
   //   src: "/drag/img8.png",
-  //   scale: 3,
+  //   scaleFrom: 0.7, scaleTo:  3,
   //   width: 12,
   //   height: 20,
   //   top: 33,
@@ -75,7 +82,8 @@ export const animationValues = [
   // },
   {
     src: "/img7.png",
-    scale: 2.5,
+    scaleFrom: 0.7,
+    scaleTo: 2.5,
     width: 12,
     height: 20,
     top: -20,
@@ -83,7 +91,7 @@ export const animationValues = [
   },
   // {
   //   src: "/img10.png",
-  //   scale: 3.5,
+  //   scaleFrom: 0.7, scaleTo:  3.5,
   //   width: 12,
   //   height: 20,
   //   top: 36,
@@ -91,7 +99,7 @@ export const animationValues = [
   // },
   // {
   //   src: "/img11.png",
-  //   scale: 2,
+  //   scaleFrom: 0.7, scaleTo:  2,
   //   width: 12,
   //   height: 20,
   //   top: 11,
@@ -99,7 +107,7 @@ export const animationValues = [
   // },
   // {
   //   src: "/img5.png",
-  //   scale: 3,
+  //   scaleFrom: 0.7, scaleTo:  3,
   //   width: 12,
   //   height: 20,
   //   top: 26,
