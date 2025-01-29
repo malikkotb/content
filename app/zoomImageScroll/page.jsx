@@ -42,7 +42,7 @@ export default function Page() {
         scrollTrigger: {
           trigger: containerRef.current,
           // start: "top top", // Start when container top aligns with viewport top
-          start: `top+=${index < 4 ? 0 : 800}vh top`, // First images start at top, others start after 200vh
+          start: `top+=${index < 4 ? 0 : 400}vh top`, // First images start at top, others start after 200vh
           end: "bottom bottom", // End when container bottom aligns with viewport bottom
           scrub: true, // Smoothly tie animation to scroll position
         },
@@ -66,6 +66,7 @@ export default function Page() {
                 key={index}
                 ref={addToImageRefs}
                 style={{
+                  zIndex: 10 * `${-(index + 1)}`,
                   scale: `${src.scaleFrom}`,
                   visibility: index >= 4 ? "hidden" : "", // Set visibility inline
                 }}
