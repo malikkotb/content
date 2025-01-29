@@ -33,7 +33,7 @@ export default function Page() {
   useGSAP(() => {
     // GSAP ScrollTrigger for scaling effect
     imageRefs.current.forEach((image, index) => {
-      console.log("index: ", index, values[index].scaleTo);
+      //   console.log("index: ", index, values[index].scaleTo);
       // if (index >= 4) gsap.set(image, { visibility: "hidden" });
 
       gsap.to(image, {
@@ -44,8 +44,7 @@ export default function Page() {
           //   trigger: containerRef.current,
           start: "top top", // Start when container top aligns with viewport top
           //   start: `top+=${index < 4 ? 0 : 400}vh top`, // First images start at top, others start after 200vh
-          //   end: "bottom bottom", // End when container bottom aligns with viewport bottom
-          end: "bottom+=100vh",
+          end: "bottom bottom", // End when container bottom aligns with viewport bottom
           scrub: true, // Smoothly tie animation to scroll position
           markers: true,
         },
@@ -55,111 +54,57 @@ export default function Page() {
 
   return (
     <>
-      <div className='borderr h-[300vh]'>
-        {/* {values.map((src, index) => {
-          return (
-            <div
-              key={index}
-              ref={addToImageRefs}
-              style={{
-                zIndex: 10 * `${-(index + 1)}`,
-                scale: `${src.scaleFrom}`,
-                visibility: index >= 4 ? "hidden" : "", // Set visibility inline
-              }}
-              className='absolute top-0 w-full h-full flex items-center justify-center'
-            >
-              <div
-                style={{
-                  // visibility: "hidden",
-                  width: `${src.width}vw`,
-                  height: `${src.height}vh`,
-                  top: `${src.top}vh`,
-                  left: `${src.left}vw`,
-                }}
-                className='relative'
-              >
-                <div className='h-full w-full absolute -top-6'>{src.src}</div>
-                <Image src={src} fill alt='image' className='object-cover' />
-              </div>
-            </div>
-          );
-        })} */}
-        <div className='mt-[75vh] w-full flex flex-col'>
-          {/* we want to emulate this, by having each image be in their own full-screen div and then positioning them accordingly
-            such thata it seems they have a gap of 4 */}
+      <div className='h-[300vh] overflow-hidden'>
+        {values.map((element, index) => (
           <div
+            key={index}
             ref={addToImageRefs}
-            className='absolute top-0 w-full h-full flex items-center justify-center '
+            className='absolute top-0 w-full h-full flex items-center justify-center'
           >
             <div
-              className='bg-green-500 relative h-44 w-52 left-[20vw]'
+              style={{
+                // width: `${src.width}vw`,
+                // height: `${src.height}vh`,
+                // top: `${element.top}vh`,
+                left: `${element.left}vw`,
+              }}
+              className='bg-green-500 relative h-44 w-52'
               // TODO: explain that the most important values here are relative (so relative to the parent container which is an absolute container)
               // and then the top and left values for positioning
             ></div>
           </div>
-          <div
-            ref={addToImageRefs}
-            className='absolute top-0 w-full h-full flex items-center justify-center '
-          >
-            <div className='bg-red-500 relative top-5 h-44 w-52'></div>
-          </div>
-          <div
-            ref={addToImageRefs}
-            className='absolute top-0 w-full h-full flex items-center justify-center '
-          >
-            <div className='bg-orange-500 relative h-44 w-52'></div>
-          </div>
-          <div
-            ref={addToImageRefs}
-            className='absolute top-0 w-full h-full flex items-center justify-center '
-          >
-            <div className='bg-yellow-500 relative h-44 w-52'></div>
-          </div>
-          <div
-            ref={addToImageRefs}
-            className='absolute top-0 w-full h-full flex items-center justify-center '
-          >
-            <div className='bg-purple-500 relative top-7 left-40 h-44 w-52'></div>
-          </div>
+        ))}
+        {/* <div
+          ref={addToImageRefs}
+          className='absolute borderr top-0 w-full h-full flex items-center justify-center '
+        >
+          <div className='bg-green-500 relative h-44 w-52 -left-[40vw]'></div>
+        </div> */}
+        {/* <div
+          ref={addToImageRefs}
+          className='absolute top-0 w-full h-full flex items-center justify-center'
+        >
+          <div className='bg-red-500 relative h-44 w-52 -left-[20vw]'></div>
         </div>
+        <div
+          ref={addToImageRefs}
+          className='absolute top-0 w-full h-full flex items-center justify-center'
+        >
+          <div className='bg-orange-500 relative h-44 w-52'></div>
+        </div>
+        <div
+          ref={addToImageRefs}
+          className='absolute top-0 w-full h-full flex items-center justify-center'
+        >
+          <div className='bg-yellow-500 relative left-[20vw] h-44 w-52'></div>
+        </div>
+        <div
+          ref={addToImageRefs}
+          className='absolute top-0 w-full h-full flex items-center justify-center '
+        >
+          <div className='bg-purple-500 relative left-[40vw] h-44 w-52'></div>
+        </div> */}
       </div>
-
-      {/* <div className='relative h-[700vh]'>
-        <div className='h-screen sticky overflow-hidden top-0'>
-          {values.map((src, index) => {
-            return (
-              <div
-                key={index}
-                ref={addToImageRefs}
-                style={{
-                  zIndex: 10 * `${-(index + 1)}`,
-                  scale: `${src.scaleFrom}`,
-                  visibility: index >= 4 ? "hidden" : "", // Set visibility inline
-                }}
-                className='absolute top-0 w-full h-full flex items-center justify-center'
-                // TODO: I think it should be used like this
-                // to zoom in the correct aspect ratio and not just scale the image
-                // => so the original layout is kept as well,
-                // because if we zoom the images the layout isnt kept
-              >
-                <div
-                  style={{
-                    // visibility: "hidden",
-                    width: `${src.width}vw`,
-                    height: `${src.height}vh`,
-                    top: `${src.top}vh`,
-                    left: `${src.left}vw`,
-                  }}
-                  className='relative'
-                >
-                  <div className='h-full w-full absolute -top-6'>{src.src}</div>
-                  <Image src={src} fill alt='image' className='object-cover' />
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div> */}
     </>
   );
 }
