@@ -28,11 +28,13 @@ export default function Page() {
     requestAnimationFrame(raf);
   }, []);
 
+  // TODO: Title: Zoom Parallax Scroll Animation
+
   useGSAP(() => {
     // GSAP ScrollTrigger for scaling effect
     imageRefs.current.forEach((image, index) => {
       gsap.to(image, {
-        scale: 0.7, // Final scale value (2x or 4x zoom)
+        scale: 4, // Final scale value (2x or 4x zoom)
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top", // Start when container top aligns with viewport top
@@ -45,6 +47,9 @@ export default function Page() {
 
   // TODO: in tutorial explain and show that I used: https://cssgridgenerator.io/ to generate a layout and then used chatgpt
   // to convert that into the values array that I am looping over.
+  // or just say take some time to place the images in a way that is fitting
+  // -> you want the images to not be centered, in the screen, so they actually
+  // dissappear on scroll
 
   return (
     <>
@@ -58,7 +63,7 @@ export default function Page() {
                 style={{
                   scale: `${src.scaleFrom}`,
                 }}
-                className='absolute borderr top-0 w-full h-full flex items-center justify-center'
+                className='absolute top-0 w-full h-full flex items-center justify-center'
                 // TODO: I think it should be used like this
                 // to zoom in the correct aspect ratio and not just scale the image
               >
