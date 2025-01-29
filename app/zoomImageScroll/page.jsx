@@ -33,11 +33,16 @@ export default function Page() {
   useGSAP(() => {
     // GSAP ScrollTrigger for scaling effect
     imageRefs.current.forEach((image, index) => {
+      console.log("index: ", index, animationValues[index].scaleTo);
+      if (index >= 4) gsap.set(image, { visibility: "hidden" });
+
       gsap.to(image, {
-        scale: 4, // Final scale value (2x or 4x zoom)
+        scale: animationValues[index].scaleTo, // Final scale value (2x or 4x zoom)
+        visibility: "visible",
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top top", // Start when container top aligns with viewport top
+          // start: "top top", // Start when container top aligns with viewport top
+          start: `top+=${index < 4 ? 0 : 800}vh top`, // First images start at top, others start after 200vh
           end: "bottom bottom", // End when container bottom aligns with viewport bottom
           scrub: true, // Smoothly tie animation to scroll position
         },
@@ -53,7 +58,7 @@ export default function Page() {
 
   return (
     <>
-      <div className='relative h-[500vh]'>
+      <div className='relative h-[700vh]'>
         <div className='h-screen sticky overflow-hidden top-0'>
           {animationValues.map((src, index) => {
             return (
@@ -66,9 +71,12 @@ export default function Page() {
                 className='absolute top-0 w-full h-full flex items-center justify-center'
                 // TODO: I think it should be used like this
                 // to zoom in the correct aspect ratio and not just scale the image
+                // => so the original layout is kept as well,
+                // because if we zoom the images the layout isnt kept
               >
                 <div
                   style={{
+                    // visibility: "hidden",
                     width: `${src.width}vw`,
                     height: `${src.height}vh`,
                     top: `${src.top}vh`,
@@ -76,6 +84,7 @@ export default function Page() {
                   }}
                   className='relative'
                 >
+                  <div className='h-full w-full absolute -top-6'>{src.src}</div>
                   <Image src={src} fill alt='image' className='object-cover' />
                 </div>
               </div>
