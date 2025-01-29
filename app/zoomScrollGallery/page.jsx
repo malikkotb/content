@@ -41,10 +41,10 @@ export default function Page() {
         scale: 8,
         visibility: "visible",
         scrollTrigger: {
-        //   trigger: containerRef.current,
+          //   trigger: containerRef.current,
           start: "top top", // Start when container top aligns with viewport top
-        //   start: `top+=${index < 4 ? 0 : 400}vh top`, // First images start at top, others start after 200vh
-        //   end: "bottom bottom", // End when container bottom aligns with viewport bottom
+          //   start: `top+=${index < 4 ? 0 : 400}vh top`, // First images start at top, others start after 200vh
+          //   end: "bottom bottom", // End when container bottom aligns with viewport bottom
           end: "bottom+=100vh",
           scrub: true, // Smoothly tie animation to scroll position
           markers: true,
@@ -55,18 +55,72 @@ export default function Page() {
 
   return (
     <>
-      <div className="borderr h-[300vh] bg-red-100">
-        <div className="borderr mt-[75vh] w-full flex flex-col">
-            {/* we want to emulate this, by having each image be in their own full-screen div and then positioning them accordingly
-            such thata it seems they have a gap of 4 */}
-            
-            <div className="flex gap-4">
-                <div ref={addToImageRefs} className="bg-green-500 h-44 w-52"></div>
-                <div ref={addToImageRefs} className="bg-red-500 h-44 w-52"></div>
-                <div ref={addToImageRefs} className="bg-purple-500 h-44 w-52"></div>
-                <div ref={addToImageRefs} className="bg-orange-500 h-44 w-52"></div>
-                <div ref={addToImageRefs} className="bg-yellow-500 h-44 w-52"></div>
+      <div className='borderr h-[300vh]'>
+        {/* {values.map((src, index) => {
+          return (
+            <div
+              key={index}
+              ref={addToImageRefs}
+              style={{
+                zIndex: 10 * `${-(index + 1)}`,
+                scale: `${src.scaleFrom}`,
+                visibility: index >= 4 ? "hidden" : "", // Set visibility inline
+              }}
+              className='absolute top-0 w-full h-full flex items-center justify-center'
+            >
+              <div
+                style={{
+                  // visibility: "hidden",
+                  width: `${src.width}vw`,
+                  height: `${src.height}vh`,
+                  top: `${src.top}vh`,
+                  left: `${src.left}vw`,
+                }}
+                className='relative'
+              >
+                <div className='h-full w-full absolute -top-6'>{src.src}</div>
+                <Image src={src} fill alt='image' className='object-cover' />
+              </div>
             </div>
+          );
+        })} */}
+        <div className='mt-[75vh] w-full flex flex-col'>
+          {/* we want to emulate this, by having each image be in their own full-screen div and then positioning them accordingly
+            such thata it seems they have a gap of 4 */}
+          <div
+            ref={addToImageRefs}
+            className='absolute top-0 w-full h-full flex items-center justify-center '
+          >
+            <div
+              className='bg-green-500 relative h-44 w-52 left-[20vw]'
+              // TODO: explain that the most important values here are relative (so relative to the parent container which is an absolute container)
+              // and then the top and left values for positioning
+            ></div>
+          </div>
+          <div
+            ref={addToImageRefs}
+            className='absolute top-0 w-full h-full flex items-center justify-center '
+          >
+            <div className='bg-red-500 relative top-5 h-44 w-52'></div>
+          </div>
+          <div
+            ref={addToImageRefs}
+            className='absolute top-0 w-full h-full flex items-center justify-center '
+          >
+            <div className='bg-orange-500 relative h-44 w-52'></div>
+          </div>
+          <div
+            ref={addToImageRefs}
+            className='absolute top-0 w-full h-full flex items-center justify-center '
+          >
+            <div className='bg-yellow-500 relative h-44 w-52'></div>
+          </div>
+          <div
+            ref={addToImageRefs}
+            className='absolute top-0 w-full h-full flex items-center justify-center '
+          >
+            <div className='bg-purple-500 relative top-7 left-40 h-44 w-52'></div>
+          </div>
         </div>
       </div>
 
