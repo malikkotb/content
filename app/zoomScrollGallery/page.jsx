@@ -4,6 +4,7 @@ import { useRef, useEffect } from "react";
 import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { values } from "./values.js";
 import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -32,7 +33,7 @@ export default function Page() {
   useGSAP(() => {
     // GSAP ScrollTrigger for scaling effect
     imageRefs.current.forEach((image, index) => {
-      console.log("index: ", index, animationValues[index].scaleTo);
+      console.log("index: ", index, values[index].scaleTo);
       // if (index >= 4) gsap.set(image, { visibility: "hidden" });
 
       gsap.to(image, {
@@ -50,13 +51,23 @@ export default function Page() {
     });
   }, []);
 
-
-
   return (
     <>
-      <div className='relative h-[700vh]'>
+      <div className="borderr h-screen bg-red-100">
+        <div className="borderr mt-[75vh] w-full flex flex-col">
+            <div className="flex gap-4">
+                <div ref={addToImageRefs} className="bg-green-500 h-44 w-52"></div>
+                <div ref={addToImageRefs} className="bg-green-500 h-44 w-52"></div>
+                <div ref={addToImageRefs} className="bg-green-500 h-44 w-52"></div>
+                <div ref={addToImageRefs} className="bg-green-500 h-44 w-52"></div>
+                <div ref={addToImageRefs} className="bg-green-500 h-44 w-52"></div>
+            </div>
+        </div>
+      </div>
+
+      {/* <div className='relative h-[700vh]'>
         <div className='h-screen sticky overflow-hidden top-0'>
-          {animationValues.map((src, index) => {
+          {values.map((src, index) => {
             return (
               <div
                 key={index}
@@ -89,7 +100,7 @@ export default function Page() {
             );
           })}
         </div>
-      </div>
+      </div> */}
     </>
   );
 }
