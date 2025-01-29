@@ -38,14 +38,16 @@ export default function Page() {
 
       gsap.to(image, {
         // scale: animationValues[index].scaleTo, // Final scale value
-        scale: 4,
+        scale: 8,
         visibility: "visible",
         scrollTrigger: {
-          trigger: containerRef.current,
-          // start: "top top", // Start when container top aligns with viewport top
-          start: `top+=${index < 4 ? 0 : 400}vh top`, // First images start at top, others start after 200vh
-          end: "bottom bottom", // End when container bottom aligns with viewport bottom
+        //   trigger: containerRef.current,
+          start: "top top", // Start when container top aligns with viewport top
+        //   start: `top+=${index < 4 ? 0 : 400}vh top`, // First images start at top, others start after 200vh
+        //   end: "bottom bottom", // End when container bottom aligns with viewport bottom
+          end: "bottom+=100vh",
           scrub: true, // Smoothly tie animation to scroll position
+          markers: true,
         },
       });
     });
@@ -53,14 +55,17 @@ export default function Page() {
 
   return (
     <>
-      <div className="borderr h-screen bg-red-100">
+      <div className="borderr h-[300vh] bg-red-100">
         <div className="borderr mt-[75vh] w-full flex flex-col">
+            {/* we want to emulate this, by having each image be in their own full-screen div and then positioning them accordingly
+            such thata it seems they have a gap of 4 */}
+            
             <div className="flex gap-4">
                 <div ref={addToImageRefs} className="bg-green-500 h-44 w-52"></div>
-                <div ref={addToImageRefs} className="bg-green-500 h-44 w-52"></div>
-                <div ref={addToImageRefs} className="bg-green-500 h-44 w-52"></div>
-                <div ref={addToImageRefs} className="bg-green-500 h-44 w-52"></div>
-                <div ref={addToImageRefs} className="bg-green-500 h-44 w-52"></div>
+                <div ref={addToImageRefs} className="bg-red-500 h-44 w-52"></div>
+                <div ref={addToImageRefs} className="bg-purple-500 h-44 w-52"></div>
+                <div ref={addToImageRefs} className="bg-orange-500 h-44 w-52"></div>
+                <div ref={addToImageRefs} className="bg-yellow-500 h-44 w-52"></div>
             </div>
         </div>
       </div>

@@ -41,7 +41,7 @@ export default function Page() {
         scale: 4,
         visibility: "visible",
         scrollTrigger: {
-          trigger: containerRef.current,
+          // trigger: containerRef.current,
           // start: "top top", // Start when container top aligns with viewport top
           start: `top+=${index < 4 ? 0 : 400}vh top`, // First images start at top, others start after 200vh
           end: "bottom bottom", // End when container bottom aligns with viewport bottom
