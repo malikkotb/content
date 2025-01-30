@@ -37,15 +37,14 @@ export default function Page() {
       // if (index >= 4) gsap.set(image, { visibility: "hidden" });
 
       gsap.to(image, {
-        // scale: animationValues[index].scaleTo, // Final scale value
-        scale: 4,
+        scale: animationValues[index].scaleTo, // Final scale value
+        // scale: 4,
         visibility: "visible",
         scrollTrigger: {
-          // trigger: containerRef.current,
-          // start: "top top", // Start when container top aligns with viewport top
-          start: `top+=${index < 4 ? 0 : 400}vh top`, // First images start at top, others start after 200vh
-          end: "bottom bottom", // End when container bottom aligns with viewport bottom
-          scrub: true, // Smoothly tie animation to scroll position
+          start: () => `${index < 4 ? 0 : 300} top`, // Start at each index * 100vh
+          end: () => `+=1000`, // Always animate over 100vh of scroll
+          scrub: true,
+          markers: true,
         },
       });
     });
@@ -59,7 +58,7 @@ export default function Page() {
 
   return (
     <>
-      <div className='relative h-[700vh]'>
+      <div className='relative h-[500vh]'>
         <div className='h-screen sticky overflow-hidden top-0'>
           {animationValues.map((src, index) => {
             return (
