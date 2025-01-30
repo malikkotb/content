@@ -15,17 +15,15 @@ export default function ScrollAnimation() {
     rows.forEach((row, index) => {
       gsap.fromTo(
         row,
-        { scale: 0.8, y: 100 }, // Start smaller & slightly below
+        { scale: 1 }, // Initial spacing
         {
-          scale: 4,
-        //   y: 0, // Move into position
+          y: `-100vh`, // Move up by 200px
+          scale: 8, // Scale up
           scrollTrigger: {
             trigger: row,
-            start: `top bottom`,
-            // start: `top+=${index * 100}vh bottom`, // Staggered scaling effect
-            end: `top+=${index * 50}vh top`,
-            scrub: true, // Smooth animation linked to scroll
-            markers: true,
+            start: "top bottom", // Starts when row enters viewport from bottom
+            end: `top+=30vh top`, // Ends after scrolling 50vh
+            scrub: true,
           },
         }
       );
@@ -37,13 +35,18 @@ export default function ScrollAnimation() {
       {/* Full-height container to allow scrolling */}
       <div className='absolute top-0 h-screen w-full flex justify-center'>
         {/* Rows Container */}
-        <div className='absolute bottom-0 translate-y-full flex flex-col items-center space-y-12'>
+        <div className='absolute bottom-0 translate-y-[95%] flex flex-col items-center space-y-12'>
           {/* <div className="absolute bottom-0 flex flex-col items-center space-y-12"> */}
           {[...Array(4)].map((_, rowIndex) => (
             <div key={rowIndex} className='row flex space-x-4'>
               {[...Array(5)].map((_, colIndex) => (
-                <div key={colIndex} className='w-32 h-32 bg-blue-200 relative'>
-                    <Image src="/drag/img1.png" alt="image" className="" />
+                <div key={colIndex} className='w-32 h-24 bg-blue-200 relative'>
+                  <Image
+                    src='/drag/img3.png'
+                    alt='image'
+                    className=' object-fill'
+                    fill
+                  />
                 </div>
               ))}
             </div>
