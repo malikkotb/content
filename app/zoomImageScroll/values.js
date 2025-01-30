@@ -1,13 +1,3 @@
-// {
-//   src: "/drag/img1.png",
-//   scaleFrom: 0.7, scaleTo:  2.5,
-//   width: 25,
-//   height: 25,
-//   top: 0,
-//   left: 0,
-//   start: "0px",
-//   end: "500px",
-// },
 export const animationValues = [
   {
     src: "/img7.png",
@@ -17,6 +7,7 @@ export const animationValues = [
     height: 20,
     top: -20,
     left: 33,
+    start: 50,
   },
   {
     src: "/drag/img1.png",
@@ -26,6 +17,7 @@ export const animationValues = [
     height: 18,
     top: -25,
     left: -5,
+    start: 50,
   },
   {
     src: "/drag/img2.png",
@@ -35,6 +27,7 @@ export const animationValues = [
     height: 20, // Corresponds to `height: 22vh`
     top: -33, // Corresponds to `top: 33vh`
     left: -33, // Corresponds to `left: 33vw`
+    start: 100,
   },
   {
     src: "/drag/img3.png",
@@ -44,6 +37,7 @@ export const animationValues = [
     height: 20,
     top: 33,
     left: 12,
+    start: 100,
   },
   {
     src: "/drag/img4.png",
@@ -52,7 +46,8 @@ export const animationValues = [
     width: 12,
     height: 20,
     top: 5,
-    left: 20,
+    left: 25,
+    start: 150,
   },
   {
     src: "/drag/img5.png",
@@ -62,6 +57,7 @@ export const animationValues = [
     height: 20,
     top: 4,
     left: -28,
+    start: 150,
   },
   {
     src: "/drag/img6.png",
@@ -70,7 +66,8 @@ export const animationValues = [
     width: 12,
     height: 20,
     top: 22,
-    left: 36,
+    left: 26,
+    start: 150,
   },
   {
     src: "/drag/img7.png",
@@ -80,15 +77,18 @@ export const animationValues = [
     height: 20,
     top: 30,
     left: -25,
+    start: 250,
   },
-  // {
-  //   src: "/drag/img8.png",
-  //   scaleFrom: 0.7, scaleTo:  3,
-  //   width: 12,
-  //   height: 20,
-  //   top: 33,
-  //   left: 58,
-  // },
+  {
+    src: "/drag/img8.png",
+    scaleFrom: 0.7,
+    scaleTo: 3,
+    width: 12,
+    height: 20,
+    top: 20,
+    left: 55,
+    start: 250,
+  },
   {
     src: "/img7.png",
     scaleFrom: 0.7,
@@ -97,29 +97,36 @@ export const animationValues = [
     height: 20,
     top: -20,
     left: 33,
+    start: 300,
   },
-  // {
-  //   src: "/img10.png",
-  //   scaleFrom: 0.7, scaleTo:  3.5,
-  //   width: 12,
-  //   height: 20,
-  //   top: 36,
-  //   left: 55,
-  // },
-  // {
-  //   src: "/img11.png",
-  //   scaleFrom: 0.7, scaleTo:  2,
-  //   width: 12,
-  //   height: 20,
-  //   top: 11,
-  //   left: 75,
-  // },
-  // {
-  //   src: "/img5.png",
-  //   scaleFrom: 0.7, scaleTo:  3,
-  //   width: 12,
-  //   height: 20,
-  //   top: 26,
-  //   left: -12,
-  // },
+  {
+    src: "/img10.png",
+    scaleFrom: 0.7,
+    scaleTo: 3.5,
+    width: 12,
+    height: 20,
+    top: 36,
+    left: 55,
+    start: 350,
+  },
+  {
+    src: "/img11.png",
+    scaleFrom: 0.7,
+    scaleTo: 2,
+    width: 12,
+    height: 20,
+    top: -11,
+    left: 55,
+    start: 400,
+  },
+  {
+    src: "/img5.png",
+    scaleFrom: 0.7,
+    scaleTo: 4,
+    width: 12,
+    height: 20,
+    top: 26,
+    left: -12,
+    start: 400,
+  },
 ];

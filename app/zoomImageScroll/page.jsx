@@ -33,12 +33,12 @@ export default function Page() {
       // if (index >= 4) gsap.set(image, { visibility: "hidden" });
 
       gsap.to(image, {
-        scale: animationValues[index].scaleTo, // Final scale value
-        // scale: 4,
+        // scale: animationValues[index].scaleTo, // Final scale value
+        scale: 5,
         visibility: "visible",
         scrollTrigger: {
-          start: `${index < 4 ? 0 : 100} top`, // Start at each index * 100vh
-          end: `1000`, // Always animate over 100vh of scroll
+          start: `${animationValues[index].start} top`, // Start at each index * 100vh
+          end: `+=2000`, // end after 1000px of scrolling
           scrub: true,
           markers: true,
         },
@@ -64,7 +64,8 @@ export default function Page() {
                 style={{
                   zIndex: 10 * `${-(index + 1)}`,
                   scale: `${src.scaleFrom}`,
-                  visibility: index >= 4 ? "hidden" : "", // Set visibility inline
+                  // comment the following line out, to see full layout
+                  // visibility: index >= 4 ? "hidden" : "", // Set visibility inline
                 }}
                 className='absolute top-0 w-full h-full flex items-center justify-center'
                 // TODO: I think it should be used like this
