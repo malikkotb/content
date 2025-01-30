@@ -10,7 +10,6 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Page() {
-  const containerRef = useRef(null);
   const imageRefs = useRef([]);
   const addToRefs = (refArray) => (el) => {
     if (el && !refArray.current.includes(el)) {
@@ -18,7 +17,6 @@ export default function Page() {
     }
   };
   const addToImageRefs = addToRefs(imageRefs);
-
   useEffect(() => {
     const lenis = new Lenis();
     function raf(time) {
@@ -27,8 +25,6 @@ export default function Page() {
     }
     requestAnimationFrame(raf);
   }, []);
-
-  // TODO: Title: https://www.ingamana.com/ rebuild
 
   useGSAP(() => {
     // GSAP ScrollTrigger for scaling effect
@@ -41,8 +37,8 @@ export default function Page() {
         // scale: 4,
         visibility: "visible",
         scrollTrigger: {
-          start: () => `${index < 4 ? 0 : 300} top`, // Start at each index * 100vh
-          end: () => `+=1000`, // Always animate over 100vh of scroll
+          start: `${index < 4 ? 0 : 100} top`, // Start at each index * 100vh
+          end: `1000`, // Always animate over 100vh of scroll
           scrub: true,
           markers: true,
         },
@@ -78,7 +74,6 @@ export default function Page() {
               >
                 <div
                   style={{
-                    // visibility: "hidden",
                     width: `${src.width}vw`,
                     height: `${src.height}vh`,
                     top: `${src.top}vh`,
