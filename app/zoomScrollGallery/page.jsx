@@ -15,14 +15,14 @@ export default function ScrollAnimation() {
     rows.forEach((row, index) => {
       gsap.fromTo(
         row,
-        { scale: 1 }, // Initial spacing
+        { scale: 1 }, // Start at normal size
         {
-          y: `-100vh`, // Move up by 200px
-          scale: 8, // Scale up
+          scale: 9, 
+          transformOrigin: "center center", // Keeps each row centered
           scrollTrigger: {
             trigger: row,
-            start: "top bottom", // Starts when row enters viewport from bottom
-            end: `top+=30vh top`, // Ends after scrolling 50vh
+            start: "top bottom",
+            end: `top+=50vh top`,
             scrub: true,
           },
         }
@@ -33,10 +33,9 @@ export default function ScrollAnimation() {
   return (
     <div ref={containerRef} className='relative min-h-[500vh]'>
       {/* Full-height container to allow scrolling */}
-      <div className='absolute top-0 h-screen w-full flex justify-center'>
+      <div className='top-0 absolute h-screen w-full flex justify-center'>
         {/* Rows Container */}
-        <div className='absolute bottom-0 translate-y-[95%] flex flex-col items-center space-y-12'>
-          {/* <div className="absolute bottom-0 flex flex-col items-center space-y-12"> */}
+        <div className='absolute bottom-0 translate-y-[95%] flex flex-col items-center space-y-8'>
           {[...Array(4)].map((_, rowIndex) => (
             <div key={rowIndex} className='row flex space-x-4'>
               {[...Array(5)].map((_, colIndex) => (
