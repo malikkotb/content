@@ -34,11 +34,14 @@ export default function Page() {
 
       gsap.to(image, {
         // scale: animationValues[index].scaleTo, // Final scale value
-        scale: 5,
+        scale: 5.5,
+        y: animationValues[index].top < 0 ? -1000 : 1000,
         visibility: "visible",
         scrollTrigger: {
           start: `${animationValues[index].start} top`, // Start at each index * 100vh
-          end: `+=2000`, // end after 1000px of scrolling
+          // TODO: fix this, as its still the same for all which makes it look
+          // unnatural
+          end: `3000 + ${100 * index}`, // end after 1000px of scrolling
           scrub: true,
           markers: true,
         },
@@ -83,7 +86,12 @@ export default function Page() {
                   className='relative'
                 >
                   <div className='h-full w-full absolute -top-6'>{src.src}</div>
-                  <Image src={src} fill alt='image' className='object-cover' />
+                  <Image
+                    src={src}
+                    fill
+                    alt='image'
+                    className='object-contain'
+                  />
                 </div>
               </div>
             );

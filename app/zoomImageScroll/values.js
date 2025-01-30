@@ -5,8 +5,8 @@ export const animationValues = [
     scaleTo: 5,
     width: 12,
     height: 20,
-    top: -20,
-    left: 33,
+    top: -15,
+    left: 15,
     start: 50,
   },
   {
@@ -25,8 +25,8 @@ export const animationValues = [
     scaleTo: 2,
     width: 12, // Corresponds to `width: 8vw`
     height: 20, // Corresponds to `height: 22vh`
-    top: -33, // Corresponds to `top: 33vh`
-    left: -33, // Corresponds to `left: 33vw`
+    top: -20, // Corresponds to `top: 33vh`
+    left: -20, // Corresponds to `left: 33vw`
     start: 100,
   },
   {
@@ -45,7 +45,7 @@ export const animationValues = [
     scaleTo: 3,
     width: 12,
     height: 20,
-    top: 5,
+    top: 0,
     left: 25,
     start: 150,
   },
@@ -67,7 +67,7 @@ export const animationValues = [
     height: 20,
     top: 22,
     left: 26,
-    start: 150,
+    start: 200,
   },
   {
     src: "/drag/img7.png",
@@ -85,9 +85,9 @@ export const animationValues = [
     scaleTo: 3,
     width: 12,
     height: 20,
-    top: 20,
-    left: 55,
-    start: 250,
+    top: 5,
+    left: -15,
+    start: 275,
   },
   {
     src: "/img7.png",
@@ -95,18 +95,18 @@ export const animationValues = [
     scaleTo: 5,
     width: 12,
     height: 20,
-    top: -20,
-    left: 33,
+    top: -15,
+    left: 15,
     start: 300,
   },
   {
     src: "/img10.png",
     scaleFrom: 0.7,
     scaleTo: 3.5,
-    width: 12,
+    width: 10,
     height: 20,
-    top: 36,
-    left: 55,
+    top: 5,
+    left: 15,
     start: 350,
   },
   {
@@ -115,9 +115,9 @@ export const animationValues = [
     scaleTo: 2,
     width: 12,
     height: 20,
-    top: -11,
-    left: 55,
-    start: 400,
+    top: -25,
+    left: -5,
+    start: 370,
   },
   {
     src: "/img5.png",
