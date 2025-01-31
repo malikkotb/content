@@ -50,18 +50,35 @@ export default function Page() {
 
   return (
     <>
-      <div className='h-screen w-full p-5 bg-[rgb(190,191,186)] relative'>
-        <div className='bg-[rgb(190,191,186)] absolute top-0 left-0 pl-5 pt-5'>
-          <h1 className='text-5xl font-bold'>06</h1>
+      <div
+        className={`h-screen w-full ${neueRegrade.className} p-5 bg-[rgb(190,191,186)] relative`}
+      >
+        <div className='bg-[rgb(190,191,186)] absolute top-0 left-0 ml-6 pt-9'>
+          <h1 className='text-[100px] leading-[70px] font-bold'>5.6</h1>
+        </div>
+        <div className='bg-[rgb(190,191,186)] absolute top-0 left-1/2 -translate-x-1/2'>
+          <h1 className='text-[25px] leading-none font-bold mt-7 p-1'>TO</h1>
+        </div>
+        <div className='bg-[rgb(190,191,186)] absolute top-0 right-0 mr-5 pt-9'>
+          <h1 className='text-[100px] leading-[70px] font-bold'>29.6</h1>
         </div>
         <div className='h-full w-full flex flex-wrap space-x-1 space-y-1 p-1 overflow-hidden'>
-          {Array.from({ length: 5000 }).map((_, index) => (
+          {Array.from({ length: 6000 }).map((_, index) => (
             <div
               key={index}
               //   ref={addToImageRefs}
               className='w-[3px] h-[3px] items-center bg-black rounded-full'
             ></div>
           ))}
+        </div>
+        <div className='bg-[rgb(190,191,186)] absolute bottom-0 left-0 ml-6 pb-9'>
+          <h1 className='text-[100px] leading-[70px] font-bold'>5.6</h1>
+        </div>
+        <div className='bg-[rgb(190,191,186)] absolute bottom-0 pb-9 left-1/2 -translate-x-1/2'>
+          <h1 className='text-[25px] leading-[30px] font-bold'>TO</h1>
+        </div>
+        <div className='bg-[rgb(190,191,186)] absolute bottom-0 right-0 mr-5 pb-9'>
+          <h1 className='text-[100px] leading-[70px] font-bold'>29.6</h1>
         </div>
       </div>
     </>
