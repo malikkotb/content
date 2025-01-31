@@ -12,8 +12,9 @@ export function DotsCanvas({ mouseX, mouseY }) {
     canvas.height = window.innerHeight;
 
     const dotSize = 3; // Diameter of dots
-    const spacing = 10; // Space between dots
-    const blurRadius = 40; // Radius around the mouse where dots blur
+    const spacing = 15; // Space between dots
+    const blurRadius = 50; // Radius around the mouse where dots blur/move
+    const attractionStrength = 50; // How much dots move toward the mouse
 
     const offset = spacing / 2;
     const cols = Math.floor((canvas.width - offset) / spacing);
@@ -23,15 +24,25 @@ export function DotsCanvas({ mouseX, mouseY }) {
 
     for (let y = 0; y <= rows; y++) {
       for (let x = 0; x <= cols; x++) {
-        const posX = x * spacing + offset;
-        const posY = y * spacing + offset;
+        let posX = x * spacing + offset;
+        let posY = y * spacing + offset;
 
         // Calculate distance from mouse
-        const distance = Math.hypot(mouseX - posX, mouseY - posY);
+        const dx = mouseX - posX;
+        const dy = mouseY - posY;
+        const distance = Math.hypot(dx, dy);
 
-        // Apply blur if within blur radius
-        ctx.filter = distance < blurRadius ? "blur(3px)" : "none";
+        // If within attraction radius, move slightly toward the mouse
+        if (distance < blurRadius) {
+          const force = (blurRadius - distance) / blurRadius; // Strength of attraction (0 to 1)
+          posX += dx * force * (attractionStrength / 100);
+          posY += dy * force * (attractionStrength / 100);
+        //   ctx.filter = "blur(3px)"; // Blur only affected dots
+        } else {
+          ctx.filter = "none";
+        }
 
+        // Draw the dot
         ctx.fillStyle = "#3C3D37";
         ctx.beginPath();
         ctx.arc(posX, posY, dotSize / 2, 0, Math.PI * 2);
@@ -42,56 +53,5 @@ export function DotsCanvas({ mouseX, mouseY }) {
     ctx.filter = "none"; // Reset filter after drawing
   }, [mouseX, mouseY]); // Re-run when mouse moves
 
-  return (
-    <canvas
-      ref={canvasRef}
-      className='w-full h-full'
-    ></canvas>
-  );
+  return <canvas ref={canvasRef} className='w-full h-full'></canvas>;
 }
-
-// import { useEffect, useRef } from "react";
-
-// export function DotsCanvas() {
-//   const canvasRef = useRef(null);
-
-//   useEffect(() => {
-//     const canvas = canvasRef.current;
-//     const ctx = canvas.getContext("2d");
-
-//     // Set canvas size
-//     canvas.width = window.innerWidth;
-//     canvas.height = window.innerHeight;
-
-//     const dotSize = 3; // Diameter of dots
-//     const spacing = 10; // Space between dots
-//     const blurProbability = 0.1; // 10% of dots will be blurred
-
-//     // Start at half-spacing to avoid cut-off on edges
-//     const offset = spacing / 2;
-
-//     // Calculate grid limits, ensuring the last dot doesn’t get clipped
-//     const cols = Math.floor((canvas.width - offset) / spacing);
-//     const rows = Math.floor((canvas.height - offset) / spacing);
-
-//     for (let y = 0; y <= rows; y++) {
-//       for (let x = 0; x <= cols; x++) {
-//         const posX = x * spacing + offset;
-//         const posY = y * spacing + offset;
-
-//         // Apply blur randomly
-//         ctx.filter = Math.random() < blurProbability ? "blur(3px)" : "none";
-
-//         ctx.fillStyle = "#3C3D37";
-//         ctx.beginPath();
-//         ctx.arc(posX, posY, dotSize / 2, 0, Math.PI * 2);
-//         ctx.fill();
-//       }
-//     }
-
-//     // Reset filter after drawing
-//     ctx.filter = "none";
-//   }, []);
-
-//   return <canvas ref={canvasRef} className='w-full h-full'></canvas>;
-// }
