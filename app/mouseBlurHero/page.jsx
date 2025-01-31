@@ -1,6 +1,6 @@
 "use client";
-import Image from "next/image";
 import { useRef, useEffect, useState } from "react";
+import { DotsCanvas } from "./DotsCanvas"
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -62,7 +62,7 @@ export default function Page() {
         <div className='bg-[rgb(190,191,186)] absolute top-0 right-0 mr-5 pt-9'>
           <h1 className='text-[100px] leading-[70px] font-bold'>29.6</h1>
         </div>
-        <div className='h-full w-full flex flex-wrap space-x-1 space-y-1 p-1 overflow-hidden'>
+        {/* <div className='h-full w-full flex flex-wrap space-x-1 space-y-1 p-1 overflow-hidden'>
           {Array.from({ length: 6000 }).map((_, index) => (
             <div
               key={index}
@@ -70,7 +70,8 @@ export default function Page() {
               className='w-[3px] h-[3px] items-center bg-black rounded-full'
             ></div>
           ))}
-        </div>
+        </div> */}
+        <DotsCanvas />
         <div className='bg-[rgb(190,191,186)] absolute bottom-0 left-0 ml-6 pb-9'>
           <h1 className='text-[100px] leading-[70px] font-bold'>5.6</h1>
         </div>
