@@ -1,6 +1,6 @@
 "use client";
 import { useRef, useEffect, useState } from "react";
-import { DotsCanvas } from "./DotsCanvas"
+import { DotsCanvas } from "./DotsCanvas";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -51,13 +51,13 @@ export default function Page() {
   return (
     <>
       <div
-        className={`h-screen w-full ${neueRegrade.className} p-5 bg-[rgb(190,191,186)] relative`}
+        className={`text-[#3C3D37] h-screen w-full ${neueRegrade.className} p-5 bg-[rgb(190,191,186)] relative`}
       >
         <div className='bg-[rgb(190,191,186)] absolute top-0 left-0 ml-6 pt-9'>
           <h1 className='text-[100px] leading-[70px] font-bold'>5.6</h1>
         </div>
-        <div className='bg-[rgb(190,191,186)] absolute top-0 left-1/2 -translate-x-1/2'>
-          <h1 className='text-[25px] leading-none font-bold mt-7 p-1'>TO</h1>
+        <div className='bg-[rgb(190,191,186)] absolute top-0 pt-6 px-2 left-1/2 -translate-x-1/2'>
+          <h1 className='text-[25px] leading-none font-bold'>TO</h1>
         </div>
         <div className='bg-[rgb(190,191,186)] absolute top-0 right-0 mr-5 pt-9'>
           <h1 className='text-[100px] leading-[70px] font-bold'>29.6</h1>
@@ -72,13 +72,13 @@ export default function Page() {
           ))}
         </div> */}
         <DotsCanvas />
-        <div className='bg-[rgb(190,191,186)] absolute bottom-0 left-0 ml-6 pb-9'>
+        <div className='bg-[rgb(190,191,186)] absolute bottom-0 left-0 ml-5 pb-5 pt-3'>
           <h1 className='text-[100px] leading-[70px] font-bold'>5.6</h1>
         </div>
-        <div className='bg-[rgb(190,191,186)] absolute bottom-0 pb-9 left-1/2 -translate-x-1/2'>
+        <div className='bg-[rgb(190,191,186)] absolute bottom-0 pb-6 px-2 left-1/2 -translate-x-1/2'>
           <h1 className='text-[25px] leading-[30px] font-bold'>TO</h1>
         </div>
-        <div className='bg-[rgb(190,191,186)] absolute bottom-0 right-0 mr-5 pb-9'>
+        <div className='bg-[rgb(190,191,186)] absolute bottom-0 right-0 mr-5 pb-5 pt-3'>
           <h1 className='text-[100px] leading-[70px] font-bold'>29.6</h1>
         </div>
       </div>
