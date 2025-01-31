@@ -61,7 +61,7 @@ export default function Page() {
           <h1 className='text-[100px] leading-[70px] font-bold'>29.6</h1>
         </div>
 
-        <div className='borderr text-[60px] cursor-none text-center items-center justify-center leading-[55px] tracking-[-0.08em] absolute font-extrabold flex flex-col'>
+        <div className='text-[60px] cursor-none text-center items-center justify-center leading-[55px] tracking-[-0.08em] absolute font-extrabold flex flex-col'>
           <h1 className=''>Ana Salinas</h1>
           <h1>( Solo Exhibition )</h1>
           <h1>PrivateRoom</h1>
