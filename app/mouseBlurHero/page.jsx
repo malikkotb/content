@@ -32,53 +32,49 @@ export default function Page() {
     window.addEventListener("mousemove", updatePosition);
     return () => window.removeEventListener("mousemove", updatePosition);
   }, [position]);
-  //   const manageMouseMove = (e) => {
-  //     const { clientX, clientY } = e;
-  //     console.log(clientX, clientY);
-  //     mouse.x.set(clientX - cursorSize / 2);
-  //     mouse.y.set(clientY - cursorSize / 2);
-  //   };
+  
+  const [mousePos, setMousePos] = useState({ x: -100, y: -100 });
 
-  //   useEffect(() => {
-  //     window.addEventListener("mousemove", manageMouseMove);
-  //     return () => {
-  //       window.removeEventListener("mousemove", manageMouseMove);
-  //     };
-  //   }, []);
+  useEffect(() => {
+    const updateMousePosition = (e) => {
+      setMousePos({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener("mousemove", updateMousePosition);
+    return () => window.removeEventListener("mousemove", updateMousePosition);
+  }, []);
 
   useGSAP(() => {}, []);
 
   return (
     <>
       <div
-        className={`text-[#3C3D37] h-screen w-full ${neueRegrade.className} p-5 bg-[rgb(190,191,186)] relative`}
+        className={`text-[#3C3D37] h-screen flex justify-center items-center w-full ${neueRegrade.className} p-5 bg-[rgb(190,191,186)] relative`}
       >
-        <div className='bg-[rgb(190,191,186)] absolute top-0 left-0 ml-6 pt-9'>
-          <h1 className='text-[100px] leading-[70px] font-bold'>5.6</h1>
+        <div className='bg-[rgb(190,191,186)] absolute top-0 left-0 ml-5 pt-9'>
+          <h1 className='text-[100px] leading-[70px] font-bold'>8.6</h1>
         </div>
         <div className='bg-[rgb(190,191,186)] absolute top-0 pt-6 px-2 left-1/2 -translate-x-1/2'>
           <h1 className='text-[25px] leading-none font-bold'>TO</h1>
         </div>
-        <div className='bg-[rgb(190,191,186)] absolute top-0 right-0 mr-5 pt-9'>
+        <div className='bg-[rgb(190,191,186)] absolute top-0 right-0 mr-4 pt-9'>
           <h1 className='text-[100px] leading-[70px] font-bold'>29.6</h1>
         </div>
-        {/* <div className='h-full w-full flex flex-wrap space-x-1 space-y-1 p-1 overflow-hidden'>
-          {Array.from({ length: 6000 }).map((_, index) => (
-            <div
-              key={index}
-              //   ref={addToImageRefs}
-              className='w-[3px] h-[3px] items-center bg-black rounded-full'
-            ></div>
-          ))}
-        </div> */}
-        <DotsCanvas />
+
+        <div className='borderr text-[60px] cursor-none text-center items-center justify-center leading-[55px] tracking-[-0.08em] absolute font-extrabold flex flex-col'>
+          <h1 className=''>Ana Salinas</h1>
+          <h1>( Solo Exhibition )</h1>
+          <h1>PrivateRoom</h1>
+        </div>
+
+        <DotsCanvas mouseX={mousePos.x} mouseY={mousePos.y} />
         <div className='bg-[rgb(190,191,186)] absolute bottom-0 left-0 ml-5 pb-5 pt-3'>
-          <h1 className='text-[100px] leading-[70px] font-bold'>5.6</h1>
+          <h1 className='text-[100px] leading-[70px] font-bold'>8.6</h1>
         </div>
         <div className='bg-[rgb(190,191,186)] absolute bottom-0 pb-6 px-2 left-1/2 -translate-x-1/2'>
           <h1 className='text-[25px] leading-[30px] font-bold'>TO</h1>
         </div>
-        <div className='bg-[rgb(190,191,186)] absolute bottom-0 right-0 mr-5 pb-5 pt-3'>
+        <div className='bg-[rgb(190,191,186)] absolute bottom-0 right-0 mr-4 pb-5 pt-3'>
           <h1 className='text-[100px] leading-[70px] font-bold'>29.6</h1>
         </div>
       </div>
