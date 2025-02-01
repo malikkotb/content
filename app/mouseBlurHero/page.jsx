@@ -64,7 +64,7 @@ export default function Page() {
         <div className='text-[60px] cursor-none text-center items-center justify-center leading-[55px] tracking-[-0.08em] absolute font-extrabold flex flex-col'>
           <h1 className=''>Ana Salinas</h1>
           <h1>( Solo Exhibition )</h1>
-          <h1>PrivateRoom</h1>
+          <h1>Private Room</h1>
         </div>
 
         <DotsCanvas mouseX={mousePos.x} mouseY={mousePos.y} />
