@@ -14,7 +14,7 @@ export function DotsCanvas({ mouseX, mouseY }) {
     const dotSize = 3; // Diameter of dots
     const spacing = 15; // Space between dots
     const blurRadius = 50; // Radius around the mouse where dots blur/move
-    const attractionStrength = 50; // How much dots move toward the mouse
+    const attractionStrength = 70; // How much dots move toward the mouse
 
     const offset = spacing / 2;
     const cols = Math.floor((canvas.width - offset) / spacing);
@@ -37,7 +37,7 @@ export function DotsCanvas({ mouseX, mouseY }) {
           const force = (blurRadius - distance) / blurRadius; // Strength of attraction (0 to 1)
           posX += dx * force * (attractionStrength / 100);
           posY += dy * force * (attractionStrength / 100);
-        //   ctx.filter = "blur(3px)"; // Blur only affected dots
+          ctx.filter = "blur(1px)"; // Blur only affected dots
         } else {
           ctx.filter = "none";
         }
