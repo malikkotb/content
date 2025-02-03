@@ -2,8 +2,6 @@
 import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import localFont from "next/font/local";
-import MaskText from "../../components/MaskText";
-import styles from "./style.module.css";
 
 const neueRegrade = localFont({
   src: [
