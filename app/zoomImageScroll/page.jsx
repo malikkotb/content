@@ -26,6 +26,32 @@ export default function Page() {
     requestAnimationFrame(raf);
   }, []);
 
+  // infinty scroll
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            console.log("Element is in view:", entry.target);
+            // Load more content or perform any action here
+          }
+        });
+      },
+      { threshold: 1.0 }
+    );
+
+    const target = document.querySelector(".load-more-trigger");
+    if (target) {
+      observer.observe(target);
+    }
+
+    return () => {
+      if (target) {
+        observer.unobserve(target);
+      }
+    };
+  }, []);
+
   useGSAP(() => {
     // GSAP ScrollTrigger for scaling effect
     imageRefs.current.forEach((image, index) => {
@@ -49,8 +75,6 @@ export default function Page() {
     });
   }, []);
 
-  // TODO: in tutorial explain and show that I used: https://cssgridgenerator.io/ to generate a layout and then used chatgpt
-  // to convert that into the values array that I am looping over.
   // or just say take some time to place the images in a way that is fitting
   // -> you want the images to not be centered, in the screen, so they actually
   // dissappear on scroll

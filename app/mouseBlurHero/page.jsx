@@ -1,8 +1,6 @@
 "use client";
 import { useRef, useEffect, useState } from "react";
 import { DotsCanvas } from "./DotsCanvas";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import localFont from "next/font/local";
 
