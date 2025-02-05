@@ -11,6 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Page() {
   const headingRef = useRef(null);
+  const imageRef = useRef(null);
   const imageRefs = useRef([]);
   const addToRefs = (refArray) => (el) => {
     if (el && !refArray.current.includes(el)) {
@@ -23,9 +24,28 @@ export default function Page() {
   return (
     <div className='bg-black h-screen relative justify-center flex items-center'>
       <div
-        style={{ backgroundImage: "url('/drag/img5.png')" }}
-        className='w-full h-full bg-cover bg-center'
-      ></div>
+        className='w-full h-screen flex justify-center items-center bg-gray-100'
+        onClick={toggleImage}
+      >
+        <div
+          ref={imageRef}
+          className='bg-cover bg-center w-screen h-screen cursor-pointer transition-all'
+          style={{
+            backgroundImage: "url('/drag/img1.png')",
+            clipPath: "circle(100px at center)",
+          }}
+        ></div>
+      </div>
+
+      {/* <div className='w-full h-screen flex justify-center items-center'>
+        <div
+          className='w-[200px] h-[200px] bg-cover bg-center'
+          style={{
+            backgroundImage: "url('/drag/img1.png')",
+            clipPath: "circle(100px at center)",
+          }}
+        ></div>
+      </div> */}
 
       <div
         ref={headingRef}
