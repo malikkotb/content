@@ -27,7 +27,7 @@ export default function Page() {
         ? "circle(100px at center)"
         : "circle(100% at center)",
       duration: 1,
-    //   ease: "power2.inOut",
+      ease: "power3.out",
     });
     setIsExpanded(!isExpanded);
   };
@@ -35,30 +35,35 @@ export default function Page() {
   useGSAP(() => {}, []);
 
   return (
-    <div className='bg-black h-screen relative justify-center flex items-center'>
+    <div className='h-screen relative justify-center flex items-center'>
       <div
-        className='w-full h-screen flex justify-center items-center bg-gray-100'
+        className='w-full h-screen flex justify-center items-center bg-black'
         onClick={toggleImage}
       >
         <div
           ref={imageRef}
-          className='bg-cover bg-center w-screen h-screen cursor-pointer transition-all'
+          className='bg-cover bg-center w-full h-screen relative cursor-pointer justify-center flex'
           style={{
             backgroundImage: "url('/drag/img5.png')",
             clipPath: "circle(100px at center)",
           }}
-        ></div>
+        >
+          <div className='text-white uppercase w-[330px] flex flex-col gap-4 text-center absolute bottom-48'>
+            <p className='leading-none'>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore
+              sapiente sunt, fuga sed laudantium exercitationem quos quaerat
+              laborum Lorem ipsum dolor sit, amet consectetur adipisicing elit
+              lorem.
+            </p>
+            <p className='opacity-70 text-xs'>
+              KHOA LÊ, AUTHOER OF THE PROJECT
+            </p>
+            <div className='rounded-full px-4 py-2 w-fit normal-case bg-white text-indigo-400'>
+              Start exploring
+            </div>
+          </div>
+        </div>
       </div>
-
-      {/* <div className='w-full h-screen flex justify-center items-center'>
-        <div
-          className='w-[200px] h-[200px] bg-cover bg-center'
-          style={{
-            backgroundImage: "url('/drag/img1.png')",
-            clipPath: "circle(100px at center)",
-          }}
-        ></div>
-      </div> */}
 
       <div
         ref={headingRef}
