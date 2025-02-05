@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
@@ -9,12 +9,6 @@ export default function Page() {
   const headingRef = useRef(null);
   const imageRef = useRef(null);
   const imageRefs = useRef([]);
-  const addToRefs = (refArray) => (el) => {
-    if (el && !refArray.current.includes(el)) {
-      refArray.current.push(el);
-    }
-  };
-
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleImage = () => {
@@ -28,7 +22,26 @@ export default function Page() {
     setIsExpanded(!isExpanded);
   };
 
-  useGSAP(() => {}, []);
+  const addToRefs = (refArray) => (el) => {
+    if (el && !refArray.current.includes(el)) {
+      refArray.current.push(el);
+    }
+  };
+
+  const linesRef = useRef([]);
+  const addToLinesRefs = addToRefs(linesRef);
+
+  useGSAP(() => {
+    const tl = gsap.timeline();
+
+    tl.from(linesRef.current, {
+      opacity: 0,
+      y: 10, // Slight upward motion
+      duration: 0.8,
+      ease: "power2.out",
+      stagger: 0.3, // Adds delay between each line
+    });
+  }, []);
 
   return (
     <div className='h-screen relative justify-center flex items-center'>
@@ -52,7 +65,7 @@ export default function Page() {
                 <span className='opacity-60'>DE</span>
                 <span className='opacity-60'>FR</span>
               </div>
-              <div className='bg-white px-2 rounded-full'>
+              <div className='px-2 rounded-full bg-white text-indigo-600 hover:bg-indigo-600 hover:text-white'>
                 <svg
                   width='25'
                   height='25'
@@ -72,7 +85,7 @@ export default function Page() {
             </div>
           </header>
           <div className='text-white uppercase w-[330px] flex flex-col gap-8 text-center items-center absolute bottom-24'>
-            <p className='leading-none'>
+            <div className='leading-none'>
               {[
                 "This is line one",
                 "Here comes line two",
@@ -80,15 +93,11 @@ export default function Page() {
                 "Almost there, line four",
                 "Finally, line five",
               ].map((text, index) => (
-                <div
-                  key={index}
-                  ref={(el) => (linesRef.current[index] = el)}
-                  className='opacity-0'
-                >
+                <div key={index} ref={addToLinesRefs} className='opacity-0'>
                   {text}
                 </div>
               ))}
-            </p>
+            </div>
             <p className='opacity-70 text-xs'>
               KHOA LÊ, AUTHOER OF THE PROJECT
             </p>
@@ -112,3 +121,24 @@ export default function Page() {
     </div>
   );
 }
+
+const FuzzyOverlay = () => {
+  return (
+    <motion.div
+      initial={{ transform: "translateX(-10%) translateY(-10%)" }}
+      animate={{
+        transform: "translateX(10%) translateY(10%)",
+      }}
+      transition={{
+        repeat: Infinity,
+        duration: 0.2,
+        ease: "linear",
+        repeatType: "mirror",
+      }}
+      style={{
+        backgroundImage: 'url("/drag/noise.png")',
+      }}
+      className='pointer-events-none absolute -inset-[100%] opacity-[15%]'
+    />
+  );
+};
