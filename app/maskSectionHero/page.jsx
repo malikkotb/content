@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -19,6 +19,19 @@ export default function Page() {
     }
   };
 
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const toggleImage = () => {
+    gsap.to(imageRef.current, {
+      clipPath: isExpanded
+        ? "circle(100px at center)"
+        : "circle(100% at center)",
+      duration: 1,
+    //   ease: "power2.inOut",
+    });
+    setIsExpanded(!isExpanded);
+  };
+
   useGSAP(() => {}, []);
 
   return (
@@ -31,7 +44,7 @@ export default function Page() {
           ref={imageRef}
           className='bg-cover bg-center w-screen h-screen cursor-pointer transition-all'
           style={{
-            backgroundImage: "url('/drag/img1.png')",
+            backgroundImage: "url('/drag/img5.png')",
             clipPath: "circle(100px at center)",
           }}
         ></div>
