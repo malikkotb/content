@@ -3,8 +3,6 @@ import { useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
-gsap.registerPlugin(ScrollTrigger);
-
 // inspiration: mai sai gon
 
 export default function Page() {
@@ -46,37 +44,50 @@ export default function Page() {
             clipPath: "circle(100px at center)",
           }}
         >
-          <header className='text-white px-6 pt-6 flex w-full justify-between'>
-            <div>Ma Sai Gon</div>
-            <div className='flex font-mono text-xs justify-between items-center'>
-              <span className='underline'>EN</span>
-              <span className='underline opacity-60'>DE</span>
-              <span className='underline opacity-60'>FR</span>
-              <div>
+          <header className='text-white absolute px-6 pt-6 flex w-full justify-between'>
+            <div>Ma Sai Gon (Space)</div>
+            <div className='flex gap-6'>
+              <div className='flex font-mono gap-2 text-xs justify-between items-center'>
+                <span className='underline'>EN</span>
+                <span className='opacity-60'>DE</span>
+                <span className='opacity-60'>FR</span>
+              </div>
+              <div className='bg-white px-2 rounded-full'>
                 <svg
-                  width='20'
-                  height='20'
-                  className='borderr'
+                  width='25'
+                  height='25'
+                  className=''
                   viewBox='0 0 15 15'
                   fill='none'
                   xmlns='http://www.w3.org/2000/svg'
                 >
                   <path
                     d='M3.625 7.5C3.625 8.12132 3.12132 8.625 2.5 8.625C1.87868 8.625 1.375 8.12132 1.375 7.5C1.375 6.87868 1.87868 6.375 2.5 6.375C3.12132 6.375 3.625 6.87868 3.625 7.5ZM8.625 7.5C8.625 8.12132 8.12132 8.625 7.5 8.625C6.87868 8.625 6.375 8.12132 6.375 7.5C6.375 6.87868 6.87868 6.375 7.5 6.375C8.12132 6.375 8.625 6.87868 8.625 7.5ZM12.5 8.625C13.1213 8.625 13.625 8.12132 13.625 7.5C13.625 6.87868 13.1213 6.375 12.5 6.375C11.8787 6.375 11.375 6.87868 11.375 7.5C11.375 8.12132 11.8787 8.625 12.5 8.625Z'
-                    fill='currentColor'
-                    fill-rule='evenodd'
-                    clip-rule='evenodd'
+                    fill='#4f46e5'
+                    fillRule='evenodd'
+                    clipRule='evenodd'
                   ></path>
                 </svg>
               </div>
             </div>
           </header>
-          <div className='text-white uppercase w-[330px] flex flex-col gap-4 text-center items-center absolute bottom-40'>
+          <div className='text-white uppercase w-[330px] flex flex-col gap-8 text-center items-center absolute bottom-24'>
             <p className='leading-none'>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore
-              sapiente sunt, fuga sed laudantium exercitationem quos quaerat
-              laborum Lorem ipsum dolor sit, amet consectetur adipisicing elit
-              lorem.
+              {[
+                "This is line one",
+                "Here comes line two",
+                "Now we see line three",
+                "Almost there, line four",
+                "Finally, line five",
+              ].map((text, index) => (
+                <div
+                  key={index}
+                  ref={(el) => (linesRef.current[index] = el)}
+                  className='opacity-0'
+                >
+                  {text}
+                </div>
+              ))}
             </p>
             <p className='opacity-70 text-xs'>
               KHOA LÊ, AUTHOER OF THE PROJECT
