@@ -123,10 +123,11 @@ export default function Page() {
             </motion.p>
             {/* TODO: make make color swith on hover come in from bottom using css */}
             <motion.div
-              initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
+              initial={{ clipPath: "circle(0% at 50% 50%)" }}
+              whileInView={{ clipPath: "circle(100% at 50% 50%)" }}
               transition={{
-                duration: 0.7,
+                duration: 0.75,
+                ease: "easeInOut",
                 delay: 0.5,
               }}
               className='rounded-full px-4 py-3 w-fit normal-case transition-colors duration-500 bg-white text-indigo-600 hover:bg-indigo-600 hover:text-white'
