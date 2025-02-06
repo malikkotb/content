@@ -33,9 +33,25 @@ export default function Page() {
   const linesRef = useRef([]);
   const addToLinesRefs = addToRefs(linesRef);
 
-  useGSAP(() => {
-    
+  useEffect(() => {
+    gsap.fromTo(
+      linesRef.current,
+      { y: "-100%", opacity: 0 },
+      {
+        y: "0",
+        opacity: 1,
+        delay: 2,
+        duration: 0.75,
+        ease: [0.33, 1, 0.68, 1], // Custom ease
+        stagger: {
+          each: 0.075,
+          from: "end",
+        },
+      }
+    );
   }, []);
+
+  useGSAP(() => {}, []);
 
   return (
     <div className='h-screen relative justify-center flex items-center'>
@@ -81,7 +97,7 @@ export default function Page() {
           </header>
           <div className='text-white uppercase w-[330px] flex flex-col gap-8 text-center items-center absolute bottom-24'>
             <div className='leading-none'>
-              <MaskText
+              {/* <MaskText
                 phrases={[
                   "This is line one",
                   "Here comes line two",
@@ -89,7 +105,7 @@ export default function Page() {
                   "Almost there, line four",
                   "Finally, line five",
                 ]}
-              />
+              /> */}
               {[
                 "This is line one",
                 "Here comes line two",
