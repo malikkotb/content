@@ -49,6 +49,16 @@ export default function Page() {
         },
       }
     );
+
+    const headings = headingRef.current.querySelectorAll("h1");
+
+    gsap.from(headings, {
+      y: 100, // Move up from below
+      opacity: 0, // Fade in
+      duration: 1, // Animation duration
+      ease: "power3.out", // Smooth easing
+      stagger: 0.2, // Delay between each letter
+    });
   }, []);
 
   useGSAP(() => {}, []);
@@ -141,7 +151,7 @@ export default function Page() {
       <div
         ref={headingRef}
         style={{ zIndex: 100 }}
-        className='absolute w-full px-6 leading-none font-serif text-white text-[150px] flex justify-between'
+        className='absolute borderr overflow-hidden w-full px-6 leading-[0.85] font-serif text-white text-[150px] flex justify-between'
       >
         <h1>Mai</h1>
         <h1>Sai</h1>
