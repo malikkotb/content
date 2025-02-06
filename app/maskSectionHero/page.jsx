@@ -36,11 +36,11 @@ export default function Page() {
   useEffect(() => {
     gsap.fromTo(
       linesRef.current,
-      { y: "-100%", opacity: 0 },
+      { y: "-85%", opacity: 0 },
       {
         y: "0",
         opacity: 1,
-        delay: 2,
+        delay: 1,
         duration: 0.75,
         ease: [0.33, 1, 0.68, 1], // Custom ease
         stagger: {
@@ -76,18 +76,18 @@ export default function Page() {
                 <span className='opacity-60'>DE</span>
                 <span className='opacity-60'>FR</span>
               </div>
-              <div className='px-2 rounded-full bg-white text-indigo-600 hover:bg-indigo-600 hover:text-white'>
+              <div className='px-2 group rounded-full bg-white text-indigo-600 hover:bg-indigo-600 hover:text-white transition-colors duration-500'>
                 <svg
                   width='25'
                   height='25'
                   className=''
                   viewBox='0 0 15 15'
                   fill='none'
-                  xmlns='http://www.w3.org/2000/svg'
                 >
                   <path
-                    d='M3.625 7.5C3.625 8.12132 3.12132 8.625 2.5 8.625C1.87868 8.625 1.375 8.12132 1.375 7.5C1.375 6.87868 1.87868 6.375 2.5 6.375C3.12132 6.375 3.625 6.87868 3.625 7.5ZM8.625 7.5C8.625 8.12132 8.12132 8.625 7.5 8.625C6.87868 8.625 6.375 8.12132 6.375 7.5C6.375 6.87868 6.87868 6.375 7.5 6.375C8.12132 6.375 8.625 6.87868 8.625 7.5ZM12.5 8.625C13.1213 8.625 13.625 8.12132 13.625 7.5C13.625 6.87868 13.1213 6.375 12.5 6.375C11.8787 6.375 11.375 6.87868 11.375 7.5C11.375 8.12132 11.8787 8.625 12.5 8.625Z'
                     fill='#4f46e5'
+                    className='group-hover:fill-white'
+                    d='M3.625 7.5C3.625 8.12132 3.12132 8.625 2.5 8.625C1.87868 8.625 1.375 8.12132 1.375 7.5C1.375 6.87868 1.87868 6.375 2.5 6.375C3.12132 6.375 3.625 6.87868 3.625 7.5ZM8.625 7.5C8.625 8.12132 8.12132 8.625 7.5 8.625C6.87868 8.625 6.375 8.12132 6.375 7.5C6.375 6.87868 6.87868 6.375 7.5 6.375C8.12132 6.375 8.625 6.87868 8.625 7.5ZM12.5 8.625C13.1213 8.625 13.625 8.12132 13.625 7.5C13.625 6.87868 13.1213 6.375 12.5 6.375C11.8787 6.375 11.375 6.87868 11.375 7.5C11.375 8.12132 11.8787 8.625 12.5 8.625Z'
                     fillRule='evenodd'
                     clipRule='evenodd'
                   ></path>
@@ -95,36 +95,44 @@ export default function Page() {
               </div>
             </div>
           </header>
-          <div className='text-white uppercase w-[330px] flex flex-col gap-8 text-center items-center absolute bottom-24'>
-            <div className='leading-none'>
-              {/* <MaskText
-                phrases={[
-                  "This is line one",
-                  "Here comes line two",
-                  "Now we see line three",
-                  "Almost there, line four",
-                  "Finally, line five",
-                ]}
-              /> */}
+          <div className='text-white uppercase w-[400px] flex flex-col gap-8 text-center items-center absolute bottom-24'>
+            <div className='leading-tight'>
               {[
-                "This is line one",
-                "Here comes line two",
-                "Now we see line three",
-                "Almost there, line four",
-                "Finally, line five",
+                "Crafting experiences with precision.",
+                "Every detail matters in design.",
+                "Seamless interactions drive engagement.",
+                "Motion brings interfaces to life.",
+                "Innovation starts with bold ideas.",
               ].map((text, index) => (
-                <div key={index} ref={addToLinesRefs} className='opacity-0'>
+                <div
+                  key={index}
+                  ref={addToLinesRefs}
+                  className='opacity-0'
+                >
                   {text}
                 </div>
               ))}
             </div>
-            <p className='opacity-70 text-xs'>
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 0.7 }}
+              transition={{ delay: 0.5, duration: 0.75 }}
+              className='text-xs'
+            >
               KHOA LÊ, AUTHOER OF THE PROJECT
-            </p>
+            </motion.p>
             {/* TODO: make make color swith on hover come in from bottom using css */}
-            <div className='rounded-full px-4 py-3 w-fit normal-case transition-colors duration-300 bg-white text-indigo-600 hover:bg-indigo-600 hover:text-white'>
+            <motion.div
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              transition={{
+                duration: 0.7,
+                delay: 0.5,
+              }}
+              className='rounded-full px-4 py-3 w-fit normal-case transition-colors duration-500 bg-white text-indigo-600 hover:bg-indigo-600 hover:text-white'
+            >
               Start exploring
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
