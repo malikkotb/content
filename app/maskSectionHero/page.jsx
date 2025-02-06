@@ -1,7 +1,9 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import { motion } from "framer-motion";
 import { useGSAP } from "@gsap/react";
+import MaskText from "../../components/MaskText";
 
 // inspiration: mai sai gon
 
@@ -32,19 +34,12 @@ export default function Page() {
   const addToLinesRefs = addToRefs(linesRef);
 
   useGSAP(() => {
-    const tl = gsap.timeline();
-
-    tl.from(linesRef.current, {
-      opacity: 0,
-      y: 10, // Slight upward motion
-      duration: 0.8,
-      ease: "power2.out",
-      stagger: 0.3, // Adds delay between each line
-    });
+    
   }, []);
 
   return (
     <div className='h-screen relative justify-center flex items-center'>
+      {/* <FuzzyOverlay /> */}
       <div
         className='w-full h-screen flex justify-center items-center bg-black'
         onClick={toggleImage}
@@ -86,6 +81,15 @@ export default function Page() {
           </header>
           <div className='text-white uppercase w-[330px] flex flex-col gap-8 text-center items-center absolute bottom-24'>
             <div className='leading-none'>
+              <MaskText
+                phrases={[
+                  "This is line one",
+                  "Here comes line two",
+                  "Now we see line three",
+                  "Almost there, line four",
+                  "Finally, line five",
+                ]}
+              />
               {[
                 "This is line one",
                 "Here comes line two",
