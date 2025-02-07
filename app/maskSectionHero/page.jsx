@@ -5,6 +5,16 @@ import { motion } from "framer-motion";
 import { useGSAP } from "@gsap/react";
 import MaskText from "../../components/MaskText";
 
+import localFont from "next/font/local";
+
+const neueMontrealArabic = localFont({
+  src: [
+    {
+      path: "./PPNeueMontrealArabic-Regular.otf",
+    },
+  ],
+});
+
 // inspiration: mai sai gon
 
 export default function Page() {
@@ -52,19 +62,22 @@ export default function Page() {
 
     const headings = headingRef.current.querySelectorAll("h1");
 
+    // TODO: add neue montreal arabic
     gsap.from(headings, {
       y: 100, // Move up from below
       opacity: 0, // Fade in
       duration: 1, // Animation duration
       ease: "power3.out", // Smooth easing
-      stagger: 0.2, // Delay between each letter
+      stagger: { each: 0.2, from: "end" }, // Delay between each letter
     });
   }, []);
 
   useGSAP(() => {}, []);
 
   return (
-    <div className='h-screen relative justify-center flex items-center'>
+    <div
+      className={`h-screen relative justify-center flex items-center`}
+    >
       {/* <FuzzyOverlay /> */}
       <div
         className='w-full h-screen flex justify-center items-center bg-black'
@@ -153,9 +166,9 @@ export default function Page() {
         style={{ zIndex: 100 }}
         className='absolute borderr overflow-hidden w-full px-6 leading-[0.85] font-serif text-white text-[150px] flex justify-between'
       >
-        <h1>Mai</h1>
-        <h1>Sai</h1>
-        <h1>Gon</h1>
+        <h1>تمام</h1>
+        <h1>حاجة</h1>
+        <h1>كل</h1>
       </div>
     </div>
   );
