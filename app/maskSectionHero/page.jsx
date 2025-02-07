@@ -62,13 +62,30 @@ export default function Page() {
 
     const headings = headingRef.current.querySelectorAll("h1");
 
-    // TODO: add neue montreal arabic
-    gsap.from(headings, {
+    const firstHeading = headings[0];
+    const lastHeading = headings[headings.length - 1];
+
+    let tl = gsap.timeline();
+    tl.from(headings, {
       y: 150, // Move up from below
       duration: 1, // Animation duration
       ease: "power3.out", // Smooth easing
       stagger: { each: 0.25, from: "end" }, // Delay between each letter
-    });
+    })
+      .to(firstHeading, {
+        x: 100,
+        duration: 0.5,
+        ease: "power3.out",
+      })
+      .to(
+        lastHeading,
+        {
+          x: -100,
+          duration: 0.5,
+          ease: "power3.out",
+        },
+        "<"
+      );
   }, []);
 
   useGSAP(() => {}, []);
@@ -77,7 +94,6 @@ export default function Page() {
     <div
       className={`h-screen relative justify-center flex items-center`}
     >
-      {/* <FuzzyOverlay /> */}
       <div
         className='w-full h-screen flex justify-center items-center bg-black'
         onClick={toggleImage}
@@ -167,9 +183,19 @@ export default function Page() {
         style={{ zIndex: 100 }}
         className={`${neueMontrealArabic.className} absolute overflow-hidden w-full px-6 leading-snug font-serif text-white text-[130px] flex`}
       >
-        <h1 className='w-1/3 text-left'>تمام</h1>
-        <h1 className='w-1/3 text-center'>حاجة</h1>
-        <h1 className='w-1/3 text-right'>كل</h1>
+        <h1
+          style={{ transform: "translateX(25px)" }}
+          className='w-1/3 borderr text-right'
+        >
+          تمام
+        </h1>
+        <h1 className='w-1/3 borderr text-center'>حاجة</h1>
+        <h1
+          style={{ transform: "translateX(-25px)" }}
+          className='w-1/3 borderr'
+        >
+          كل
+        </h1>
       </div>
     </div>
   );
