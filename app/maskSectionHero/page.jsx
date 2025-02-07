@@ -64,11 +64,10 @@ export default function Page() {
 
     // TODO: add neue montreal arabic
     gsap.from(headings, {
-      y: 100, // Move up from below
-      opacity: 0, // Fade in
+      y: 150, // Move up from below
       duration: 1, // Animation duration
       ease: "power3.out", // Smooth easing
-      stagger: { each: 0.2, from: "end" }, // Delay between each letter
+      stagger: { each: 0.25, from: "end" }, // Delay between each letter
     });
   }, []);
 
@@ -92,7 +91,9 @@ export default function Page() {
           }}
         >
           <header className='text-white absolute px-6 pt-6 flex w-full justify-between'>
-            <div>Ma Sai Gon (Space)</div>
+            <div className={`${neueMontrealArabic.className}`}>
+              كل حاجة تمام
+            </div>
             <div className='flex gap-6'>
               <div className='flex font-mono gap-2 text-xs justify-between items-center'>
                 <span className='underline'>EN</span>
@@ -164,11 +165,11 @@ export default function Page() {
       <div
         ref={headingRef}
         style={{ zIndex: 100 }}
-        className='absolute borderr overflow-hidden w-full px-6 leading-[0.85] font-serif text-white text-[150px] flex justify-between'
+        className={`${neueMontrealArabic.className} absolute overflow-hidden w-full px-6 leading-snug font-serif text-white text-[130px] flex`}
       >
-        <h1>تمام</h1>
-        <h1>حاجة</h1>
-        <h1>كل</h1>
+        <h1 className='w-1/3 text-left'>تمام</h1>
+        <h1 className='w-1/3 text-center'>حاجة</h1>
+        <h1 className='w-1/3 text-right'>كل</h1>
       </div>
     </div>
   );
