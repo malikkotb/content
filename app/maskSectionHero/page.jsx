@@ -44,22 +44,6 @@ export default function Page() {
   const addToLinesRefs = addToRefs(linesRef);
 
   useEffect(() => {
-    gsap.fromTo(
-      linesRef.current,
-      { y: "-85%", opacity: 0 },
-      {
-        y: "0",
-        opacity: 1,
-        delay: 1,
-        duration: 0.75,
-        ease: [0.33, 1, 0.68, 1], // Custom ease
-        stagger: {
-          each: 0.075,
-          from: "end",
-        },
-      }
-    );
-
     const headings = headingRef.current.querySelectorAll("h1");
 
     const firstHeading = headings[0];
@@ -73,18 +57,33 @@ export default function Page() {
       stagger: { each: 0.25, from: "end" }, // Delay between each letter
     })
       .to(firstHeading, {
-        x: 100,
+        x: -155,
         duration: 0.5,
         ease: "power3.out",
       })
       .to(
         lastHeading,
         {
-          x: -100,
+          x: 250,
           duration: 0.5,
           ease: "power3.out",
         },
         "<"
+      )
+      .fromTo(
+        linesRef.current,
+        { y: "-85%", opacity: 0 },
+        {
+          y: "0",
+          opacity: 1,
+          delay: 1,
+          duration: 0.75,
+          ease: [0.33, 1, 0.68, 1], // Custom ease
+          stagger: {
+            each: 0.075,
+            from: "end",
+          },
+        }
       );
   }, []);
 
@@ -156,10 +155,10 @@ export default function Page() {
             <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 0.7 }}
-              transition={{ delay: 0.5, duration: 0.75 }}
-              className='text-xs'
+              transition={{ delay: 1.5, duration: 0.75 }}
+              className='text-xs uppercase'
             >
-              KHOA LÊ, AUTHOER OF THE PROJECT
+              Zayn El-Masry, AUTHOER OF THE PROJECT
             </motion.p>
             {/* TODO: make make color swith on hover come in from bottom using css */}
             <motion.div
@@ -168,7 +167,7 @@ export default function Page() {
               transition={{
                 duration: 0.75,
                 ease: "easeInOut",
-                delay: 0.5,
+                delay: 1.5,
               }}
               className='rounded-full px-4 py-3 w-fit normal-case transition-colors duration-500 bg-white text-indigo-600 hover:bg-indigo-600 hover:text-white'
             >
@@ -185,14 +184,14 @@ export default function Page() {
       >
         <h1
           style={{ transform: "translateX(25px)" }}
-          className='w-1/3 borderr text-right'
+          className='w-1/3 text-right'
         >
           تمام
         </h1>
-        <h1 className='w-1/3 borderr text-center'>حاجة</h1>
+        <h1 className='w-1/3 text-center'>حاجة</h1>
         <h1
           style={{ transform: "translateX(-25px)" }}
-          className='w-1/3 borderr'
+          className='w-1/3'
         >
           كل
         </h1>
