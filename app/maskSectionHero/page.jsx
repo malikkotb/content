@@ -119,7 +119,6 @@ export default function Page() {
                 <svg
                   width='25'
                   height='25'
-                  className=''
                   viewBox='0 0 15 15'
                   fill='none'
                 >
