@@ -63,14 +63,14 @@ export default function Page() {
     })
       .to(headingOne.current, {
         x: -155,
-        duration: 0.5,
+        duration: 0.7,
         ease: "power3.inOut",
       })
       .to(
         headingTwo.current,
         {
           x: 250,
-          duration: 0.5,
+          duration: 0.7,
           ease: "power3.inOut",
         },
         "<"
@@ -78,7 +78,7 @@ export default function Page() {
       .to(
         imageRef.current,
         {
-          clipPath: "polygon(10% 10%, 100% 0%, 90% 90%, 0% 100%)",
+          clipPath: "polygon(15% 15%, 100% 0%, 85% 85%, 0% 100%)",
           duration: 0.7, // Slightly increased duration for smoothness
           ease: "power3.inOut",
         },
@@ -143,7 +143,7 @@ export default function Page() {
           }}
         >
           <div
-            className='absolute top-0 w-full h-full bg-black opacity-40'
+            className='absolute top-0 w-full h-full bg-black opacity-50'
             style={{ zIndex: 10 }}
           ></div>
           <video
@@ -153,7 +153,7 @@ export default function Page() {
             playsInline
             className='absolute top-0 left-0 w-full h-full object-cover'
           >
-            <source src='/drag/gradientBg.mp4' type='video/mp4' />
+            <source src='/drag/gradient.mp4' type='video/mp4' />
             Your browser does not support the video tag.
           </video>
           {/* <div
