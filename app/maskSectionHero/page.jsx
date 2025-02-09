@@ -75,20 +75,23 @@ export default function Page() {
         },
         "<"
       )
-      .to(imageRef.current, {
-        clipPath: "polygon(25% 25%, 100% 0%, 75% 75%, 0% 100%)",
-
-        duration: 0.5,
-        ease: "power3.inOut", // TODO: change easing
-      })
+      .to(
+        imageRef.current,
+        {
+          clipPath: "polygon(10% 10%, 100% 0%, 90% 90%, 0% 100%)",
+          duration: 0.7, // Slightly increased duration for smoothness
+          ease: "power3.inOut",
+        },
+        "<"
+      )
       .to(
         imageRef.current,
         {
           clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-          duration: 0.5,
-          ease: "power3.inOut", // TODO: change easing
+          duration: 0.3,
+          ease: "power3.out", // // TODO: maybe change easing
         },
-        "-=0.2"
+        "-=0.25"
       )
       .fromTo(
         buttonRef.current,
@@ -242,13 +245,13 @@ export default function Page() {
               ref={authorRef}
               className='text-xs uppercase opacity-0'
             >
-              Zayn El-Masry, AUTHOR OF THE PROJECT
+              Noah El-Masry, AUTHOR OF THE PROJECT
             </motion.p>
             <motion.div
               onMouseEnter={() => animateHeadings("enter")}
               onMouseLeave={() => animateHeadings("leave")}
               ref={buttonRef}
-              className='rounded-full px-4 py-3 w-fit normal-case transition-colors duration-500 bg-white text-indigo-600 hover:bg-indigo-600 hover:text-white'
+              className='rounded-full cursor-pointer px-4 py-3 w-fit normal-case transition-colors duration-500 bg-white text-indigo-600 hover:bg-indigo-600 hover:text-white'
             >
               Start exploring
             </motion.div>
