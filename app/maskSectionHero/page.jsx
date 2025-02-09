@@ -59,15 +59,20 @@ export default function Page() {
         "<"
       )
       .to(imageRef.current, {
-        clipPath: "polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%)", // Parallelogram shape
-        duration: 0.3,
-        ease: "power3.out", // TODO: change easing
+        clipPath: "polygon(25% 25%, 100% 0%, 75% 75%, 0% 100%)",
+
+        duration: 0.5,
+        ease: "power3.inOut", // TODO: change easing
       })
-      .to(imageRef.current, {
-        clipPath: "inset(0% 0% 0% 0%)", // Rectangle (fully visible)
-        duration: 3,
-        ease: "power3.out", // TODO: change easing
-      })
+      .to(
+        imageRef.current,
+        {
+          clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+          duration: 0.5,
+          ease: "power3.inOut", // TODO: change easing
+        },
+        "-=0.2"
+      )
       .fromTo(
         buttonRef.current,
         { clipPath: "circle(0% at 50% 50%)" },
@@ -113,11 +118,36 @@ export default function Page() {
           ref={imageRef}
           className='bg-cover bg-center w-full h-screen relative cursor-pointer justify-center flex'
           style={{
-            backgroundImage: "url('/drag/img5.png')",
-            clipPath: "circle(100px at center)",
+            clipPath: "polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%)",
           }}
         >
-          <header className='text-white absolute px-6 pt-6 flex w-full justify-between'>
+          <div
+            className='absolute top-0 w-full h-full bg-black opacity-20'
+            style={{ zIndex: 10 }}
+          ></div>
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className='absolute top-0 left-0 w-full h-full object-cover'
+          >
+            <source src='/drag/gradientBg.mp4' type='video/mp4' />
+            Your browser does not support the video tag.
+          </video>
+
+          {/* <div
+          ref={imageRef}
+          className='bg-cover bg-center w-full h-screen relative cursor-pointer justify-center flex'
+          style={{
+            clipPath: "polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%)",
+            backgroundImage: "url('/drag/img5.png')",
+          }}
+        > */}
+          <header
+            style={{ zIndex: 100 }}
+            className='text-white absolute px-6 pt-6 flex w-full justify-between'
+          >
             <div className={`${neueMontrealArabic.className}`}>
               كل حاجة تمام
             </div>
@@ -145,7 +175,10 @@ export default function Page() {
               </div>
             </div>
           </header>
-          <div className='text-white uppercase w-[400px] flex flex-col gap-8 text-center items-center absolute bottom-24'>
+          <div
+            style={{ zIndex: 100 }}
+            className='text-white uppercase w-[400px] flex flex-col gap-8 text-center items-center absolute bottom-24'
+          >
             <div className='leading-tight'>
               {[
                 "Crafting experiences with precision.",
