@@ -51,7 +51,7 @@ export default function Page() {
   const linesRef = useRef([]);
   const addToLinesRefs = addToRefs(linesRef);
 
-  useEffect(() => {
+  useGSAP(() => {
     const headings = headingRef.current.querySelectorAll("h1");
 
     let tl = gsap.timeline();
@@ -128,7 +128,7 @@ export default function Page() {
       );
   }, []);
 
-  useGSAP(() => {}, []);
+  // https://bennettfeely.com/clippy/
 
   return (
     <div
@@ -153,7 +153,7 @@ export default function Page() {
             playsInline
             className='absolute top-0 left-0 w-full h-full object-cover'
           >
-            <source src='/drag/gradient.mp4' type='video/mp4' />
+            <source src='/drag/motion.mp4' type='video/mp4' />
             Your browser does not support the video tag.
           </video>
           {/* <div
