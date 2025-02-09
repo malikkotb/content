@@ -20,6 +20,8 @@ export default function Page() {
   const imageRef = useRef(null);
   const imageRefs = useRef([]);
   const [isExpanded, setIsExpanded] = useState(false);
+  const buttonRef = useRef(null);
+  const authorRef = useRef(null);
 
   const toggleImage = () => {
     gsap.to(imageRef.current, {
@@ -67,6 +69,15 @@ export default function Page() {
           ease: "power3.out",
         },
         "<"
+      )
+      .fromTo(
+        buttonRef.current,
+        { clipPath: "circle(0% at 50% 50%)" },
+        {
+          clipPath: "circle(100% at 50% 50%)",
+          duration: 1,
+          ease: "power2.out",
+        }
       )
       .fromTo(
         linesRef.current,
@@ -149,22 +160,24 @@ export default function Page() {
               ))}
             </div>
             <motion.p
+              ref={authorRef}
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 0.7 }}
-              transition={{  duration: 0.75 }}
+              transition={{ duration: 0.75 }}
               className='text-xs uppercase'
             >
-              Zayn El-Masry, AUTHOER OF THE PROJECT
+              Zayn El-Masry, AUTHOR OF THE PROJECT
             </motion.p>
             {/* TODO: make make color swith on hover come in from bottom using css */}
             <motion.div
-              initial={{ clipPath: "circle(0% at 50% 50%)" }}
-              whileInView={{ clipPath: "circle(100% at 50% 50%)" }}
-              transition={{
-                duration: 0.75,
-                ease: "easeInOut",
-                // delay: 1.5,
-              }}
+              ref={buttonRef}
+              // initial={{ clipPath: "circle(0% at 50% 50%)" }}
+              // whileInView={{ clipPath: "circle(100% at 50% 50%)" }}
+              // transition={{
+              //   duration: 0.75,
+              //   ease: "easeInOut",
+              //   // delay: 1.5,
+              // }}
               className='rounded-full px-4 py-3 w-fit normal-case transition-colors duration-500 bg-white text-indigo-600 hover:bg-indigo-600 hover:text-white'
             >
               Start exploring
