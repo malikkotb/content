@@ -21,6 +21,8 @@ export default function Page() {
   const imageRefs = useRef([]);
   const buttonRef = useRef(null);
   const authorRef = useRef(null);
+  const headingOne = useRef(null);
+  const headingTwo = useRef(null);
 
   const addToRefs = (refArray) => (el) => {
     if (el && !refArray.current.includes(el)) {
@@ -28,16 +30,16 @@ export default function Page() {
     }
   };
 
-  const animateHeadings = (firstHeading, lastHeading) => {
+  const animateHeadings = () => {
     let tl = gsap.timeline();
-    tl.to(firstHeading, {
-      x: -155,
+    tl.to(headingOne.current, {
+      x: 0,
       duration: 0.5,
       ease: "power3.out",
     }).to(
-      lastHeading,
+      headingTwo.current,
       {
-        x: 250,
+        x: 0,
         duration: 0.5,
         ease: "power3.out",
       },
@@ -45,19 +47,11 @@ export default function Page() {
     );
   };
 
-  const headings = headingRef.current.querySelectorAll("h1");
-  const firstHeading = headings[0];
-  const lastHeading = headings[headings.length - 1];
-  animateHeadings(firstHeading, lastHeading);
-
   const linesRef = useRef([]);
   const addToLinesRefs = addToRefs(linesRef);
 
   useEffect(() => {
     const headings = headingRef.current.querySelectorAll("h1");
-
-    const firstHeading = headings[0];
-    const lastHeading = headings[headings.length - 1];
 
     let tl = gsap.timeline();
     tl.from(headings, {
@@ -66,13 +60,13 @@ export default function Page() {
       ease: "power3.out", // Smooth easing
       stagger: { each: 0.25, from: "end" }, // Delay between each letter
     })
-      .to(firstHeading, {
+      .to(headingOne.current, {
         x: -155,
         duration: 0.5,
         ease: "power3.out",
       })
       .to(
-        lastHeading,
+        headingTwo.current,
         {
           x: 250,
           duration: 0.5,
@@ -144,7 +138,7 @@ export default function Page() {
           }}
         >
           <div
-            className='absolute top-0 w-full h-full bg-black opacity-50'
+            className='absolute top-0 w-full h-full bg-black opacity-40'
             style={{ zIndex: 10 }}
           ></div>
           <video
@@ -225,6 +219,9 @@ export default function Page() {
               Zayn El-Masry, AUTHOR OF THE PROJECT
             </motion.p>
             <motion.div
+              onMouseEnter={() => {
+                animateHeadings();
+              }}
               ref={buttonRef}
               className='rounded-full px-4 py-3 w-fit normal-case transition-colors duration-500 bg-white text-indigo-600 hover:bg-indigo-600 hover:text-white'
             >
@@ -240,6 +237,7 @@ export default function Page() {
         className={`${neueMontrealArabic.className} absolute overflow-hidden w-full px-6 leading-snug font-serif text-white text-[130px] flex`}
       >
         <h1
+          ref={headingOne}
           style={{ transform: "translateX(25px)" }}
           className='w-1/3 text-right'
         >
@@ -247,6 +245,7 @@ export default function Page() {
         </h1>
         <h1 className='w-1/3 text-center'>حاجة</h1>
         <h1
+          ref={headingTwo}
           style={{ transform: "translateX(-25px)" }}
           className='w-1/3'
         >
