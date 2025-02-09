@@ -59,11 +59,14 @@ export default function Page() {
         "<"
       )
       .to(imageRef.current, {
-        clipPath: isExpanded
-          ? "circle(100px at center)"
-          : "circle(100% at center)",
-        duration: 1,
-        ease: "power3.out",
+        clipPath: "polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%)", // Parallelogram shape
+        duration: 0.3,
+        ease: "power3.out", // TODO: change easing
+      })
+      .to(imageRef.current, {
+        clipPath: "inset(0% 0% 0% 0%)", // Rectangle (fully visible)
+        duration: 3,
+        ease: "power3.out", // TODO: change easing
       })
       .fromTo(
         buttonRef.current,
