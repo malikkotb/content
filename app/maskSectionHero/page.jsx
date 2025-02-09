@@ -19,20 +19,8 @@ export default function Page() {
   const headingRef = useRef(null);
   const imageRef = useRef(null);
   const imageRefs = useRef([]);
-  const [isExpanded, setIsExpanded] = useState(false);
   const buttonRef = useRef(null);
   const authorRef = useRef(null);
-
-  const toggleImage = () => {
-    gsap.to(imageRef.current, {
-      clipPath: isExpanded
-        ? "circle(100px at center)"
-        : "circle(100% at center)",
-      duration: 1,
-      ease: "power3.out",
-    });
-    setIsExpanded(!isExpanded);
-  };
 
   const addToRefs = (refArray) => (el) => {
     if (el && !refArray.current.includes(el)) {
@@ -70,6 +58,13 @@ export default function Page() {
         },
         "<"
       )
+      .to(imageRef.current, {
+        clipPath: isExpanded
+          ? "circle(100px at center)"
+          : "circle(100% at center)",
+        duration: 1,
+        ease: "power3.out",
+      })
       .fromTo(
         buttonRef.current,
         { clipPath: "circle(0% at 50% 50%)" },
@@ -91,7 +86,16 @@ export default function Page() {
             each: 0.075,
             from: "end",
           },
-        }
+        },
+        "<"
+      )
+      .to(
+        authorRef.current,
+        {
+          opacity: 0.7,
+          duration: 0.75,
+        },
+        "<"
       );
   }, []);
 
@@ -101,10 +105,7 @@ export default function Page() {
     <div
       className={`h-screen relative justify-center flex items-center`}
     >
-      <div
-        className='w-full h-screen flex justify-center items-center bg-black'
-        onClick={toggleImage}
-      >
+      <div className='w-full h-screen flex justify-center items-center bg-black'>
         <div
           ref={imageRef}
           className='bg-cover bg-center w-full h-screen relative cursor-pointer justify-center flex'
@@ -161,14 +162,10 @@ export default function Page() {
             </div>
             <motion.p
               ref={authorRef}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 0.7 }}
-              transition={{ duration: 0.75 }}
-              className='text-xs uppercase'
+              className='text-xs uppercase opacity-0'
             >
               Zayn El-Masry, AUTHOR OF THE PROJECT
             </motion.p>
-            {/* TODO: make make color swith on hover come in from bottom using css */}
             <motion.div
               ref={buttonRef}
               className='rounded-full px-4 py-3 w-fit normal-case transition-colors duration-500 bg-white text-indigo-600 hover:bg-indigo-600 hover:text-white'
