@@ -28,6 +28,28 @@ export default function Page() {
     }
   };
 
+  const animateHeadings = (firstHeading, lastHeading) => {
+    let tl = gsap.timeline();
+    tl.to(firstHeading, {
+      x: -155,
+      duration: 0.5,
+      ease: "power3.out",
+    }).to(
+      lastHeading,
+      {
+        x: 250,
+        duration: 0.5,
+        ease: "power3.out",
+      },
+      "<"
+    );
+  };
+
+  const headings = headingRef.current.querySelectorAll("h1");
+  const firstHeading = headings[0];
+  const lastHeading = headings[headings.length - 1];
+  animateHeadings(firstHeading, lastHeading);
+
   const linesRef = useRef([]);
   const addToLinesRefs = addToRefs(linesRef);
 
@@ -122,7 +144,7 @@ export default function Page() {
           }}
         >
           <div
-            className='absolute top-0 w-full h-full bg-black opacity-20'
+            className='absolute top-0 w-full h-full bg-black opacity-50'
             style={{ zIndex: 10 }}
           ></div>
           <video
