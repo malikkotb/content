@@ -3,8 +3,6 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { motion } from "framer-motion";
 import { useGSAP } from "@gsap/react";
-import MaskText from "../../components/MaskText";
-
 import localFont from "next/font/local";
 
 const neueMontrealArabic = localFont({
@@ -76,7 +74,6 @@ export default function Page() {
         {
           y: "0",
           opacity: 1,
-          delay: 1,
           duration: 0.75,
           ease: [0.33, 1, 0.68, 1], // Custom ease
           stagger: {
@@ -154,7 +151,7 @@ export default function Page() {
             <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 0.7 }}
-              transition={{ delay: 1.5, duration: 0.75 }}
+              transition={{  duration: 0.75 }}
               className='text-xs uppercase'
             >
               Zayn El-Masry, AUTHOER OF THE PROJECT
@@ -166,7 +163,7 @@ export default function Page() {
               transition={{
                 duration: 0.75,
                 ease: "easeInOut",
-                delay: 1.5,
+                // delay: 1.5,
               }}
               className='rounded-full px-4 py-3 w-fit normal-case transition-colors duration-500 bg-white text-indigo-600 hover:bg-indigo-600 hover:text-white'
             >
