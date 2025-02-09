@@ -30,18 +30,19 @@ export default function Page() {
     }
   };
 
-  const animateHeadings = () => {
+  const animateHeadings = (direction) => {
     let tl = gsap.timeline();
     tl.to(headingOne.current, {
-      x: 0,
+      x: direction === "enter" ? 0 : -155,
+
       duration: 0.5,
-      ease: "power3.out",
+      ease: "power3.inOut",
     }).to(
       headingTwo.current,
       {
-        x: 0,
+        x: direction === "enter" ? 0 : 250,
         duration: 0.5,
-        ease: "power3.out",
+        ease: "power3.inOut",
       },
       "<"
     );
@@ -63,14 +64,14 @@ export default function Page() {
       .to(headingOne.current, {
         x: -155,
         duration: 0.5,
-        ease: "power3.out",
+        ease: "power3.inOut",
       })
       .to(
         headingTwo.current,
         {
           x: 250,
           duration: 0.5,
-          ease: "power3.out",
+          ease: "power3.inOut",
         },
         "<"
       )
@@ -117,7 +118,8 @@ export default function Page() {
         authorRef.current,
         {
           opacity: 0.7,
-          duration: 0.75,
+          delay: 0.1,
+          duration: 1,
         },
         "<"
       );
@@ -132,7 +134,7 @@ export default function Page() {
       <div className='w-full h-screen flex justify-center items-center bg-black'>
         <div
           ref={imageRef}
-          className='bg-cover bg-center w-full h-screen relative cursor-pointer justify-center flex'
+          className='bg-cover bg-center w-full h-screen relative justify-center flex'
           style={{
             clipPath: "polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%)",
           }}
@@ -151,7 +153,6 @@ export default function Page() {
             <source src='/drag/gradientBg.mp4' type='video/mp4' />
             Your browser does not support the video tag.
           </video>
-
           {/* <div
           ref={imageRef}
           className='bg-cover bg-center w-full h-screen relative cursor-pointer justify-center flex'
@@ -160,7 +161,16 @@ export default function Page() {
             backgroundImage: "url('/drag/img5.png')",
           }}
         > */}
-          <header
+          <motion.div
+            initial={{ y: -25, opacity: 0 }}
+            whileInView={{
+              y: 0,
+              opacity: 1,
+              transition: {
+                duration: 0.7,
+                delay: 0.1,
+              },
+            }}
             style={{ zIndex: 100 }}
             className='text-white absolute px-6 pt-6 flex w-full justify-between'
           >
@@ -170,7 +180,7 @@ export default function Page() {
             <div className='flex gap-6'>
               <div className='flex font-mono gap-2 text-xs justify-between items-center'>
                 <span className='underline'>EN</span>
-                <span className='opacity-60'>DE</span>
+                <span className='opacity-60'>AR</span>
                 <span className='opacity-60'>FR</span>
               </div>
               <div className='px-2 group rounded-full bg-white text-indigo-600 hover:bg-indigo-600 hover:text-white transition-colors duration-500'>
@@ -190,7 +200,23 @@ export default function Page() {
                 </svg>
               </div>
             </div>
-          </header>
+          </motion.div>
+
+          <motion.div
+            initial={{ y: -25, opacity: 0 }}
+            whileInView={{
+              y: 0,
+              opacity: 1,
+              transition: {
+                duration: 0.7,
+                delay: 0.4,
+              },
+            }}
+            style={{ zIndex: 100 }}
+            className='w-full flex items-center justify-center text-xl text-white absolute top-60'
+          >
+            (Space)
+          </motion.div>
           <div
             style={{ zIndex: 100 }}
             className='text-white uppercase w-[400px] flex flex-col gap-8 text-center items-center absolute bottom-24'
@@ -219,9 +245,8 @@ export default function Page() {
               Zayn El-Masry, AUTHOR OF THE PROJECT
             </motion.p>
             <motion.div
-              onMouseEnter={() => {
-                animateHeadings();
-              }}
+              onMouseEnter={() => animateHeadings("enter")}
+              onMouseLeave={() => animateHeadings("leave")}
               ref={buttonRef}
               className='rounded-full px-4 py-3 w-fit normal-case transition-colors duration-500 bg-white text-indigo-600 hover:bg-indigo-600 hover:text-white'
             >
@@ -234,7 +259,7 @@ export default function Page() {
       <div
         ref={headingRef}
         style={{ zIndex: 100 }}
-        className={`${neueMontrealArabic.className} absolute overflow-hidden w-full px-6 leading-snug font-serif text-white text-[130px] flex`}
+        className={`${neueMontrealArabic.className} absolute overflow-hidden w-full px-6 leading-snug font-serif text-white text-[140px] flex`}
       >
         <h1
           ref={headingOne}
