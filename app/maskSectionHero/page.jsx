@@ -56,6 +56,7 @@ export default function Page() {
 
     let tl = gsap.timeline();
     tl.from(headings, {
+      delay: 0.5,
       y: 150, // Move up from below
       duration: 1, // Animation duration
       ease: "power3.out", // Smooth easing
@@ -78,7 +79,7 @@ export default function Page() {
       .to(
         imageRef.current,
         {
-          clipPath: "polygon(15% 15%, 100% 0%, 85% 85%, 0% 100%)",
+          clipPath: "polygon(17% 17%, 100% 0%, 83% 83%, 0% 100%)",
           duration: 0.7, // Slightly increased duration for smoothness
           ease: "power3.inOut",
         },
@@ -153,7 +154,7 @@ export default function Page() {
             playsInline
             className='absolute top-0 left-0 w-full h-full object-cover'
           >
-            <source src='/drag/motion.mp4' type='video/mp4' />
+            <source src='/drag/gradient.mp4' type='video/mp4' />
             Your browser does not support the video tag.
           </video>
           {/* <div
