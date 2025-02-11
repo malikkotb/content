@@ -26,7 +26,30 @@ export default function Page() {
     requestAnimationFrame(raf);
   }, []);
 
+  // infinty scroll
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            console.log("Element is in view:", entry.target);
+          }
+        });
+      },
+      { threshold: 1.0 }
+    );
 
+    const target = document.querySelector(".load-more-trigger");
+    if (target) {
+      observer.observe(target);
+    }
+
+    return () => {
+      if (target) {
+        observer.unobserve(target);
+      }
+    };
+  }, []);
 
   useGSAP(() => {
     // GSAP ScrollTrigger for scaling effect
