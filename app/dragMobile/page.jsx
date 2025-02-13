@@ -5,6 +5,15 @@ import gsap from "gsap";
 import Draggable from "gsap/Draggable";
 import { useGSAP } from "@gsap/react";
 import Image from "next/image";
+import localFont from "next/font/local";
+
+const neueMontreal = localFont({
+  src: [
+    {
+      path: "./PPNeueMontreal-Light.otf",
+    },
+  ],
+});
 
 gsap.registerPlugin(Draggable);
 
@@ -35,7 +44,7 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
-          className='text-2xl'
+          className={`text-[53px] font-light ${neueMontreal.className}`}
         >
           Welcome to the Drag and Drop Gallery!
         </motion.div>
