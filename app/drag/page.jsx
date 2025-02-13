@@ -25,12 +25,15 @@ export default function Home() {
     });
   }, []);
 
+  // TODO: make this mobile friendly and with gifs
+  // dont let your emotions control your actions - tiktok
+
   return (
-    <main className="h-screen overflow-hidden text-3xl font-semibold">
-      <FuzzyOverlay />
+    <main className='h-screen overflow-hidden text-3xl font-semibold'>
+      {/* <FuzzyOverlay /> */}
       <header
         style={{ zIndex: 10000 }}
-        className="absolute tracking-tight flex flex-col top-0 p-3 w-full"
+        className='absolute tracking-tight flex flex-col top-0 p-3 w-full'
       >
         <span>Fabrice Brass</span>
         <span>Creative design & Art-direction</span>
@@ -38,100 +41,103 @@ export default function Home() {
       <section
         ref={containerRef}
         style={{ zIndex: 1 }}
-        className="h-screen overflow-hidden w-full"
+        className='h-screen overflow-hidden w-full'
       >
         <div
           ref={addToImageRefs}
-          className="w-[25vw] h-[25vw] top-4 left-44 relative rounded-xl"
+          className='w-[25vw] h-[25vw] top-4 left-44 relative rounded-xl'
         >
           <Image
-            src="/drag/img1.png"
+            src='/drag/img1.png'
             fill
-            className="object-cover rounded-xl"
-            alt="1"
+            className='object-cover rounded-xl'
+            alt='1'
           />
         </div>
         <div
           ref={addToImageRefs}
-          className="w-64 h-80 absolute top-10 left-[50vw] rounded-xl"
+          className='w-64 h-80 absolute top-10 left-[50vw] rounded-xl'
         >
           <Image
-            src="/drag/img2.png"
+            src='/drag/img2.png'
             fill
-            className="object-cover rounded-xl"
-            alt="1"
+            className='object-cover rounded-xl'
+            alt='1'
           />
         </div>
         <div
           ref={addToImageRefs}
-          className="w-80 h-80 absolute top-[60vh] left-[80vw] rounded-xl"
+          className='w-80 h-80 absolute top-[60vh] left-[80vw] rounded-xl'
         >
           <Image
-            src="/drag/img3.png"
+            src='/drag/img3.png'
             fill
-            className="object-cover rounded-xl"
-            alt="1"
+            className='object-cover rounded-xl'
+            alt='1'
           />
         </div>
         <div
           ref={addToImageRefs}
-          className="w-64 h-80 absolute top-[60vh] left-[5vw] rounded-xl"
+          className='w-64 h-80 absolute top-[60vh] left-[5vw] rounded-xl'
         >
           <Image
-            src="/drag/img4.png"
+            src='/drag/img4.png'
             fill
-            className="object-cover rounded-xl"
-            alt="1"
+            className='object-cover rounded-xl'
+            alt='1'
           />
         </div>
         <div
           ref={addToImageRefs}
-          className="w-80 h-96 absolute top-[60vh] left-[40vw] rounded-xl"
+          className='w-80 h-96 absolute top-[60vh] left-[40vw] rounded-xl'
         >
           <Image
-            src="/drag/img5.png"
+            src='/drag/img5.png'
             fill
-            className="object-cover rounded-xl"
-            alt="1"
+            className='object-cover rounded-xl'
+            alt='1'
           />
         </div>
         <div
           ref={addToImageRefs}
-          className="w-52 h-64 absolute top-[35vh] left-[30vw] rounded-xl"
+          className='w-52 h-64 absolute top-[35vh] left-[30vw] rounded-xl'
         >
           <Image
-            src="/drag/img7.png"
+            src='/drag/img7.png'
             fill
-            className="object-cover rounded-xl"
-            alt="1"
-          />
-        </div>
-
-        <div
-          ref={addToImageRefs}
-          className="w-56 h-72 absolute top-[7vh] left-[75vw] rounded-xl"
-        >
-          <Image
-            src="/drag/img8.png"
-            fill
-            className="object-cover rounded-xl"
-            alt="1"
+            className='object-cover rounded-xl'
+            alt='1'
           />
         </div>
 
         <div
           ref={addToImageRefs}
-          className="w-72 h-96 absolute top-[25vh] left-[60vw] rounded-xl"
+          className='w-56 h-72 absolute top-[7vh] left-[75vw] rounded-xl'
         >
           <Image
-            src="/drag/img6.png"
+            src='/drag/img8.png'
             fill
-            className="object-cover rounded-xl"
-            alt="1"
+            className='object-cover rounded-xl'
+            alt='1'
+          />
+        </div>
+
+        <div
+          ref={addToImageRefs}
+          className='w-72 h-96 absolute top-[25vh] left-[60vw] rounded-xl'
+        >
+          <Image
+            src='/drag/img6.png'
+            fill
+            className='object-cover rounded-xl'
+            alt='1'
           />
         </div>
       </section>
-      <footer style={{ zIndex: 10000 }} className="fixed bottom-0 p-3 w-full">
+      <footer
+        style={{ zIndex: 10000 }}
+        className='fixed bottom-0 p-3 w-full'
+      >
         hello@mail.com
       </footer>
     </main>
@@ -154,7 +160,7 @@ const FuzzyOverlay = () => {
       style={{
         backgroundImage: 'url("/drag/noise.png")',
       }}
-      className="pointer-events-none absolute -inset-[100%] opacity-[15%]"
+      className='pointer-events-none absolute -inset-[100%] opacity-[15%]'
     />
   );
 };
