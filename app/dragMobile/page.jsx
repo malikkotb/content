@@ -25,9 +25,11 @@ export default function Home() {
     });
   }, []);
 
+  // TODO: make this mobile friendly and with gifs
+  // dont let your emotions control your actions - tiktok
+
   return (
     <main className='h-screen overflow-hidden text-3xl font-semibold'>
-      {/* <FuzzyOverlay /> */}
       <header
         style={{ zIndex: 10000 }}
         className='absolute tracking-tight flex flex-col top-0 p-3 w-full'
@@ -140,24 +142,3 @@ export default function Home() {
     </main>
   );
 }
-
-const FuzzyOverlay = () => {
-  return (
-    <motion.div
-      initial={{ transform: "translateX(-10%) translateY(-10%)" }}
-      animate={{
-        transform: "translateX(10%) translateY(10%)",
-      }}
-      transition={{
-        repeat: Infinity,
-        duration: 0.2,
-        ease: "linear",
-        repeatType: "mirror",
-      }}
-      style={{
-        backgroundImage: 'url("/drag/noise.png")',
-      }}
-      className='pointer-events-none absolute -inset-[100%] opacity-[15%]'
-    />
-  );
-};
