@@ -10,7 +10,7 @@ import localFont from "next/font/local";
 const neueMontreal = localFont({
   src: [
     {
-      path: "./PPNeueMontreal-Light.otf",
+      path: "./PPNeueMontreal-Book.otf",
     },
   ],
 });
@@ -44,7 +44,7 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
-          className={`text-[53px] font-light ${neueMontreal.className}`}
+          className={`text-[53px] ${neueMontreal.className}`}
         >
           Welcome to the Drag and Drop Gallery!
         </motion.div>
