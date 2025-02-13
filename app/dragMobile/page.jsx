@@ -34,19 +34,21 @@ export default function Home() {
     });
   }, []);
 
-  // TODO: make this mobile friendly and with gifs
-  // dont let your emotions control your actions - tiktok
+  // TODO: put sth. in the caption - my girlfriend said she liked this type of animation/interaction on a website
 
   return (
     <>
-      <div className='h-screen bg-black text-white borderr'>
+      <div className='p-6 h-screen bg-black text-white borderr'>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
           className={`text-[53px] ${neueMontreal.className}`}
         >
-          Welcome to the Drag and Drop Gallery!
+          You’ll also learn the little things people forget to teach
+          (that’ll make you look French) – like putting a space before
+          punctuation, writing your 1 like ^, and saying euh instead
+          of um.
         </motion.div>
       </div>
       <div className='h-screen relative bg-black overflow-hidden font-semibold'>
@@ -57,68 +59,56 @@ export default function Home() {
         >
           <div
             ref={addToImageRefs}
-            className='w-[25vw] h-[25vw] top-4 left-44 relative rounded-xl'
+            className='w-[35vw] h-[30vw] top-4 left-44 relative'
           >
             <Image
-              src='/drag/img1.png'
+              src='/dragMobile/1.gif'
               fill
-              className='object-cover rounded-xl'
+              className='object-cover'
               alt='1'
             />
           </div>
           <div
             ref={addToImageRefs}
-            className='w-[25vw] h-[25vw] absolute top-[60vh] left-[80vw] rounded-xl'
+            className='w-[25vw] h-[25vw] absolute top-[60vh] left-[80vw]'
           >
             <Image
-              src='/drag/img3.png'
+              src='/dragMobile/3.gif'
               fill
-              className='object-cover rounded-xl'
+              className='object-cover'
               alt='1'
             />
           </div>
           <div
             ref={addToImageRefs}
-            className='w-[25vw] h-[25vw] absolute top-[60vh] left-[5vw] rounded-xl'
+            className='w-[25vw] h-[25vw] absolute top-[60vh] left-[5vw]'
           >
             <Image
-              src='/drag/img4.png'
+              src='/dragMobile/4.gif'
               fill
-              className='object-cover rounded-xl'
+              className='object-cover'
               alt='1'
             />
           </div>
           <div
             ref={addToImageRefs}
-            className='w-[25vw] h-[25vw] absolute top-[60vh] left-[40vw] rounded-xl'
+            className='w-[30vw] h-[30vw] absolute top-[60vh] left-[40vw]'
           >
             <Image
-              src='/drag/img5.png'
+              src='/dragMobile/5.gif'
               fill
-              className='object-cover rounded-xl'
+              className='object-cover'
               alt='1'
             />
           </div>
           <div
             ref={addToImageRefs}
-            className='w-[25vw] h-[25vw] absolute top-[7vh] left-[75vw] rounded-xl'
+            className='w-[25vw] h-[35vw] absolute top-[25vh] left-[60vw]'
           >
             <Image
-              src='/drag/img8.png'
+              src='/dragMobile/2.gif'
               fill
-              className='object-cover rounded-xl'
-              alt='1'
-            />
-          </div>
-
-          <div
-            ref={addToImageRefs}
-            className='w-[25vw] h-[25vw] absolute top-[25vh] left-[60vw] rounded-xl'
-          >
-            <Image
-              src='/drag/img6.png'
-              fill
-              className='object-cover rounded-xl'
+              className='object-cover'
               alt='1'
             />
           </div>
