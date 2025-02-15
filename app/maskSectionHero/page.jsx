@@ -18,7 +18,6 @@ const neueMontrealArabic = localFont({
 export default function Page() {
   const headingRef = useRef(null);
   const imageRef = useRef(null);
-  const imageRefs = useRef([]);
   const buttonRef = useRef(null);
   const authorRef = useRef(null);
   const headingOne = useRef(null);
@@ -284,24 +283,3 @@ export default function Page() {
     </div>
   );
 }
-
-const FuzzyOverlay = () => {
-  return (
-    <motion.div
-      initial={{ transform: "translateX(-10%) translateY(-10%)" }}
-      animate={{
-        transform: "translateX(10%) translateY(10%)",
-      }}
-      transition={{
-        repeat: Infinity,
-        duration: 0.2,
-        ease: "linear",
-        repeatType: "mirror",
-      }}
-      style={{
-        backgroundImage: 'url("/drag/noise.png")',
-      }}
-      className='pointer-events-none absolute -inset-[100%] opacity-[15%]'
-    />
-  );
-};

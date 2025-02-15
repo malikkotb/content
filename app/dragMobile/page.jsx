@@ -38,16 +38,16 @@ export default function Home() {
 
   return (
     <>
-      <div className='p-6 h-screen bg-black text-white borderr'>
+      <div className='p-6 h-screen bg-black text-white'>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
           className={`text-[53px] text-left ${neueMontreal.className}`}
         >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Ipsam sed repellat minima tempora, neque eius quis eligendi
-          molestias, aut distinctio labor iosam.
+          My girlfriend said she liked this type of interaction on a
+          website. Now, if only I could get her to like my cooking as
+          much as she likes these animations...
         </motion.div>
       </div>
       <section
