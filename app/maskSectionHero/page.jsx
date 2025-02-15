@@ -13,8 +13,6 @@ const neueMontrealArabic = localFont({
   ],
 });
 
-// inspiration: mai sai gon
-
 export default function Page() {
   const headingRef = useRef(null);
   const imageRef = useRef(null);
@@ -50,6 +48,7 @@ export default function Page() {
   const linesRef = useRef([]);
   const addToLinesRefs = addToRefs(linesRef);
 
+  // https://bennettfeely.com/clippy/ // I used this website for getting right clip path
   useGSAP(() => {
     const headings = headingRef.current.querySelectorAll("h1");
 
@@ -127,9 +126,6 @@ export default function Page() {
         "<"
       );
   }, []);
-
-  // https://bennettfeely.com/clippy/
-
   return (
     <div
       className={`h-screen relative justify-center flex items-center`}
@@ -139,7 +135,7 @@ export default function Page() {
           ref={imageRef}
           className='bg-cover bg-center w-full h-screen relative justify-center flex'
           style={{
-            clipPath: "polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%)",
+            clipPath: "polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%)", // collapses the visible area of the element to single point => hiding it.
           }}
         >
           <div
@@ -156,14 +152,6 @@ export default function Page() {
             <source src='/drag/gradient.mp4' type='video/mp4' />
             Your browser does not support the video tag.
           </video>
-          {/* <div
-          ref={imageRef}
-          className='bg-cover bg-center w-full h-screen relative cursor-pointer justify-center flex'
-          style={{
-            clipPath: "polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%)",
-            backgroundImage: "url('/drag/img5.png')",
-          }}
-        > */}
           <motion.div
             initial={{ y: -25, opacity: 0 }}
             whileInView={{
@@ -241,17 +229,18 @@ export default function Page() {
                 </div>
               ))}
             </div>
-            <motion.p
+            <p
               ref={authorRef}
               className='text-xs uppercase opacity-0'
             >
               Noah El-Masry, AUTHOR OF THE PROJECT
-            </motion.p>
+            </p>
             <motion.div
               onMouseEnter={() => animateHeadings("enter")}
               onMouseLeave={() => animateHeadings("leave")}
               ref={buttonRef}
-              className='rounded-full cursor-pointer px-4 py-3 w-fit normal-case transition-colors duration-500 bg-white text-indigo-600 hover:bg-indigo-600 hover:text-white'
+              className='rounded-full cursor-pointer px-4 py-3 w-fit normal-case transition-colors duration-500 bg-white 
+                       text-indigo-600 hover:bg-indigo-600 hover:text-white'
             >
               Start exploring
             </motion.div>
