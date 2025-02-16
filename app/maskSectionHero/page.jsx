@@ -48,20 +48,19 @@ export default function Page() {
   const linesRef = useRef([]);
   const addToLinesRefs = addToRefs(linesRef);
 
-  // https://bennettfeely.com/clippy/ // I used this website for getting right clip path
   useGSAP(() => {
     const headings = headingRef.current.querySelectorAll("h1");
 
     let tl = gsap.timeline();
     tl.from(headings, {
+      y: 150,
+      duration: 1,
       delay: 0.5,
-      y: 150, // Move up from below
-      duration: 1, // Animation duration
-      ease: "power3.out", // Smooth easing
-      stagger: { each: 0.25, from: "end" }, // Delay between each letter
+      ease: "power3.out",
+      stagger: { each: 0.3, from: "end" },
     })
       .to(headingOne.current, {
-        x: -155,
+        x: -150,
         duration: 0.7,
         ease: "power3.inOut",
       })
@@ -78,7 +77,7 @@ export default function Page() {
         imageRef.current,
         {
           clipPath: "polygon(17% 17%, 100% 0%, 83% 83%, 0% 100%)",
-          duration: 0.7, // Slightly increased duration for smoothness
+          duration: 0.7,
           ease: "power3.inOut",
         },
         "<"
@@ -88,7 +87,7 @@ export default function Page() {
         {
           clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
           duration: 0.3,
-          ease: "power3.out", // // TODO: maybe change easing
+          ease: "power3.out",
         },
         "-=0.25"
       )
@@ -103,7 +102,10 @@ export default function Page() {
       )
       .fromTo(
         linesRef.current,
-        { y: "-85%", opacity: 0 },
+        {
+          y: "-85%",
+          opacity: 0,
+        },
         {
           y: "0",
           opacity: 1,
@@ -126,6 +128,7 @@ export default function Page() {
         "<"
       );
   }, []);
+
   return (
     <div
       className={`h-screen relative justify-center flex items-center`}
