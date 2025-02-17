@@ -41,11 +41,10 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
-          className={`text-[53px] text-left ${neueMontreal.className}`}
+          className={`text-[60px] leading-snug text-left ${neueMontreal.className}`}
         >
-          My girlfriend said she liked this type of interaction on a
-          website. 
-          
+          My girlfriend called this type of interaction on a website
+          “perfect.” Meanwhile, she called my last dish “interesting.”
         </motion.div>
       </div>
       <section
