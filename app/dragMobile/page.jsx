@@ -34,8 +34,6 @@ export default function Home() {
     });
   }, []);
 
-  // TODO: put sth. in the caption - my girlfriend said she liked this type of animation/interaction on a website
-
   return (
     <>
       <div className='p-6 h-screen bg-black text-white'>
@@ -46,8 +44,8 @@ export default function Home() {
           className={`text-[53px] text-left ${neueMontreal.className}`}
         >
           My girlfriend said she liked this type of interaction on a
-          website. Now, if only I could get her to like my cooking as
-          much as she likes these animations...
+          website. 
+          
         </motion.div>
       </div>
       <section
