@@ -35,13 +35,13 @@ export default function Home() {
   }, []);
 
   return (
-    <>
-      <div className='p-6 h-screen bg-black text-white'>
+    <div className='bg-black'>
+      <div className='p-6 h-screen text-white'>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
-          className={`text-[60px] leading-snug text-left ${neueMontreal.className}`}
+          className={`text-[56px] leading-snug text-left ${neueMontreal.className}`}
         >
           My girlfriend called this type of interaction on a website
           “perfect.” Meanwhile, she called my last dish “interesting.”
@@ -50,11 +50,11 @@ export default function Home() {
       <section
         ref={containerRef}
         style={{ zIndex: 1 }}
-        className='h-[90vh] bg-black relative overflow-hidden w-full'
+        className='h-[80vh] relative w-full'
       >
         <div
           ref={addToImageRefs}
-          className='w-[35vw] h-[30vw] absolute top-8 left-40 '
+          className='w-[35vw] h-[30vw] absolute top-8 left-40'
         >
           <Image
             src='/dragMobile/1.gif'
@@ -108,6 +108,6 @@ export default function Home() {
           />
         </div>
       </section>
-    </>
+    </div>
   );
 }
