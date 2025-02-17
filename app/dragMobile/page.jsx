@@ -37,6 +37,13 @@ export default function Home() {
   return (
     <div className='bg-black'>
       <div className='p-6 h-screen text-white'>
+        <div className='pt-[15vh]'>
+          <OpacityText
+            text={
+              "My girlfriend called this type of interaction on a website &quot;perfect.&quot; Meanwhile, she called my last dish &quot;interesting.&quot;"
+            }
+          />
+        </div>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
