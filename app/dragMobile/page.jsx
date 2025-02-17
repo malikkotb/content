@@ -6,6 +6,7 @@ import Draggable from "gsap/Draggable";
 import { useGSAP } from "@gsap/react";
 import Image from "next/image";
 import localFont from "next/font/local";
+import OpacityText from "../opacityText/page";
 
 const neueMontreal = localFont({
   src: [
@@ -36,30 +37,25 @@ export default function Home() {
 
   return (
     <div className='bg-black'>
+      <div className='h-screen bg-black'></div>
       <div className='p-6 h-screen text-white'>
-        <div className='pt-[15vh]'>
+        <div
+          className={`text-[56px] leading-tight text-left ${neueMontreal.className}`}
+        >
           <OpacityText
             text={
-              "My girlfriend called this type of interaction on a website &quot;perfect.&quot; Meanwhile, she called my last dish &quot;interesting.&quot;"
+              'My girlfriend called this type of interaction on a website perfect." Meanwhile, she called my last dish "interesting."'
             }
           />
         </div>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          className={`text-[56px] leading-snug text-left ${neueMontreal.className}`}
-        >
-          My girlfriend called this type of interaction on a website
-          “perfect.” Meanwhile, she called my last dish “interesting.”
-        </motion.div>
       </div>
       <section
         ref={containerRef}
         style={{ zIndex: 1 }}
         className='h-[80vh] relative w-full'
       >
-        <div
+        <motion.div
+          whileHover={{ scale: 0.1 }}
           ref={addToImageRefs}
           className='w-[35vw] h-[30vw] absolute top-8 left-40'
         >
@@ -69,7 +65,7 @@ export default function Home() {
             className='object-cover'
             alt='1'
           />
-        </div>
+        </motion.div>
         <div
           ref={addToImageRefs}
           className='w-[25vw] h-[25vw] absolute top-[40vh] left-[50vw]'

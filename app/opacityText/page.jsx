@@ -6,7 +6,7 @@ export default function OpacityText({ text }) {
   const { scrollYProgress } = useScroll({
     target: container,
 
-    offset: ["start 0.9", "start 0.25"],
+    offset: ["start 0.75", "end end"],
   });
 
   const words = text.split(" ");
@@ -14,7 +14,8 @@ export default function OpacityText({ text }) {
   return (
     <div
       ref={container}
-      className='flex text-2xl tracking-tight leading-none py-10 px-4 max-w-7xl flex-wrap'
+      //   className='flex text-2xl tracking-tight leading-none py-10 px-4 max-w-7xl flex-wrap'
+      className='flex flex-wrap'
       style={{ opacity: scrollYProgress }}
     >
       {words.map((word, i) => {
