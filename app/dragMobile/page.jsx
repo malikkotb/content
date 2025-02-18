@@ -55,7 +55,6 @@ export default function Home() {
         className='h-[80vh] relative w-full'
       >
         <motion.div
-          whileHover={{ scale: 0.1 }}
           ref={addToImageRefs}
           className='w-[35vw] h-[30vw] absolute top-8 left-40'
         >
