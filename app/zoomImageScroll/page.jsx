@@ -26,6 +26,25 @@ export default function Page() {
     requestAnimationFrame(raf);
   }, []);
 
+  document
+    .querySelectorAll(".heading-style-h3")
+    .forEach((heading) => {
+      let splitText = new SplitType(heading, { types: "chars" });
+
+      gsap.from(splitText.chars, {
+        y: 100,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.inOut",
+        stagger: { each: 0.05 },
+        scrollTrigger: {
+          trigger: heading,
+          start: "top 85%", // Adjust for when animation should start
+          toggleActions: "play none none none",
+        },
+      });
+    });
+
   // infinty scroll
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -126,4 +145,3 @@ export default function Page() {
     </>
   );
 }
-
