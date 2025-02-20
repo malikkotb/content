@@ -72,7 +72,12 @@ export default function Page() {
         },
       });
     });
+
   }, []);
+
+  useEffect(() => {
+
+  }, [])
 
   // or just say take some time to place the images in a way that is fitting
   // -> you want the images to not be centered, in the screen, so they actually
@@ -80,7 +85,10 @@ export default function Page() {
 
   return (
     <>
-      <div className='h-screen w-full bg-red-500'>
+      <div
+        className='h-screen w-full bg-white
+      '
+      >
         <MySVG />
       </div>
       <div className='relative h-[500vh]'>
