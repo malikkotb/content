@@ -101,6 +101,9 @@ export default function Page() {
                 // => so the original layout is kept as well,
                 // because if we zoom the images the layout isnt kept
               >
+                <div className='absolute top-0 left-0 text-white bg-black p-2'>
+                  {src.name}
+                </div>
                 <div
                   style={{
                     width: `${src.width}vw`,
