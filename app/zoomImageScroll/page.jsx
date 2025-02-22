@@ -74,7 +74,36 @@ export default function Page() {
     });
   }, []);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    const loadMoreImages = () => {
+      // Logic to load more images and update animationValues
+      // For example, you can fetch new images from an API and update the state
+      console.log("Loading more images...");
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            loadMoreImages();
+          }
+        });
+      },
+      { threshold: 1.0 }
+    );
+
+    const target = document.querySelector(".load-more-trigger");
+    if (target) {
+      observer.observe(target);
+    }
+
+    return () => {
+      if (target) {
+        observer.unobserve(target);
+      }
+    };
+  }, []);
+
 
   // or just say take some time to place the images in a way that is fitting
   // -> you want the images to not be centered, in the screen, so they actually
@@ -101,9 +130,6 @@ export default function Page() {
                 // => so the original layout is kept as well,
                 // because if we zoom the images the layout isnt kept
               >
-                <div className='absolute top-0 left-0 text-white bg-black p-2'>
-                  {src.name}
-                </div>
                 <div
                   style={{
                     width: `${src.width}vw`,
