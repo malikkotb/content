@@ -9,6 +9,8 @@ import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// INSPO: https://www.ingamana.com/ and https://savee.it/i/NVJEcR8/
+
 export default function Page() {
   const imageRefs = useRef([]);
   const addToRefs = (refArray) => (el) => {
@@ -103,7 +105,6 @@ export default function Page() {
       }
     };
   }, []);
-
 
   // or just say take some time to place the images in a way that is fitting
   // -> you want the images to not be centered, in the screen, so they actually
