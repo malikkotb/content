@@ -89,6 +89,23 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
+  document
+    .querySelectorAll(".heading-style-h3")
+    .forEach((heading) => {
+      gsap.from(heading, {
+        y: "75%",
+        opacity: 0,
+        delay: 0.1,
+        duration: 0.75,
+        ease: "cubic-bezier(0.22,0.61,0.36,1);",
+        scrollTrigger: {
+          trigger: heading,
+          start: "top 97%", // Adjust for when animation should start
+          toggleActions: "play none none none",
+        },
+      });
+    });
+
   //"animated-link-btn"
   document
     .querySelectorAll(".animated-link-btn")
