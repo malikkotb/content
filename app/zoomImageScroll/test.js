@@ -66,49 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
 
-  document
-    .querySelectorAll(".text-weight-light")
-    .forEach((paragraph) => {
-      if (paragraph.id !== "headerCity") {
-        let splitText = new SplitType(paragraph, { types: "lines" });
-
-        gsap.from(splitText.lines, {
-          y: "50%",
-          opacity: 0,
-          delay: 0.4,
-          duration: 0.5,
-          ease: "cubic-bezier(0.22,0.61,0.36,1);",
-          // ease: "cubic-bezier(0.165, 0.84, 0.44, 1)", // Very smooth!
-          stagger: { each: 0.1, from: "start" },
-          scrollTrigger: {
-            trigger: paragraph,
-            start: "top 97%",
-            toggleActions: "play none none none",
-          },
-        });
-      }
-    });
-
-  //"animated-link-btn"
-  document
-    .querySelectorAll(".animated-link-btn")
-    .forEach((button) => {
-      gsap.from(button, {
-        y: "50%",
-        opacity: 0,
-        delay: 0.65,
-        duration: 0.5,
-        ease: "cubic-bezier(0.22,0.61,0.36,1);",
-        //ease: "cubic-bezier(0.165, 0.84, 0.44, 1)", // Very smooth!
-        scrollTrigger: {
-          trigger: button,
-          start: "top 97%",
-          toggleActions: "play none none none",
-        },
-      });
-    });
-
-  document.querySelectorAll(".cta_button").forEach((button) => {
+    document.querySelectorAll(".cta_button").forEach((button) => {
     gsap.from(button, {
       y: "50%",
       opacity: 0,
