@@ -53,27 +53,6 @@ export default function Page() {
     };
   }, []);
 
-  useEffect(() => {
-    const header = document.querySelector("header");
-    if (header) {
-      gsap.fromTo(
-        header,
-        { opacity: 0, y: -50 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: header,
-            start: "top top",
-            end: "bottom top",
-            scrub: true,
-          },
-        }
-      );
-    }
-  }, []);
 
   useGSAP(() => {
     // GSAP ScrollTrigger for scaling effect
