@@ -77,6 +77,36 @@ export default function Page() {
     });
   }, []);
 
+  useEffect(() => {
+    const loadMoreImages = () => {
+      // Logic to load more images and update animationValues
+      // For example, you can fetch new images from an API and update the state
+      console.log("Loading more images...");
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            loadMoreImages();
+          }
+        });
+      },
+      { threshold: 1.0 }
+    );
+
+    const target = document.querySelector(".load-more-trigger");
+    if (target) {
+      observer.observe(target);
+    }
+
+    return () => {
+      if (target) {
+        observer.unobserve(target);
+      }
+    };
+  }, []);
+
   // or just say take some time to place the images in a way that is fitting
   // -> you want the images to not be centered, in the screen, so they actually
   // dissappear on scroll
