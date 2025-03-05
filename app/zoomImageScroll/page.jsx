@@ -53,7 +53,6 @@ export default function Page() {
     };
   }, []);
 
-
   useGSAP(() => {
     // GSAP ScrollTrigger for scaling effect
     imageRefs.current.forEach((image, index) => {
@@ -113,6 +112,23 @@ export default function Page() {
 
   return (
     <>
+      
+      <div
+        class='wellness_gallery-1_slide w-slide'
+        aria-label='1 of 10'
+        role='group'
+        style='transition: all; transform: translateX(0px); opacity: 1;'
+      >
+        <div class='wellness_gallery-1_image-wrapper'>
+          <img
+            sizes='100vw'
+            alt=''
+            src='https://cdn.prod.website-files.com/67aca6eac989eee1255f4919/67c05ea41d499da72b135610_superior02_2025_HotelKuehbacher_01158_2.avif'
+            loading='lazy'
+            class='wellness_gallery-1_image'
+          ></img>
+        </div>
+      </div>
       <div className='relative h-[500vh]'>
         <div className='h-screen sticky overflow-hidden top-0'>
           {animationValues.map((src, index) => {
