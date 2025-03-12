@@ -76,8 +76,6 @@ export default function Page() {
     });
   }, []);
 
- 
-
   // or just say take some time to place the images in a way that is fitting
   // -> you want the images to not be centered, in the screen, so they actually
   // dissappear on scroll
