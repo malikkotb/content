@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@gsap/react": "^2.1.1",
+    "embla-carousel": "^8.6.0",
+    "embla-carousel-wheel-gestures": "^8.0.2",
     "framer-motion": "^11.15.0",
     "gsap": "^3.12.5",
     "lenis": "^1.1.18",
