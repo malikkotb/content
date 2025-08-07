@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect, useRef, useCallback, useState } from "react";
 import EmblaCarousel from "embla-carousel";
 import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
@@ -48,7 +49,7 @@ export default function Page() {
     embla.on("select", onSelect);
     embla.on("init", onSelect);
     embla.on("reInit", onSelect);
-
+    
     // Remove hover state on scroll
     embla.on("scroll", () => {
       setHoveredSlide(null);
@@ -59,7 +60,7 @@ export default function Page() {
     };
   }, [onSelect]);
 
-  // TODO: add different slide sizes and width
+  // TODO: add diferent slide sizes and width
   // for more breakpints not just 768px
 
   return (
@@ -92,4 +93,4 @@ export default function Page() {
       </div>
     </>
   );
-}
+} 

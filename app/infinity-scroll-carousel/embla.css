@@ -121,8 +121,4 @@ body {
       (100% / 4) * 3 - (12px * 1)
     ); /* Increased width on hover */
   }
-
-  .embla__slide--wide:hover .embla__slide__number {
-    height: calc(var(--slide-height) * 1.5);
-  }
-}
+} 
