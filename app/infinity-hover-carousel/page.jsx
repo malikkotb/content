@@ -12,26 +12,6 @@ export default function Page() {
   const nextBtnRef = useRef(null);
   const [emblaApi, setEmblaApi] = useState(null);
   const [hoveredSlide, setHoveredSlide] = useState(null);
-
-  // useEffect(() => {
-  //   if (!emblaRef.current) return;
-
-  //   const embla = EmblaCarousel(emblaRef.current, OPTIONS, [
-  //     ...(typeof window !== "undefined" && window.innerWidth < 768
-  //       ? [WheelGesturesPlugin({ forceWheelAxis: "x" })]
-  //       : [WheelGesturesPlugin({ forceWheelAxis: "y" })]),
-  //   ]);
-  //   setEmblaApi(embla);
-
-  //   return () => {
-  //     if (embla) embla.destroy();
-  //   };
-  // }, []);
-
-  // TODO: add different slide sizes and width
-  // for more breakpints not just 768px
-
-  // Store mouse position globally
   const mousePos = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -63,6 +43,7 @@ export default function Page() {
 
         if (hoveredIndex !== lastHovered) {
           lastHovered = hoveredIndex;
+          setHoveredSlide(hoveredIndex);
           console.log(`Hovered slide: ${hoveredIndex}`);
         }
       }
@@ -72,6 +53,10 @@ export default function Page() {
       if (embla) embla.destroy();
     };
   }, []);
+
+  useEffect(() => {
+    console.log("hoveredSlideeee", hoveredSlide);
+  }, [hoveredSlide]);
 
   return (
     <>
@@ -85,27 +70,28 @@ export default function Page() {
         <section className='embla borderr w-full'>
           <div className='embla__viewport' ref={emblaRef}>
             <div className='embla__container'>
-              {[1, 2, 3, 4, 5, 6, 7, 8].map((number) => (
+              {[0, 1, 2, 3, 4, 5, 6, 7].map((number) => (
                 <div
-                  id={`slide-${number}-${Math.random()
-                    .toString(36)
-                    .substr(2, 9)}`}
-                  className={`embla__slide ${
-                    number === hoveredSlide
-                      ? "embla__slide--wide"
-                      : ""
-                  }`}
+                  className="embla__slide"
                   key={number}
-                  onMouseEnter={() => {
-                    setHoveredSlide(number);
-                    console.log("hovered slide", number);
-                  }}
-                  onMouseLeave={() => {
-                    setHoveredSlide(null);
-                    console.log("not hovered");
-                  }}
+                  // onMouseEnter={() => {
+                  //   setHoveredSlide(number);
+                  //   console.log("hovered slide", number);
+                  // }}
+                  // onMouseLeave={() => {
+                  //   setHoveredSlide(null);
+                  //   console.log("not hovered");
+                  // }}
                 >
-                  <div className='embla__slide__number bg-cyan-500'>
+                  <div 
+                    className='embla__slide__number'
+                    style={{
+                      minWidth: number === hoveredSlide ? '300px' : 'var(--slide-size)',
+                      backgroundColor: number === hoveredSlide ? '#22c55e' : '#06b6d4',
+                      height: number === hoveredSlide ? '400px' : 'var(--slide-height)',
+                      transition: 'height 0.3s ease, background-color 0.3s ease'
+                    }}
+                  >
                     {number}
                   </div>
                 </div>
