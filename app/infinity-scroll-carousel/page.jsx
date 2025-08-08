@@ -4,6 +4,7 @@ import { useEffect, useRef, useCallback, useState } from "react";
 import EmblaCarousel from "embla-carousel";
 import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
 import "./embla.css";
+import gsap from "gsap";
 
 const OPTIONS = { dragFree: true, loop: true };
 
@@ -12,16 +13,7 @@ export default function Page() {
   const prevBtnRef = useRef(null);
   const nextBtnRef = useRef(null);
   const [emblaApi, setEmblaApi] = useState(null);
-  const [hoveredSlide, setHoveredSlide] = useState(null);
-
-  const scrollPrev = useCallback(
-    () => emblaApi && emblaApi.scrollPrev(),
-    [emblaApi]
-  );
-  const scrollNext = useCallback(
-    () => emblaApi && emblaApi.scrollNext(),
-    [emblaApi]
-  );
+  const [hoveredSlide, setHoveredSlide] = useState(1);
 
   const onSelect = useCallback((emblaApi) => {
     const prevBtn = prevBtnRef.current;
@@ -36,6 +28,18 @@ export default function Page() {
     else nextBtn.setAttribute("disabled", "disabled");
   }, []);
 
+  // Debug interval to cycle through slides
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setHoveredSlide((current) => {
+  //       // Reset to 1 if we reach the end, otherwise increment
+  //       return current >= 8 ? 1 : current + 1;
+  //     });
+  //   }, 2000);
+
+  //   return () => clearInterval(interval);
+  // }, []);
+
   useEffect(() => {
     if (!emblaRef.current) return;
 
@@ -49,29 +53,20 @@ export default function Page() {
     embla.on("select", onSelect);
     embla.on("init", onSelect);
     embla.on("reInit", onSelect);
-    
-    // Remove hover state on scroll
-    embla.on("scroll", () => {
-      setHoveredSlide(null);
-    });
 
     return () => {
       if (embla) embla.destroy();
     };
   }, [onSelect]);
 
-  // TODO: add diferent slide sizes and width
-  // for more breakpints not just 768px
-
   return (
     <>
-      <div className="debug-grid">
+      <div className='debug-grid'>
         {[...Array(12)].map((_, i) => (
           <div key={i} />
         ))}
       </div>
       <div className='w-full flex justify-end items-end'>
-        {/* parent of embla needs to be 100vh for this to work */}
         <section className='embla borderr w-full'>
           <div className='embla__viewport' ref={emblaRef}>
             <div className='embla__container'>
@@ -81,10 +76,10 @@ export default function Page() {
                     number === hoveredSlide ? "embla__slide--wide" : ""
                   }`}
                   key={number}
-                  onMouseEnter={() => setHoveredSlide(number)}
-                  onMouseLeave={() => setHoveredSlide(null)}
                 >
-                  <div className='embla__slide__number bg-cyan-500'>{number}</div>
+                  <div className='embla__slide__number bg-cyan-500'>
+                    {number}
+                  </div>
                 </div>
               ))}
             </div>
@@ -93,4 +88,4 @@ export default function Page() {
       </div>
     </>
   );
-} 
+}
