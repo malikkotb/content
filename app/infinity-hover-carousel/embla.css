@@ -111,6 +111,17 @@ body {
   /* transform: translateY(calc((var(--slide-height) * -0.5))); */ /* Move up by half the height increase */
 }
 
+@media (max-width: 1024px) {
+  .embla {
+    --slide-size: calc((100% / 12) * 3 - (12px * 1));
+  }
+  .embla__slide--wide:hover {
+    min-width: calc(
+      (100% / 12) * 4 - (6px)
+    ); /* Increased width on hover */
+  }
+}
+
 @media (max-width: 768px) {
   .embla {
     --slide-size: calc((100% / 4) * 2 - (12px * 1));

@@ -59,40 +59,38 @@ body {
   --slide-spacing: 12px;
   --slide-size: calc((100% / 12) * 2 - 3px);
 }
-
 .embla__viewport {
   overflow: hidden;
 }
-
 .embla__container {
   display: flex;
   touch-action: pan-y pinch-zoom;
   margin-left: calc(var(--slide-spacing) * -1);
 }
-
 .embla__slide {
-  border: 1px solid #ccc;
+  /* border: 1px solid green; */
   transform: translate3d(0, 0, 0);
   flex: 0 0 auto;
   height: 100vh;
   position: relative;
+  /* min-width: 25%; */
   min-width: var(--slide-size);
   padding-left: var(--slide-spacing);
   transition: min-width 0.3s ease;
 }
 
-/* Remove hover dependency */
-.embla__slide--wide {
-  min-width: calc((100% / 12) * 3 - 6px) !important;
-  border: 3px solid red !important;
+.embla__slide--wide:hover {
+  min-width: calc(
+    (100% / 12) * 3 - (6px)
+  ); /* Increased width on hover */
 }
-
 .embla__slide__number {
-  border: 1px solid blue;
   position: absolute;
-  left: var(--slide-spacing);
+  left: var(
+    --slide-spacing
+  ); /* Match the padding-left of the slide */
   right: 0;
-  bottom: 12px;
+  bottom: 12px; /* Position at the bottom to grow upwards */
   box-shadow: inset 0 0 0 0.2rem var(--detail-medium-contrast);
   font-size: 4rem;
   font-weight: 600;
@@ -102,13 +100,26 @@ body {
   height: var(--slide-height);
   user-select: none;
   z-index: 100;
+  /*  */
   transition: height 0.3s ease, transform 0.3s ease;
   transform-origin: bottom;
 }
 
-/* Remove hover dependency */
-.embla__slide--wide .embla__slide__number {
+.embla__slide--wide:hover .embla__slide__number {
+  /* transform: scaleY(1.5); */
   height: calc(var(--slide-height) * 1.5);
+  /* transform: translateY(calc((var(--slide-height) * -0.5))); */ /* Move up by half the height increase */
+}
+
+@media (max-width: 1024px) {
+  .embla {
+    --slide-size: calc((100% / 12) * 3 - (12px * 1));
+  }
+  .embla__slide--wide:hover {
+    min-width: calc(
+      (100% / 12) * 4 - (6px)
+    ); /* Increased width on hover */
+  }
 }
 
 @media (max-width: 768px) {
@@ -116,7 +127,13 @@ body {
     --slide-size: calc((100% / 4) * 2 - (12px * 1));
   }
 
-  .embla__slide--wide {
-    min-width: calc((100% / 4) * 3 - (12px * 1));
+  .embla__slide--wide:hover {
+    min-width: calc(
+      (100% / 4) * 3 - (12px * 1)
+    ); /* Increased width on hover */
   }
-} 
+
+  .embla__slide--wide:hover .embla__slide__number {
+    height: calc(var(--slide-height) * 1.5);
+  }
+}
