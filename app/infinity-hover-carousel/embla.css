@@ -57,7 +57,7 @@ body {
   height: 100vh;
   --slide-height: 30vh;
   --slide-spacing: 12px;
-  --slide-size: calc((100% / 12) * 2 - 3px);
+  --slide-size: calc((100% / 12) * 3 - 6px);
 }
 .embla__viewport {
   overflow: hidden;
@@ -70,7 +70,7 @@ body {
 .embla__slide {
   /* border: 1px solid green; */
   transform: translate3d(0, 0, 0);
-  flex: 0 0 auto;
+  /* flex: 0 0 auto; */
   height: 100vh;
   position: relative;
   /* min-width: 25%; */
@@ -79,11 +79,15 @@ body {
   transition: min-width 0.3s ease;
 }
 
-.embla__slide--wide:hover {
+.embla__slide--wide {
+  min-width: calc((100% / 12) * 3 - (6px));
+}
+
+/* .embla__slide--wide:hover {
   min-width: calc(
     (100% / 12) * 3 - (6px)
-  ); /* Increased width on hover */
-}
+  );
+} */
 .embla__slide__number {
   position: absolute;
   left: var(
