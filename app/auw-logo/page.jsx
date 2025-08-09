@@ -7,78 +7,57 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Page() {
   useEffect(() => {
-    // Fade out animation for characters
-    gsap.to(".fade-char", {
-      opacity: 0,
-      duration: 0.5,
+    // Store the timeline for character movements
+    const moveTimeline = gsap.timeline({
       scrollTrigger: {
         trigger: ".logo-container",
         start: "top+=5vh top",
-        // TODO: add smoother easing
         end: "top+=5vh top",
         toggleActions: "play none none reverse",
       },
     });
 
-    // Move U and W to the left
-    gsap.to([".u-char", ".w-char"], {
-      x: (index, target) => {
-        // Calculate the distance to move based on the element
-        const isU = target.classList.contains("u-char");
-        // Move both U and W left to create "AUW"
-        return isU ? 0 : -56;
-      },
-      duration: 0.5,
-      delay: 1,
-      // TODO: add smoother easing
-      scrollTrigger: {
-        trigger: ".logo-container",
-        start: "top+=5vh top",
-        end: "top+=5vh top",
-        toggleActions: "play none none reverse",
-      },
-    });
+    // Let’s make the bounce much subtler
+
+    // Add movement animations to timeline
+    moveTimeline
+      .to(".fade-char", {
+        opacity: 0,
+        x: -5,
+        duration: 0.2,
+        ease: "power3.in",
+      })
+      .to(
+        [".u-char", ".w-char"],
+        {
+          x: (index, target) => {
+            const isU = target.classList.contains("u-char");
+            return isU ? -2 : -58;
+          },
+          duration: 0.7,
+          ease: "back.out(1)",
+        },
+        "<+0.1"
+      )
+      .to(
+        ".trademark",
+        {
+          x: -98,
+          duration: 0.7,
+          ease: "back.out(1)",
+        },
+        "<+0.15"
+      );
   }, []);
-
-  /*
-
-useEffect(() => {
-    // Fade out animation for characters
-    gsap.to(".fade-char", {
-      opacity: 0,
-      duration: 0.5,
-      scrollTrigger: {
-        trigger: ".logo-container",
-        start: "top+=5vh top",
-        end: "top+=5vh top",
-        toggleActions: "play none none reverse",
-      },
-    });
-
-    // Move A and U to the right
-    gsap.to([".a-char", ".u-char"], {
-      x: (index, target) => {
-        // Calculate the distance to move based on the element
-        const isA = target.classList.contains('a-char');
-        // Move A further than U to create "AUW"
-        return isA ? 58 : 56;  // Increased U's movement from 20 to 65
-      },
-      duration: 0.5,
-      scrollTrigger: {
-        trigger: ".logo-container",
-        start: "top+=5vh top",
-        end: "top+=5vh top",
-        toggleActions: "play none none reverse",
-      },
-    });
-  }, []);
-*/
 
   return (
     <div className='w-full h-[125vh] relative borderr flex justify-center'>
-      <div className='logo-container flex gap-1 font-medium text-xl fixed top-[12px]'>
+      <div
+        style={{ gap: "0px" }}
+        className='logo-container flex font-medium text-xl fixed top-[12px]'
+      >
         <span>A</span>
-        <div className='flex gap-0'>
+        <div className='flex gap-0 pl-[2px]'>
           <span className='u-char'>U</span>
           <span className='fade-char'>n</span>
           <span className='fade-char'>i</span>
@@ -87,13 +66,14 @@ useEffect(() => {
           <span className='fade-char'>e</span>
           <span className='fade-char'>d</span>
         </div>
-        <div className='flex'>
+        <div className='flex pl-[2px] gap-0'>
           <span className='w-char'>W</span>
           <span className='fade-char'>h</span>
           <span className='fade-char'>o</span>
           <span className='fade-char'>l</span>
           <span className='fade-char'>e</span>
         </div>
+        <span className='trademark text-sm'>®</span>
       </div>
     </div>
   );

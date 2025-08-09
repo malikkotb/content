@@ -50,6 +50,28 @@ export default function Page() {
     };
   }, []);
 
+  /*
+
+      slides.forEach(slide => {
+    const inner = slide.querySelector('.slide-inner')
+
+    slide.addEventListener('mouseenter', () => {
+      // Make the whole slide wider
+      slide.style.flex = '0 0 25%' // Increase width (default was ~17%)
+
+      // Make inner content taller and wider
+      inner.style.height = '350px'
+    })
+
+    slide.addEventListener('mouseleave', () => {
+      // Reset to original slide size
+      slide.style.flex = ''
+      inner.style.height = '100%'
+    })
+  })
+
+  */
+
   return (
     <>
       <div className='debug-grid'>
