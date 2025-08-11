@@ -8,31 +8,8 @@ const OPTIONS = { dragFree: true, loop: true };
 
 export default function Page() {
   const emblaRef = useRef(null);
-  const prevBtnRef = useRef(null);
-  const nextBtnRef = useRef(null);
   const [emblaApi, setEmblaApi] = useState(null);
   const [hoveredSlide, setHoveredSlide] = useState(null);
-
-  // useEffect(() => {
-  //   if (!emblaRef.current) return;
-
-  //   const embla = EmblaCarousel(emblaRef.current, OPTIONS, [
-  //     ...(typeof window !== "undefined" && window.innerWidth < 768
-  //       ? [WheelGesturesPlugin({ forceWheelAxis: "x" })]
-  //       : [WheelGesturesPlugin({ forceWheelAxis: "y" })]),
-  //   ]);
-  //   setEmblaApi(embla);
-
-  //   return () => {
-  //     if (embla) embla.destroy();
-  //   };
-  // }, []);
-
-  // TODO: add different slide sizes and width
-  // for more breakpints not just 768px
-
-  // Store mouse position globally
-  const mousePos = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     if (!emblaRef.current) return;
@@ -63,7 +40,7 @@ export default function Page() {
 
         if (hoveredIndex !== lastHovered) {
           lastHovered = hoveredIndex;
-          console.log(`Hovered slide: ${hoveredIndex}`);
+          setHoveredSlide(hoveredIndex);
         }
       }
     });
@@ -73,6 +50,27 @@ export default function Page() {
     };
   }, []);
 
+  /*
+      slides.forEach(slide => {
+    const inner = slide.querySelector('.slide-inner')
+
+    slide.addEventListener('mouseenter', () => {
+      // Make the whole slide wider
+      slide.style.flex = '0 0 25%' // Increase width (default was ~17%)
+
+      // Make inner content taller and wider
+      inner.style.height = '350px'
+    })
+
+    slide.addEventListener('mouseleave', () => {
+      // Reset to original slide size
+      slide.style.flex = ''
+      inner.style.height = '100%'
+    })
+  })
+
+  */
+
   return (
     <>
       <div className='debug-grid'>
@@ -81,31 +79,44 @@ export default function Page() {
         ))}
       </div>
       <div className='w-full flex justify-end items-end'>
-        {/* parent of embla needs to be 100vh for this to work */}
         <section className='embla borderr w-full'>
           <div className='embla__viewport' ref={emblaRef}>
             <div className='embla__container'>
-              {[1, 2, 3, 4, 5, 6, 7, 8].map((number) => (
+              {[0, 1, 2, 3, 4, 5, 6, 7].map((number) => (
                 <div
-                  id={`slide-${number}-${Math.random()
-                    .toString(36)
-                    .substr(2, 9)}`}
-                  className={`embla__slide ${
-                    number === hoveredSlide
-                      ? "embla__slide--wide"
-                      : ""
-                  }`}
+                  className='embla__slide'
+                  style={{
+                    // flex:
+                    //   number === hoveredSlide ? "0 0 35%" : "0 0 17%",
+                    // width:
+                    //   number === hoveredSlide ? "300px" : "250px",
+                    // transition: "width 0.3s ease",
+                  }}
                   key={number}
-                  onMouseEnter={() => {
-                    setHoveredSlide(number);
-                    console.log("hovered slide", number);
-                  }}
-                  onMouseLeave={() => {
-                    setHoveredSlide(null);
-                    console.log("not hovered");
-                  }}
+                  // onMouseEnter={() => {
+                  //   setHoveredSlide(number);
+                  //   console.log("hovered slide", number);
+                  // }}
+                  // onMouseLeave={() => {
+                  //   setHoveredSlide(null);
+                  //   console.log("not hovered");
+                  // }}
                 >
-                  <div className='embla__slide__number bg-cyan-500'>
+                  <div
+                    className='slide-inner'
+                    style={{
+                      backgroundColor:
+                        number === hoveredSlide
+                          ? "#22c55e"
+                          : "#06b6d4",
+                      height:
+                        number === hoveredSlide
+                          ? "400px"
+                          : "var(--slide-height)",
+                      transition:
+                        "height 0.3s ease, background-color 0.3s ease",
+                    }}
+                  >
                     {number}
                   </div>
                 </div>

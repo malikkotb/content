@@ -50,28 +50,6 @@ export default function Page() {
     };
   }, []);
 
-  /*
-
-      slides.forEach(slide => {
-    const inner = slide.querySelector('.slide-inner')
-
-    slide.addEventListener('mouseenter', () => {
-      // Make the whole slide wider
-      slide.style.flex = '0 0 25%' // Increase width (default was ~17%)
-
-      // Make inner content taller and wider
-      inner.style.height = '350px'
-    })
-
-    slide.addEventListener('mouseleave', () => {
-      // Reset to original slide size
-      slide.style.flex = ''
-      inner.style.height = '100%'
-    })
-  })
-
-  */
-
   return (
     <>
       <div className='debug-grid'>
@@ -79,58 +57,52 @@ export default function Page() {
           <div key={i} />
         ))}
       </div>
-      <div className='w-full flex justify-end items-end'>
-        {/* parent of embla needs to be 100vh for this to work */}
-        <section className='embla borderr w-full'>
-          <div className='embla__viewport' ref={emblaRef}>
-            <div className='embla__container'>
-              {[0, 1, 2, 3, 4, 5, 6, 7].map((number) => (
+      <section className='embla w-full'>
+        <div className='embla__viewport' ref={emblaRef}>
+          <div className='embla__container'>
+            {[0, 1, 2, 3, 4, 5, 6, 7].map((number) => (
+              <div
+                className='embla__slide'
+                style={{
+                  width: number === hoveredSlide ? "300px" : "250px",
+                  transition: "width 0.3s ease",
+                }}
+                key={number}
+                // onMouseEnter={() => {
+                //   setHoveredSlide(number);
+                //   console.log("hovered slide", number);
+                // }}
+                // onMouseLeave={() => {
+                //   setHoveredSlide(null);
+                //   console.log("not hovered");
+                // }}
+              >
                 <div
-                  className='embla__slide'
+                  className='slide-inner'
                   style={{
-                    width:
-                      number === hoveredSlide ? "300px" : "250px",
-                    transition: "width 0.3s ease",
+                    // marginLeft:
+                    //   number === hoveredSlide ? "0px" : "96px",
+                    // minWidth:
+                    //   number === hoveredSlide
+                    //     ? "500px"
+                    //     : "300px",
+                    backgroundColor:
+                      number === hoveredSlide ? "#22c55e" : "#06b6d4",
+                    height:
+                      number === hoveredSlide
+                        ? "400px"
+                        : "var(--slide-height)",
+                    transition:
+                      "height 0.3s ease, background-color 0.3s ease, margin-left 0.3s ease",
                   }}
-                  key={number}
-                  // onMouseEnter={() => {
-                  //   setHoveredSlide(number);
-                  //   console.log("hovered slide", number);
-                  // }}
-                  // onMouseLeave={() => {
-                  //   setHoveredSlide(null);
-                  //   console.log("not hovered");
-                  // }}
                 >
-                  <div
-                    className='embla__slide__number'
-                    style={{
-                      // marginLeft:
-                      //   number === hoveredSlide ? "0px" : "96px",
-                      // minWidth:
-                      //   number === hoveredSlide
-                      //     ? "500px"
-                      //     : "300px",
-                      backgroundColor:
-                        number === hoveredSlide
-                          ? "#22c55e"
-                          : "#06b6d4",
-                      height:
-                        number === hoveredSlide
-                          ? "400px"
-                          : "var(--slide-height)",
-                      transition:
-                        "height 0.3s ease, background-color 0.3s ease, margin-left 0.3s ease",
-                    }}
-                  >
-                    {number}
-                  </div>
+                  {number}
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </>
   );
 }

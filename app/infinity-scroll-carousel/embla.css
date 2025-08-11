@@ -57,7 +57,7 @@ body {
   height: 100vh;
   --slide-height: 30vh;
   --slide-spacing: 12px;
-  --slide-size: calc((100% / 12) * 2 - 3px);
+  --slide-size: calc((100% / 12) * 3 - 6px);
 }
 .embla__viewport {
   overflow: hidden;
@@ -70,21 +70,18 @@ body {
 .embla__slide {
   /* border: 1px solid green; */
   transform: translate3d(0, 0, 0);
-  flex: 0 0 auto;
   height: 100vh;
   position: relative;
-  /* min-width: 25%; */
-  min-width: var(--slide-size);
+  /* flex: 0 0 var(--slide-size); */
+  flex: 0 0 17%;
+  min-width: 0;
   padding-left: var(--slide-spacing);
-  transition: min-width 0.3s ease;
+  overflow: visible;
+  transition: flex-basis 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: flex 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.embla__slide--wide:hover {
-  min-width: calc(
-    (100% / 12) * 3 - (6px)
-  ); /* Increased width on hover */
-}
-.embla__slide__number {
+.slide-inner {
   position: absolute;
   left: var(
     --slide-spacing
@@ -93,19 +90,24 @@ body {
   bottom: 12px; /* Position at the bottom to grow upwards */
   box-shadow: inset 0 0 0 0.2rem var(--detail-medium-contrast);
   font-size: 4rem;
+  /* width: 100%; */ /* adding this would break the padding on the left */
+  /* height: 100%; */
+  transition: height 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: height, width;
+  height: var(--slide-height);
   font-weight: 600;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: var(--slide-height);
   user-select: none;
   z-index: 100;
   /*  */
-  transition: height 0.3s ease, transform 0.3s ease;
+  /* transition: height 0.3s ease, transform 0.3s ease; */
   transform-origin: bottom;
 }
 
-.embla__slide--wide:hover .embla__slide__number {
+.embla__slide--wide:hover .slide-inner {
   /* transform: scaleY(1.5); */
   height: calc(var(--slide-height) * 1.5);
   /* transform: translateY(calc((var(--slide-height) * -0.5))); */ /* Move up by half the height increase */
@@ -133,7 +135,7 @@ body {
     ); /* Increased width on hover */
   }
 
-  .embla__slide--wide:hover .embla__slide__number {
+  .embla__slide--wide:hover .slide-inner {
     height: calc(var(--slide-height) * 1.5);
   }
 }
