@@ -56,7 +56,7 @@ body {
 .embla {
   height: 100vh;
   --slide-height: 30vh;
-  --slide-spacing: 12px;
+  --slide-spacing: 24px;
   --slide-size: calc((100% / 12) * 3 - 6px);
 }
 .embla__viewport {
@@ -83,6 +83,7 @@ body {
 
 .slide-inner {
   position: absolute;
+  aspect-ratio: 4/5;
   left: var(
     --slide-spacing
   ); /* Match the padding-left of the slide */
@@ -95,7 +96,6 @@ body {
   transition: height 0.5s cubic-bezier(0.16, 1, 0.3, 1),
     width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: height, width;
-  height: var(--slide-height);
   font-weight: 600;
   display: flex;
   align-items: center;
@@ -105,12 +105,6 @@ body {
   /*  */
   /* transition: height 0.3s ease, transform 0.3s ease; */
   transform-origin: bottom;
-}
-
-.embla__slide--wide:hover .slide-inner {
-  /* transform: scaleY(1.5); */
-  height: calc(var(--slide-height) * 1.5);
-  /* transform: translateY(calc((var(--slide-height) * -0.5))); */ /* Move up by half the height increase */
 }
 
 @media (max-width: 1024px) {

@@ -23,27 +23,27 @@ export default function Page() {
 
     let lastHovered = null;
 
-    embla.on("scroll", () => {
-      // Get element under the cursor
-      const hoveredEl = document.elementFromPoint(
-        window.innerWidth / 2, // or use actual mouseX if needed
-        window.innerHeight / 2 // or actual mouseY
-      );
+    // embla.on("scroll", () => {
+    //   // Get element under the cursor
+    //   const hoveredEl = document.elementFromPoint(
+    //     window.innerWidth / 2, // or use actual mouseX if needed
+    //     window.innerHeight / 2 // or actual mouseY
+    //   );
 
-      if (!hoveredEl) return;
+    //   if (!hoveredEl) return;
 
-      // Check if this element is inside a slide
-      const slideEl = hoveredEl.closest(".embla__slide");
-      if (slideEl) {
-        const slides = embla.slideNodes();
-        const hoveredIndex = slides.indexOf(slideEl);
+    //   // Check if this element is inside a slide
+    //   const slideEl = hoveredEl.closest(".embla__slide");
+    //   if (slideEl) {
+    //     const slides = embla.slideNodes();
+    //     const hoveredIndex = slides.indexOf(slideEl);
 
-        if (hoveredIndex !== lastHovered) {
-          lastHovered = hoveredIndex;
-          setHoveredSlide(hoveredIndex);
-        }
-      }
-    });
+    //     if (hoveredIndex !== lastHovered) {
+    //       lastHovered = hoveredIndex;
+    //       setHoveredSlide(hoveredIndex);
+    //     }
+    //   }
+    // });
 
     return () => {
       if (embla) embla.destroy();
@@ -93,28 +93,26 @@ export default function Page() {
                     // transition: "width 0.3s ease",
                   }}
                   key={number}
-                  // onMouseEnter={() => {
-                  //   setHoveredSlide(number);
-                  //   console.log("hovered slide", number);
-                  // }}
-                  // onMouseLeave={() => {
-                  //   setHoveredSlide(null);
-                  //   console.log("not hovered");
-                  // }}
+                  onMouseEnter={() => {
+                    setHoveredSlide(number);
+                    console.log("hovered slide", number);
+                  }}
+                  onMouseLeave={() => {
+                    setHoveredSlide(null);
+                    console.log("not hovered");
+                  }}
                 >
                   <div
-                    className='slide-inner'
+                    className='slide-inner hover:scale-110 transition-all duration-300'
                     style={{
                       backgroundColor:
                         number === hoveredSlide
                           ? "#22c55e"
                           : "#06b6d4",
-                      height:
-                        number === hoveredSlide
-                          ? "400px"
-                          : "var(--slide-height)",
-                      transition:
-                        "height 0.3s ease, background-color 0.3s ease",
+                      // height:
+                      //   number === hoveredSlide
+                      //     ? "400px"
+                      //     : "var(--slide-height)",
                     }}
                   >
                     {number}

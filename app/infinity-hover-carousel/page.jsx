@@ -64,8 +64,8 @@ export default function Page() {
               <div
                 className='embla__slide'
                 style={{
-                  width: number === hoveredSlide ? "300px" : "250px",
-                  transition: "width 0.3s ease",
+                  minWidth: number === hoveredSlide ? "300px" : "250px",
+                  transition: "min-width 0.3s ease",
                 }}
                 key={number}
                 // onMouseEnter={() => {

@@ -1,79 +1,110 @@
 "use client";
-import { useEffect } from "react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
+import InstaBold from "./InstaBold";
+import SpotifyBold from "./SpotifyBold";
+import AppleMusicBold from "./AppleMusicBold";
+import YoutubeBold from "./YoutubeBold";
+
+// TODO: add metafield in spotify and get the album titles and images from there
+const albums = [
+  {
+    title: "Project Title",
+    name: "Album",
+    image: "/img11.png",
+    href: "https://open.spotify.com/album/00000000000000000000000000000000",
+  },
+
+  {
+    title: "Project Title",
+    name: "Album",
+    image: "/img11.png",
+    href: "https://open.spotify.com/album/00000000000000000000000000000000",
+  },
+
+  {
+    title: "Project Title",
+    name: "Album",
+    image: "/img11.png",
+    href: "https://open.spotify.com/album/00000000000000000000000000000000",
+  },
+];
 
 export default function Page() {
-  useEffect(() => {
-    // Store the timeline for character movements
-    const moveTimeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".logo-container",
-        start: "top+=5vh top",
-        end: "top+=5vh top",
-        toggleActions: "play none none reverse",
-      },
-    });
-
-    // Let’s make the bounce much subtler
-
-    // Add movement animations to timeline
-    moveTimeline
-      .to(".fade-char", {
-        opacity: 0,
-        x: -5,
-        duration: 0.2,
-        ease: "power3.in",
-      })
-      .to(
-        [".u-char", ".w-char"],
-        {
-          x: (index, target) => {
-            const isU = target.classList.contains("u-char");
-            return isU ? -2 : -58;
-          },
-          duration: 0.7,
-          ease: "back.out(1)",
-        },
-        "<+0.1"
-      )
-      .to(
-        ".trademark",
-        {
-          x: -98,
-          duration: 0.7,
-          ease: "back.out(1)",
-        },
-        "<+0.15"
-      );
-  }, []);
-
   return (
-    <div className='w-full h-[125vh] relative borderr flex justify-center'>
+    <div className='w-full text-white bg-[#2547B1] h-[100vh] relative flex items-center'>
+      <div className='absolute right-0 top-0 bottom-0'>
+        <img
+          src='/LPTOUR-28-full.png' 
+          // seems like the full version is better
+          alt='background'
+          className='w-full h-full'
+        />
+      </div>
       <div
-        style={{ gap: "0px" }}
-        className='logo-container flex font-medium text-xl fixed top-[12px]'
+        style={{ zIndex: 10 }}
+        className='borderr h-fit flex flex-col gap-[2rem] ml-16'
       >
-        <span>A</span>
-        <div className='flex gap-0 pl-[2px]'>
-          <span className='u-char'>U</span>
-          <span className='fade-char'>n</span>
-          <span className='fade-char'>i</span>
-          <span className='fade-char'>f</span>
-          <span className='fade-char'>i</span>
-          <span className='fade-char'>e</span>
-          <span className='fade-char'>d</span>
+        <div className='flex gap-16'>
+          {/* TODO: get correct hrefs */}
+          <a
+            href='https://www.instagram.com/louphelps/'
+            target='_blank'
+            className='hover:scale-110 transition-all duration-300'
+          >
+            <InstaBold strokeColor='white' />
+          </a>
+          <a
+            href='https://open.spotify.com/artist/00WmzVff1tFDGhgBHbz2nQ'
+            target='_blank'
+            className='hover:scale-110 transition-all duration-300'
+          >
+            <SpotifyBold strokeColor='white' />
+          </a>
+          <a
+            href='https://music.apple.com/us/artist/loup-helps/1740600000'
+            target='_blank'
+            className='hover:scale-110 transition-all duration-300'
+          >
+            <AppleMusicBold strokeColor='white' />
+          </a>
+          <a
+            href='https://www.youtube.com/@louphelps'
+            target='_blank'
+            className='hover:scale-110 transition-all duration-300'
+          >
+            <YoutubeBold strokeColor='white' />
+          </a>
         </div>
-        <div className='flex pl-[2px] gap-0'>
-          <span className='w-char'>W</span>
-          <span className='fade-char'>h</span>
-          <span className='fade-char'>o</span>
-          <span className='fade-char'>l</span>
-          <span className='fade-char'>e</span>
+        <div className='flex flex-col gap-2 pb-8'>
+          <div className='text-7xl font-extrabold'>LOU PHELPS</div>
+          <div className=''>
+            Haitian-Canadian rapper and producer from Saint-Hubert,
+            Quebec.
+          </div>
         </div>
-        <span className='trademark text-sm'>®</span>
+        <div className='flex flex-col'>
+          <div className='font-bold text-xl pb-2'>RELEASES</div>
+          <div className='flex gap-4'>
+            {albums.map((album, index) => (
+              <div
+                key={index}
+                className='flex flex-col gap-4 items-center'
+              >
+                <img
+                  src={album.image}
+                  alt={album.title}
+                  className='w-[185px] h-[185px] rounded-xl'
+                />
+                <div className='flex text-[#D9D9D9] flex-col text-center uppercase'>
+                  <span className=''>{album.title}</span>
+                  <span className='text-xs font-bold'>
+                    {album.name}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
