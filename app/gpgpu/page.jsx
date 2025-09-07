@@ -2,6 +2,8 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import vertexShader from "./shaders/vertex.glsl";
+import fragmentShader from "./shaders/fragment.glsl";
 
 // basic three.js template scene with orbit controls
 export default function Page() {
@@ -21,8 +23,19 @@ export default function Page() {
     mountRef.current.appendChild(renderer.domElement);
 
     // geometry
-    const geometry = new THREE.BoxGeometry(0.2, 0.2, 0.2);
-    const material = new THREE.MeshNormalMaterial();
+    const geometry = new THREE.PlaneGeometry(1, 1);
+    // best way to add shaders is to override the basic material
+    // and add custom uniforms and shaders
+    let material = new THREE.MeshNormalMaterial();
+
+    material = new THREE.ShaderMaterial({
+      uniforms: {
+        uTime: { value: 0 },
+      },
+      vertexShader: vertexShader,
+      fragmentShader: fragmentShader,
+    });
+    // mesh
     const cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
 
@@ -60,9 +73,6 @@ export default function Page() {
     // animate/ render method
     const animate = function () {
       requestAnimationFrame(animate);
-
-      cube.rotation.x += 0.01;
-      cube.rotation.y += 0.01;
 
       renderer.render(scene, camera);
       controls.update();
