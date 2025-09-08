@@ -43,8 +43,8 @@ export default function Page() {
       //   0.1,
       //   1000
     );
+    camera.position.z = 5; // otherwise it would be at the origin (0,0,0) and we would be inside the object and wont see anything
     scene.add(camera); // optional, but it's good to have it
-    // camera.position.z = 1;
 
     // renderer
     const renderer = new THREE.WebGLRenderer({
